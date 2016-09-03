@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E2BBBEBF1D7B118D003B58A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */; };
+		E2BBBEC11D7B118D003B58A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBBEC01D7B118D003B58A3 /* ViewController.swift */; };
+		E2BBBEC41D7B118D003B58A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2BBBEC21D7B118D003B58A3 /* Main.storyboard */; };
+		E2BBBEC61D7B118D003B58A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2BBBEC51D7B118D003B58A3 /* Assets.xcassets */; };
+		E2BBBEC91D7B118D003B58A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2BBBEC71D7B118D003B58A3 /* LaunchScreen.storyboard */; };
+		E2BBBED41D7B118D003B58A3 /* MoDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBBED31D7B118D003B58A3 /* MoDoListTests.swift */; };
+		E2BBBEDF1D7B118D003B58A3 /* MoDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBBEDE1D7B118D003B58A3 /* MoDoListUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E2BBBED01D7B118D003B58A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2BBBEB31D7B118D003B58A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2BBBEBA1D7B118D003B58A3;
+			remoteInfo = MoDoList;
+		};
+		E2BBBEDB1D7B118D003B58A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2BBBEB31D7B118D003B58A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2BBBEBA1D7B118D003B58A3;
+			remoteInfo = MoDoList;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E2BBBEBB1D7B118D003B58A3 /* MoDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E2BBBEC01D7B118D003B58A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2BBBEC31D7B118D003B58A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E2BBBEC51D7B118D003B58A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E2BBBEC81D7B118D003B58A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E2BBBECA1D7B118D003B58A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2BBBECF1D7B118D003B58A3 /* MoDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2BBBED31D7B118D003B58A3 /* MoDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoDoListTests.swift; sourceTree = "<group>"; };
+		E2BBBED51D7B118D003B58A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2BBBEDA1D7B118D003B58A3 /* MoDoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoDoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2BBBEDE1D7B118D003B58A3 /* MoDoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoDoListUITests.swift; sourceTree = "<group>"; };
+		E2BBBEE01D7B118D003B58A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E2BBBEB81D7B118D003B58A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2BBBECC1D7B118D003B58A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2BBBED71D7B118D003B58A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E2BBBEB21D7B118D003B58A3 = {
+			isa = PBXGroup;
+			children = (
+				E2BBBEBD1D7B118D003B58A3 /* MoDoList */,
+				E2BBBED21D7B118D003B58A3 /* MoDoListTests */,
+				E2BBBEDD1D7B118D003B58A3 /* MoDoListUITests */,
+				E2BBBEBC1D7B118D003B58A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E2BBBEBC1D7B118D003B58A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2BBBEBB1D7B118D003B58A3 /* MoDoList.app */,
+				E2BBBECF1D7B118D003B58A3 /* MoDoListTests.xctest */,
+				E2BBBEDA1D7B118D003B58A3 /* MoDoListUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E2BBBEBD1D7B118D003B58A3 /* MoDoList */ = {
+			isa = PBXGroup;
+			children = (
+				E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */,
+				E2BBBEC01D7B118D003B58A3 /* ViewController.swift */,
+				E2BBBEC21D7B118D003B58A3 /* Main.storyboard */,
+				E2BBBEC51D7B118D003B58A3 /* Assets.xcassets */,
+				E2BBBEC71D7B118D003B58A3 /* LaunchScreen.storyboard */,
+				E2BBBECA1D7B118D003B58A3 /* Info.plist */,
+			);
+			path = MoDoList;
+			sourceTree = "<group>";
+		};
+		E2BBBED21D7B118D003B58A3 /* MoDoListTests */ = {
+			isa = PBXGroup;
+			children = (
+				E2BBBED31D7B118D003B58A3 /* MoDoListTests.swift */,
+				E2BBBED51D7B118D003B58A3 /* Info.plist */,
+			);
+			path = MoDoListTests;
+			sourceTree = "<group>";
+		};
+		E2BBBEDD1D7B118D003B58A3 /* MoDoListUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E2BBBEDE1D7B118D003B58A3 /* MoDoListUITests.swift */,
+				E2BBBEE01D7B118D003B58A3 /* Info.plist */,
+			);
+			path = MoDoListUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2BBBEBA1D7B118D003B58A3 /* MoDoList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2BBBEE31D7B118D003B58A3 /* Build configuration list for PBXNativeTarget "MoDoList" */;
+			buildPhases = (
+				E2BBBEB71D7B118D003B58A3 /* Sources */,
+				E2BBBEB81D7B118D003B58A3 /* Frameworks */,
+				E2BBBEB91D7B118D003B58A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoDoList;
+			productName = MoDoList;
+			productReference = E2BBBEBB1D7B118D003B58A3 /* MoDoList.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E2BBBECE1D7B118D003B58A3 /* MoDoListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2BBBEE61D7B118D003B58A3 /* Build configuration list for PBXNativeTarget "MoDoListTests" */;
+			buildPhases = (
+				E2BBBECB1D7B118D003B58A3 /* Sources */,
+				E2BBBECC1D7B118D003B58A3 /* Frameworks */,
+				E2BBBECD1D7B118D003B58A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2BBBED11D7B118D003B58A3 /* PBXTargetDependency */,
+			);
+			name = MoDoListTests;
+			productName = MoDoListTests;
+			productReference = E2BBBECF1D7B118D003B58A3 /* MoDoListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E2BBBED91D7B118D003B58A3 /* MoDoListUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2BBBEE91D7B118D003B58A3 /* Build configuration list for PBXNativeTarget "MoDoListUITests" */;
+			buildPhases = (
+				E2BBBED61D7B118D003B58A3 /* Sources */,
+				E2BBBED71D7B118D003B58A3 /* Frameworks */,
+				E2BBBED81D7B118D003B58A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2BBBEDC1D7B118D003B58A3 /* PBXTargetDependency */,
+			);
+			name = MoDoListUITests;
+			productName = MoDoListUITests;
+			productReference = E2BBBEDA1D7B118D003B58A3 /* MoDoListUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E2BBBEB31D7B118D003B58A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = SilverJu;
+				TargetAttributes = {
+					E2BBBEBA1D7B118D003B58A3 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					E2BBBECE1D7B118D003B58A3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = E2BBBEBA1D7B118D003B58A3;
+					};
+					E2BBBED91D7B118D003B58A3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = E2BBBEBA1D7B118D003B58A3;
+					};
+				};
+			};
+			buildConfigurationList = E2BBBEB61D7B118D003B58A3 /* Build configuration list for PBXProject "MoDoList" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E2BBBEB21D7B118D003B58A3;
+			productRefGroup = E2BBBEBC1D7B118D003B58A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2BBBEBA1D7B118D003B58A3 /* MoDoList */,
+				E2BBBECE1D7B118D003B58A3 /* MoDoListTests */,
+				E2BBBED91D7B118D003B58A3 /* MoDoListUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2BBBEB91D7B118D003B58A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2BBBEC91D7B118D003B58A3 /* LaunchScreen.storyboard in Resources */,
+				E2BBBEC61D7B118D003B58A3 /* Assets.xcassets in Resources */,
+				E2BBBEC41D7B118D003B58A3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2BBBECD1D7B118D003B58A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2BBBED81D7B118D003B58A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2BBBEB71D7B118D003B58A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2BBBEC11D7B118D003B58A3 /* ViewController.swift in Sources */,
+				E2BBBEBF1D7B118D003B58A3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2BBBECB1D7B118D003B58A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2BBBED41D7B118D003B58A3 /* MoDoListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2BBBED61D7B118D003B58A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2BBBEDF1D7B118D003B58A3 /* MoDoListUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2BBBED11D7B118D003B58A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2BBBEBA1D7B118D003B58A3 /* MoDoList */;
+			targetProxy = E2BBBED01D7B118D003B58A3 /* PBXContainerItemProxy */;
+		};
+		E2BBBEDC1D7B118D003B58A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2BBBEBA1D7B118D003B58A3 /* MoDoList */;
+			targetProxy = E2BBBEDB1D7B118D003B58A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E2BBBEC21D7B118D003B58A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2BBBEC31D7B118D003B58A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E2BBBEC71D7B118D003B58A3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2BBBEC81D7B118D003B58A3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E2BBBEE11D7B118D003B58A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E2BBBEE21D7B118D003B58A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2BBBEE41D7B118D003B58A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MoDoList/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E2BBBEE51D7B118D003B58A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MoDoList/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E2BBBEE71D7B118D003B58A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MoDoListTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoDoList.app/MoDoList";
+			};
+			name = Debug;
+		};
+		E2BBBEE81D7B118D003B58A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MoDoListTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoDoList.app/MoDoList";
+			};
+			name = Release;
+		};
+		E2BBBEEA1D7B118D003B58A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MoDoListUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoListUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MoDoList;
+			};
+			name = Debug;
+		};
+		E2BBBEEB1D7B118D003B58A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MoDoListUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoListUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MoDoList;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E2BBBEB61D7B118D003B58A3 /* Build configuration list for PBXProject "MoDoList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2BBBEE11D7B118D003B58A3 /* Debug */,
+				E2BBBEE21D7B118D003B58A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2BBBEE31D7B118D003B58A3 /* Build configuration list for PBXNativeTarget "MoDoList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2BBBEE41D7B118D003B58A3 /* Debug */,
+				E2BBBEE51D7B118D003B58A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E2BBBEE61D7B118D003B58A3 /* Build configuration list for PBXNativeTarget "MoDoListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2BBBEE71D7B118D003B58A3 /* Debug */,
+				E2BBBEE81D7B118D003B58A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E2BBBEE91D7B118D003B58A3 /* Build configuration list for PBXNativeTarget "MoDoListUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2BBBEEA1D7B118D003B58A3 /* Debug */,
+				E2BBBEEB1D7B118D003B58A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E2BBBEB31D7B118D003B58A3 /* Project object */;
+}
