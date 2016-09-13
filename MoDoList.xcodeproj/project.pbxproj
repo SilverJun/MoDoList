@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		E21F17851D7E94DC0049BE32 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21F17841D7E94DC0049BE32 /* QuartzCore.framework */; };
 		E21F17871D7EA4550049BE32 /* TodaysSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F17861D7EA4550049BE32 /* TodaysSummaryViewController.swift */; };
-		E224A54B1D85411900786CAD /* SwipyCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E224A5481D853BBE00786CAD /* SwipyCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E224A5501D85420000786CAD /* SwipyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224A54E1D85420000786CAD /* SwipyCell.swift */; };
-		E224A5511D85420000786CAD /* SwipyCellEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224A54F1D85420000786CAD /* SwipyCellEnums.swift */; };
 		E229B8D71D81A27D006DF4E4 /* FriendSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E229B8D61D81A27D006DF4E4 /* FriendSummaryViewController.swift */; };
 		E229B8D91D81A2CF006DF4E4 /* RightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E229B8D81D81A2CF006DF4E4 /* RightTableViewCell.swift */; };
 		E25032AE1D803D250010C9F4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25032AD1D803D250010C9F4 /* UIViewController.swift */; };
 		E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E262677C1D82F47F0001F156 /* ToDoCell.swift */; };
+		E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AC73221D88330D00A1597D /* CalendarViewController.swift */; };
 		E2BBBEBF1D7B118D003B58A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */; };
 		E2BBBEC41D7B118D003B58A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2BBBEC21D7B118D003B58A3 /* Main.storyboard */; };
 		E2BBBEC61D7B118D003B58A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2BBBEC51D7B118D003B58A3 /* Assets.xcassets */; };
@@ -56,30 +54,14 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		E224A54C1D85411900786CAD /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E224A54B1D85411900786CAD /* SwipyCell.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		E21F17841D7E94DC0049BE32 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E21F17861D7EA4550049BE32 /* TodaysSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysSummaryViewController.swift; sourceTree = "<group>"; };
-		E224A5481D853BBE00786CAD /* SwipyCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipyCell.framework; path = /Users/eunjunjang/Desktop/MoDoList/MoDoList/SwipyCell.framework; sourceTree = "<absolute>"; };
-		E224A54E1D85420000786CAD /* SwipyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipyCell.swift; sourceTree = "<group>"; };
-		E224A54F1D85420000786CAD /* SwipyCellEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipyCellEnums.swift; sourceTree = "<group>"; };
 		E229B8D61D81A27D006DF4E4 /* FriendSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSummaryViewController.swift; sourceTree = "<group>"; };
 		E229B8D81D81A2CF006DF4E4 /* RightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightTableViewCell.swift; sourceTree = "<group>"; };
 		E25032AD1D803D250010C9F4 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E262677C1D82F47F0001F156 /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		E2AC73221D88330D00A1597D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E2BBBEBB1D7B118D003B58A3 /* MoDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2BBBEC31D7B118D003B58A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -161,6 +143,7 @@
 				E2BBC09E1D7C478D003B58A3 /* RightViewController.swift */,
 				E21F17861D7EA4550049BE32 /* TodaysSummaryViewController.swift */,
 				E229B8D61D81A27D006DF4E4 /* FriendSummaryViewController.swift */,
+				E2AC73221D88330D00A1597D /* CalendarViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -231,8 +214,6 @@
 			children = (
 				E21F17841D7E94DC0049BE32 /* QuartzCore.framework */,
 				E2BBBEEF1D7C468B003B58A3 /* FacebookSDK */,
-				E224A54E1D85420000786CAD /* SwipyCell.swift */,
-				E224A54F1D85420000786CAD /* SwipyCellEnums.swift */,
 				E25032AD1D803D250010C9F4 /* UIViewController.swift */,
 				E2BBC0A21D7C479D003B58A3 /* SlideMenuController.swift */,
 			);
@@ -266,7 +247,6 @@
 				E2BBBEB71D7B118D003B58A3 /* Sources */,
 				E2BBBEB81D7B118D003B58A3 /* Frameworks */,
 				E2BBBEB91D7B118D003B58A3 /* Resources */,
-				E224A54C1D85411900786CAD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -391,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */,
 				E229B8D91D81A2CF006DF4E4 /* RightTableViewCell.swift in Sources */,
 				E2BBC0A01D7C478D003B58A3 /* LeftViewController.swift in Sources */,
 				E2BBC0A31D7C479D003B58A3 /* SlideMenuController.swift in Sources */,
@@ -398,11 +379,9 @@
 				E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */,
 				E2BBC0A11D7C478D003B58A3 /* RightViewController.swift in Sources */,
 				E2BBBEBF1D7B118D003B58A3 /* AppDelegate.swift in Sources */,
-				E224A5511D85420000786CAD /* SwipyCellEnums.swift in Sources */,
 				E21F17871D7EA4550049BE32 /* TodaysSummaryViewController.swift in Sources */,
 				E2BBC0A51D7C4A2B003B58A3 /* LeftTableViewCell.swift in Sources */,
 				E25032AE1D803D250010C9F4 /* UIViewController.swift in Sources */,
-				E224A5501D85420000786CAD /* SwipyCell.swift in Sources */,
 				E2BBC09F1D7C478D003B58A3 /* TodayToDoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +531,7 @@
 					"$(PROJECT_DIR)/MoDoList",
 				);
 				INFOPLIST_FILE = MoDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -569,6 +549,7 @@
 					"$(PROJECT_DIR)/MoDoList",
 				);
 				INFOPLIST_FILE = MoDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -2,7 +2,7 @@
 //  LeftViewController.swift
 //  SlideMenuControllerSwift
 //
-//  Created by Yuji Hato on 12/3/14.
+//  Created by Eun Jun Jang on 2016. 9. 6..
 //
 
 import UIKit
@@ -52,6 +52,8 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         let todaysSummaryViewController = storyboard.instantiateViewControllerWithIdentifier("TodaysSummaryViewController") as! TodaysSummaryViewController
         self.todaysSummaryViewController = UINavigationController(rootViewController: todaysSummaryViewController)
         
+        let calendarViewController = storyboard.instantiateViewControllerWithIdentifier("CalendarViewController") as! CalendarViewController
+        self.calendarViewController = UINavigationController(rootViewController: calendarViewController)
         
 //        
 //        let javaViewController = storyboard.instantiateViewControllerWithIdentifier("JavaViewController") as! JavaViewController
@@ -96,7 +98,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                     self.profileImage.image = UIImage.init(data: data!)
                 }
-                let connection = NSURLConnection(request: request, delegate:nil, startImmediately: true)
+                _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
             }
         })
         
@@ -116,6 +118,8 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             self.slideMenuController()?.changeMainViewController(self.todayToDoViewController, close: true)
         case LeftMenu.Shared.rawValue:
             self.slideMenuController()?.changeMainViewController(self.sharedViewController, close: true)
+        case LeftMenu.Calendar.rawValue:
+            self.slideMenuController()?.changeMainViewController(self.calendarViewController, close: true)
         default:
             self.slideMenuController()?.changeMainViewController(self.anotherToDoViewControllers[menu], close: true)
             break

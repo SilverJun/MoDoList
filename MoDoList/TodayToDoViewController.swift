@@ -8,6 +8,7 @@
 import UIKit
 import FBSDKLoginKit
 
+
 class TodayToDoViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -25,7 +26,6 @@ class TodayToDoViewController: UIViewController {
         loginButton.center = self.view.center
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         
-        
         self.view.addSubview(loginButton)
     }
     
@@ -36,6 +36,8 @@ class TodayToDoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        
+        self.slideMenuController()?.removeRightGestures()
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +67,7 @@ extension TodayToDoViewController : UITableViewDataSource {
         
         cell.mainTitleLabel.text = "주소창 6월 30일 까지 제출"
         cell.subTitleLabel.text = "홈페이지 하단 접수버튼 클릭!"
+        
         
         return cell
     }
