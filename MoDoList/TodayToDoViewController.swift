@@ -27,6 +27,8 @@ class TodayToDoViewController: UIViewController {
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         
         self.view.addSubview(loginButton)
+        
+        tableView.tableFooterView = UIView.init();
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -35,23 +37,26 @@ class TodayToDoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarItem()
-        
-        self.slideMenuController()?.removeRightGestures()
+        self.addLeftBarButtonWithImage(UIImage(named: "menu_list [#1527]")!)
+        self.slideMenuController()?.removeLeftGestures()
+        self.slideMenuController()?.addLeftGestures()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+    }
 
 }
 
 
-//extension TodayToDoViewController : UITableViewDelegate {
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return DataTableViewCell.height()
-//    }
-//}
+extension TodayToDoViewController : UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+}
 
 extension TodayToDoViewController : UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

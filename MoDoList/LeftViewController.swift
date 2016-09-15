@@ -75,32 +75,32 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         profileImage.layer.cornerRadius = 5.0;
         profileImage.clipsToBounds = true;
         
-        FBSDKGraphRequest.init(graphPath: "me", parameters: nil).startWithCompletionHandler(
-            {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
-                if ((error == nil)) {
-                    self.nameLabel.text = result!["name"] as! String?
-                }
-            }
-        )
-        
-        let accessToken = FBSDKAccessToken.currentAccessToken()
-        let req = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["redirect":false, "type":"large"], tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET")
-        req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
-            if(error == nil)
-            {
-                print("result \(result)")
-                var dic:NSDictionary = result as! NSDictionary
-                dic = dic["data"] as! NSDictionary
-                let url:String = dic["url"] as! String!
-                
-                
-                let request = NSURLRequest(URL: NSURL.init(string: url)!)
-                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                    self.profileImage.image = UIImage.init(data: data!)
-                }
-                _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
-            }
-        })
+//        FBSDKGraphRequest.init(graphPath: "me", parameters: nil).startWithCompletionHandler(
+//            {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
+//                if ((error == nil)) {
+//                    self.nameLabel.text = result!["name"] as! String?
+//                }
+//            }
+//        )
+//        
+//        let accessToken = FBSDKAccessToken.currentAccessToken()
+//        let req = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["redirect":false, "type":"large"], tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET")
+//        req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
+//            if(error == nil)
+//            {
+//                print("result \(result)")
+//                var dic:NSDictionary = result as! NSDictionary
+//                dic = dic["data"] as! NSDictionary
+//                let url:String = dic["url"] as! String!
+//                
+//                
+//                let request = NSURLRequest(URL: NSURL.init(string: url)!)
+//                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+//                    self.profileImage.image = UIImage.init(data: data!)
+//                }
+//                _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
+//            }
+//        })
         
     }
     
@@ -192,8 +192,6 @@ extension LeftViewController : UITableViewDataSource {
 }
 
 extension LeftViewController: UIScrollViewDelegate {
-    
-    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.tableView == scrollView {
             

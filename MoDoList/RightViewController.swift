@@ -13,6 +13,11 @@ class RightViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView.init();
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -20,13 +25,16 @@ class RightViewController : UIViewController {
     }
     
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
-        print("Unwind to Root View Controller")
     }
 }
 
 extension RightViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
 
@@ -57,9 +65,5 @@ extension RightViewController : UITableViewDataSource {
         cell.friendName.text = "장은준"
         
         return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
 }
