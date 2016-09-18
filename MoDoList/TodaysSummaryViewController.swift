@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class TodaysSummaryViewController: UIViewController {
 
@@ -20,6 +21,12 @@ class TodaysSummaryViewController: UIViewController {
         profile.layer.cornerRadius = profile.frame.size.width/2
         
         // Do any additional setup after loading the view.
+        let loginButton:FBSDKLoginButton = FBSDKLoginButton.init()
+        
+        loginButton.center = self.view.center
+        loginButton.readPermissions = ["public_profile", "email", "user_friends", "read_custom_friendlists"]
+        
+        self.view.addSubview(loginButton)
     }
 
     override func didReceiveMemoryWarning() {

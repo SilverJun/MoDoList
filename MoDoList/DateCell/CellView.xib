@@ -15,7 +15,7 @@
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbV-Fp-hR6" customClass="AnimationView" customModule="MoDoList" customModuleProvider="target">
                     <rect key="frame" x="41" y="22" width="99" height="99"/>
-                    <color key="backgroundColor" red="0.93872453275833323" green="0.257080078125" blue="0.14366064132222225" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.33725490196078434" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="8bC-to-itB"/>
                         <constraint firstAttribute="width" constant="20" id="kcQ-Q3-xC1"/>

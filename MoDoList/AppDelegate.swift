@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainViewController = storyboard.instantiateViewControllerWithIdentifier("TodayToDoViewController") as! TodayToDoViewController
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
-        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as! RightViewController
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
@@ -33,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         leftViewController.todaysSummaryViewController = nvc
         
-        let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
+        let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         slideMenuController.delegate = mainViewController
         self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)

@@ -15,25 +15,10 @@ class FriendSummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNeedsStatusBarAppearanceUpdate()
         // Do any additional setup after loading the view.
         
         profile.layer.cornerRadius = profile.frame.size.width/2
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
-    }
-
-
-
-
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
     }
     
     override func didReceiveMemoryWarning() {

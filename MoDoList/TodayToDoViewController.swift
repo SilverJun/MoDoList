@@ -15,18 +15,20 @@ class TodayToDoViewController: UIViewController {
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     
-    //var mainContens = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15"]
+    var today:NSDate = NSDate.init()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tableView.registerCellNib(DataTableViewCell.self)
         
-        let loginButton:FBSDKLoginButton = FBSDKLoginButton.init()
+        let dateFormatter = NSDateFormatter.init()
+        dateFormatter.setLocalizedDateFormatFromTemplate("yyyyMMdd")
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
         
-        loginButton.center = self.view.center
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        let s = dateFormatter.stringFromDate(today)
         
-        self.view.addSubview(loginButton)
+        print(s)
+        
         
         tableView.tableFooterView = UIView.init();
     }
