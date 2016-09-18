@@ -544,6 +544,9 @@
                                         <include reference="dbU-59-97h"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="TOe-LX-6K0" kind="showDetail" id="A6o-3a-kPs"/>
+                                </connections>
                             </button>
                             <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnz-lY-gah">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -569,6 +572,9 @@
                                         <include reference="ndd-Cf-Ch3"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="ARk-H0-7Ye" kind="show" id="YJq-eI-xsB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위로 당겨서 할일 추가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS3-o6-XsJ">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -1275,6 +1281,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="할일 추가" id="Zhr-Sm-kJN">
+                        <barButtonItem key="leftBarButtonItem" title="취소" style="done" id="K5R-HJ-bby">
+                            <connections>
+                                <segue destination="OdI-3V-jlH" kind="unwind" unwindAction="unwindToRootViewController:" id="s5m-ai-EWx"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="추가" style="done" id="yHW-4s-dQ6">
                             <connections>
                                 <segue destination="OdI-3V-jlH" kind="unwind" unwindAction="unwindToRootViewController:" id="85R-9m-YJ9"/>
@@ -1318,12 +1329,119 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="할일 수정" id="Xq5-7n-Iiw">
-                        <barButtonItem key="rightBarButtonItem" title="수정" style="done" id="eCv-hg-zIW"/>
+                        <barButtonItem key="leftBarButtonItem" title="취소" style="done" id="pwE-1X-XBB">
+                            <connections>
+                                <segue destination="upH-FV-2XR" kind="unwind" unwindAction="unwindToRootViewController:" id="uTa-tI-p9A"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="수정" style="done" id="eCv-hg-zIW">
+                            <connections>
+                                <segue destination="upH-FV-2XR" kind="unwind" unwindAction="unwindToRootViewController:" id="0VJ-bv-HXS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKc-gy-7ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="upH-FV-2XR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3103.5" y="144"/>
+        </scene>
+        <!--할일 리스트 설정-->
+        <scene sceneID="6ZZ-ra-VBM">
+            <objects>
+                <viewController id="gdR-4m-CNx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gnV-KH-5Nr"/>
+                        <viewControllerLayoutGuide type="bottom" id="HvO-yf-g47"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qpb-B2-U9B">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="할일 리스트 설정" id="na4-M2-06E">
+                        <barButtonItem key="leftBarButtonItem" title="취소" style="done" id="EUv-Ft-Ic7">
+                            <connections>
+                                <segue destination="8H4-3s-PZ4" kind="unwind" unwindAction="unwindToRootViewController:" id="OCX-LI-eSo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="적용" style="done" id="ZaM-uG-M0w">
+                            <connections>
+                                <segue destination="8H4-3s-PZ4" kind="unwind" unwindAction="unwindToRootViewController:" id="djE-Ub-eL9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vMF-SY-ABu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8H4-3s-PZ4" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2349" y="1664"/>
+        </scene>
+        <!--공유-->
+        <scene sceneID="gOV-x4-eoX">
+            <objects>
+                <viewController id="yDF-05-11f" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cI2-hr-BnO"/>
+                        <viewControllerLayoutGuide type="bottom" id="zkm-aQ-d1j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a4x-vV-b0l">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="공유" id="jr4-1Q-cs6">
+                        <barButtonItem key="leftBarButtonItem" title=" 취소" style="done" id="v3e-aF-wFw">
+                            <connections>
+                                <segue destination="GI2-xR-FTD" kind="unwind" unwindAction="unwindToRootViewController:" id="Bxg-IS-W8m"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="공유" style="done" id="zuZ-ol-abB">
+                            <connections>
+                                <segue destination="GI2-xR-FTD" kind="unwind" unwindAction="unwindToRootViewController:" id="iPD-aA-4NF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aVh-tb-FO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GI2-xR-FTD" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1578" y="1664"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fcn-P1-7F0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ARk-H0-7Ye" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Vba-hp-925"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gze-dy-agF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gdR-4m-CNx" kind="relationship" relationship="rootViewController" id="Aos-f0-pWC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYT-bY-uxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2349" y="924"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Sf5-mZ-SCM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TOe-LX-6K0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P6m-Se-iqV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yDF-05-11f" kind="relationship" relationship="rootViewController" id="Fmf-sg-HmR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fbS-CJ-EdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1578" y="924"/>
         </scene>
     </scenes>
     <resources>
