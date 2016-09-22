@@ -18,10 +18,9 @@ struct TaskDataUnit {
     var startDate:NSDate?
     var endDate:NSDate?
     
-    var alarm:Bool?
-    var on12oclock:Bool?
-    var on6oclock:Bool?
-    var userAlarm:Bool?
+    var alarmOn:Bool?
+    var after6:Bool?
+    var userTimeAlarm:Bool?
     var notDoneAlarm:Bool?
     
     var isPrivate:Bool?

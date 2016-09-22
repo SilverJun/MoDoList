@@ -9,22 +9,19 @@
 import UIKit
 import Eureka
 
-
-
 class NewToDoFormViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //form Create
-        
         form
             +++ Section("내용")
             
-            <<< TextRow(){ row in
+            <<< TextRow("mainText"){ row in
                 row.title = "주 내용"
             }
-            <<< TextAreaRow(){ row in
+            <<< TextAreaRow("subText"){ row in
                 row.placeholder = "부 내용"
             }
             
@@ -33,14 +30,14 @@ class NewToDoFormViewController: FormViewController {
             <<< SwitchRow("todaySwitch"){
                 $0.title = "오늘"
             }
-            <<< DateRow(){
+            <<< DateRow("startDate"){
                 $0.hidden = Condition.Function(["todaySwitch"], { form in
                     return ((form.rowByTag("todaySwitch") as? SwitchRow)?.value ?? false)
                 })
                 $0.title = "시작일"
                 $0.value = NSDate.init()
             }
-            <<< DateRow(){
+            <<< DateRow("endDate"){
                 $0.hidden = Condition.Function(["todaySwitch"], { form in
                     return ((form.rowByTag("todaySwitch") as? SwitchRow)?.value ?? false)
                 })
@@ -52,13 +49,7 @@ class NewToDoFormViewController: FormViewController {
             <<< SwitchRow("alarmOn"){
                 $0.title = "알람"
             }
-            <<< SwitchRow(){
-                $0.hidden = Condition.Function(["alarmOn"], { form in
-                    return !((form.rowByTag("alarmOn") as? SwitchRow)?.value ?? false)
-                })
-                $0.title = "12시간 뒤"
-            }
-            <<< SwitchRow(){
+            <<< SwitchRow("after6"){
                 $0.hidden = Condition.Function(["alarmOn"], { form in
                     return !((form.rowByTag("alarmOn") as? SwitchRow)?.value ?? false)
                 })
@@ -70,7 +61,7 @@ class NewToDoFormViewController: FormViewController {
                 })
                 $0.title = "사용자 설정 시간"
             }
-            <<< DateTimeRow(){
+            <<< DateTimeRow("userTime"){
                 $0.hidden = Condition.Function(["alarmOn", "userTimeAlarm"], { form in
                     return !((form.rowByTag("alarmOn") as? SwitchRow)?.value ?? false) || !((form.rowByTag("userTimeAlarm") as? SwitchRow)?.value ?? false)
                 })
@@ -78,11 +69,16 @@ class NewToDoFormViewController: FormViewController {
                 $0.title = "알람할 날짜"
             }
             
-            <<< SwitchRow(){
+            <<< SwitchRow("notDoneAlarm"){
                 $0.hidden = Condition.Function(["alarmOn"], { form in
                     return !((form.rowByTag("alarmOn") as? SwitchRow)?.value ?? false)
                 })
                 $0.title = "미완료 알림"
+            }
+        
+            +++ Section("공개범위")
+            <<< SwitchRow("private") {
+                $0.title = "외부에 공개 안함"
             }
         
     }
