@@ -1328,7 +1328,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="수정" style="done" id="eCv-hg-zIW">
                             <connections>
-                                <segue destination="upH-FV-2XR" kind="unwind" unwindAction="unwindToRootViewController:" id="0VJ-bv-HXS"/>
+                                <segue destination="upH-FV-2XR" kind="unwind" unwindAction="unwindAndModifyToDo:" id="b5l-7N-6Zn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

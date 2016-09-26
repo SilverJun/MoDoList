@@ -29,6 +29,7 @@ class NewToDoFormViewController: FormViewController {
             +++ Section("기한")
             <<< SwitchRow("todaySwitch"){
                 $0.title = "오늘"
+                $0.value = true
             }
             <<< DateRow("startDate"){
                 $0.hidden = Condition.Function(["todaySwitch"], { form in
@@ -75,7 +76,7 @@ class NewToDoFormViewController: FormViewController {
                 })
                 $0.title = "미완료 알림"
             }
-        
+            //_____________________________________
             +++ Section("공개범위")
             <<< SwitchRow("private") {
                 $0.title = "외부에 공개 안함"

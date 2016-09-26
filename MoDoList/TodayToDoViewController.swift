@@ -22,11 +22,10 @@ class TodayToDoViewController: UIViewController {
     //오늘!
     var today:NSDate = NSDate.init()
     
+    var modifyCellIndex:NSIndexPath?
+    
 //    //셀의 갯수
 //    var cellCount:Int = 0
-    
-    //새로운 투두의 데이터
-    var newToDoData: TaskDataUnit? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +63,17 @@ class TodayToDoViewController: UIViewController {
         if segue.sourceViewController.isKindOfClass(NewToDoFormViewController) {
             let newTodo = segue.sourceViewController as! NewToDoFormViewController
             
-            self.addToDo(newTodo.form.values())
+            
+            let mainText = newTodo.form.values()["mainText"] as? String;
+            let subText = newTodo.form.values()["subText"] as? String;
+            
+            if mainText != nil && subText != nil {
+                self.addToDo(newTodo.form.values())
+            }
+            else {
+                UIAlertView(title: "에러", message: "할일의 제목 또는 내용이 없습니다!", delegate: self, cancelButtonTitle:"확인").show()
+                
+            }
         }
     }
     
@@ -72,11 +81,50 @@ class TodayToDoViewController: UIViewController {
         if segue.sourceViewController.isKindOfClass(QuickToDoFormViewController) {
             let newTodo = segue.sourceViewController as! QuickToDoFormViewController
             
-            self.quickAddToDo(newTodo.form.values())
+            let mainText = newTodo.form.values()["mainText"] as? String;
+            let subText = newTodo.form.values()["subText"] as? String;
+            
+            if mainText != nil && subText != nil {
+                self.quickAddToDo(newTodo.form.values())
+            }
+            else {
+                UIAlertView(title: "에러", message: "할일의 제목 또는 내용이 없습니다!", delegate: self, cancelButtonTitle:"확인").show()
+                
+            }
         }
     }
     
     @IBAction func unwindAndModifyToDo(segue: UIStoryboardSegue) {
+        if segue.sourceViewController.isKindOfClass(ModifyToDoFormViewController) {
+            let newTodo = segue.sourceViewController as! ModifyToDoFormViewController
+            
+            let values = newTodo.form.values()
+            
+            let mainText = values["mainText"] as? String;
+            let subText = values["subText"] as? String;
+            
+            if mainText != nil && subText != nil {
+                self.modifyToDo(newTodo.form.values())
+            }
+            else {
+                UIAlertView(title: "에러", message: "할일의 제목 또는 내용이 없습니다!", delegate: self, cancelButtonTitle:"확인").show()
+                
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ModifyToDo") {
+            
+            let viewController = segue.destinationViewController as! UINavigationController
+
+            let modifyView = viewController.topViewController as! ModifyToDoFormViewController
+            
+            
+            modifyCellIndex = tableView.indexPathForSelectedRow!
+            modifyView.basedToDoData = todoData[modifyCellIndex!.row]
+            
+        }
     }
     
 }
@@ -125,14 +173,12 @@ extension TodayToDoViewController : UITableViewDataSource {
     
     func deleteCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
-//        items.removeAtIndex(indexPath.row)
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
     func doneCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
-        //        items.removeAtIndex(indexPath.row)
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
@@ -216,20 +262,36 @@ extension TodayToDoViewController {
     func addToDo(values: [String:Any?]) {
         var data = TaskDataUnit()
         
-        data.mainText = values["mainText"] as! String;
-        data.subText = values["subText"] as! String;
+        data.mainText = values["mainText"] as! String
+        data.subText = values["subText"] as! String
         
-        if values["todaySwitch"] as? Bool ?? false {
-            data.startDate = values["startDate"] as? NSDate;
-            data.endDate = values["endDate"] as? NSDate;
+        data.today = values["todaySwitch"] as? Bool
+        
+        if data.today ?? false {
+            data.startDate = values["startDate"] as? NSDate
+            data.endDate = values["endDate"] as? NSDate
         }
         else {
             data.startDate = NSDate()
             data.endDate = NSDate()
         }
         
+        data.alarmOn = values["alarmOn"] as? Bool
         
-        //newToDoData = data
+        if data.alarmOn ?? true {
+            data.after6 = values["after6"] as? Bool
+            data.userTimeAlarm = values["userTimeAlarm"] as? Bool
+            
+            if data.userTimeAlarm ?? true {
+                data.userTime = values["userTime"] as? NSDate
+            }
+            
+            data.notDoneAlarm = values["notDoneAlarm"] as? Bool
+        }
+        
+        data.isPrivate = values["private"] as? Bool
+        
+        
         
         let row = NSIndexPath(forRow: todoData.count, inSection: 0)
         
@@ -255,6 +317,43 @@ extension TodayToDoViewController {
         self.tableView.reloadData()
         self.tableView.insertRowsAtIndexPaths([row], withRowAnimation: .Automatic)
         self.tableView.endUpdates()
+        
+        self.tableView.reloadData()
+    }
+    
+    func modifyToDo(values: [String:Any?]) {
+        
+        let i = modifyCellIndex!.row
+        
+        
+        todoData[i].mainText = values["mainText"] as! String
+        todoData[i].subText = values["subText"] as! String
+        
+        todoData[i].today = values["todaySwitch"] as? Bool
+        
+        if todoData[i].today ?? false {
+            todoData[i].startDate = values["startDate"] as? NSDate
+            todoData[i].endDate = values["endDate"] as? NSDate
+        }
+        else {
+            todoData[i].startDate = NSDate()
+            todoData[i].endDate = NSDate()
+        }
+        
+        todoData[i].alarmOn = values["alarmOn"] as? Bool
+        
+        if todoData[i].alarmOn ?? true {
+            todoData[i].after6 = values["after6"] as? Bool
+            todoData[i].userTimeAlarm = values["userTimeAlarm"] as? Bool
+            
+            if todoData[i].userTimeAlarm ?? true {
+                todoData[i].userTime = values["userTime"] as? NSDate
+            }
+            
+            todoData[i].notDoneAlarm = values["notDoneAlarm"] as? Bool
+        }
+        
+        todoData[i].isPrivate = values["private"] as? Bool
         
         self.tableView.reloadData()
     }

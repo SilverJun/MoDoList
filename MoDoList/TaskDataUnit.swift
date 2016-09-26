@@ -15,15 +15,19 @@ struct TaskDataUnit {
     var location:String?
     var objectPeople:String?
     
-    var startDate:NSDate?
-    var endDate:NSDate?
+    var today:Bool? = true
+    var startDate:NSDate? = NSDate.init()
+    var endDate:NSDate? = NSDate.init()
     
     var alarmOn:Bool?
     var after6:Bool?
     var userTimeAlarm:Bool?
+    var userTime:NSDate?
     var notDoneAlarm:Bool?
     
-    var isPrivate:Bool?
+    var isPrivate:Bool? = false
     
+    //share option
+    var doneAlarm:Bool?
     
 }
