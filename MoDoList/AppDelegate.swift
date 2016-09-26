@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 48.0/255.0, green: 225.0/255.0, blue: 178.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.init(red: 255.0/255.0, green: 241.0/255.0, blue: 169.0/255.0, alpha: 1.0)
         
-        leftViewController.todaysSummaryViewController = nvc
+        leftViewController.todayToDoViewController = nvc
         
         let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
         slideMenuController.automaticallyAdjustsScrollViewInsets = true

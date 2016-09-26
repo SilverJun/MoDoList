@@ -16,11 +16,14 @@ class TodayToDoViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var suggestLabel: UILabel!
     
+    var todoData = Array<TaskDataUnit>()
+    
+    
     //오늘!
     var today:NSDate = NSDate.init()
     
-    //셀의 갯수
-    var cellCount:Int = 0
+//    //셀의 갯수
+//    var cellCount:Int = 0
     
     //새로운 투두의 데이터
     var newToDoData: TaskDataUnit? = nil
@@ -35,7 +38,7 @@ class TodayToDoViewController: UIViewController {
         let s = dateFormatter.stringFromDate(today)
         
         print(s)
-    
+        
         tableView.tableFooterView = UIView.init()
     }
     
@@ -45,6 +48,7 @@ class TodayToDoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.slideMenuController()?.delegate = self
         self.setNavigationBarItem()
         self.slideMenuController()?.removeLeftGestures()
     }
@@ -94,12 +98,12 @@ extension TodayToDoViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellCount
+        return self.todoData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if cellCount > 0 {
+        if todoData.count > 0 {
             suggestLabel.hidden = true
         }
         else {
@@ -110,13 +114,9 @@ extension TodayToDoViewController : UITableViewDataSource {
         
         cell.setupSwipe()
         
-        if newToDoData != nil {
-            cell.data = newToDoData
-            newToDoData = nil
-        }
         
-        cell.mainTitleLabel.text = cell.data!.mainText
-        cell.subTitleLabel.text = cell.data!.subText
+        cell.mainTitleLabel.text = todoData[indexPath.row].mainText
+        cell.subTitleLabel.text = todoData[indexPath.row].subText
         cell.setNeedsUpdateConstraints()
         cell.swipeDelegate = self
         
@@ -126,7 +126,14 @@ extension TodayToDoViewController : UITableViewDataSource {
     func deleteCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
 //        items.removeAtIndex(indexPath.row)
-        cellCount -= 1
+        todoData.removeAtIndex(indexPath.row)
+        tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
+    
+    func doneCell(cell cell: UITableViewCell) {
+        guard let indexPath = tableView?.indexPathForCell(cell) else { return }
+        //        items.removeAtIndex(indexPath.row)
+        todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
@@ -141,15 +148,16 @@ extension TodayToDoViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let currentOffset = scrollView.contentOffset.y;
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+        //let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
         
         
         
-        if (maximumOffset - currentOffset <= 40.0 && currentOffset < 0) {
+        if (currentOffset * (-1) >= 60.0 && currentOffset < 0) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             var quickView = storyboard.instantiateViewControllerWithIdentifier("QuickToDoFormViewController")
             quickView = UINavigationController(rootViewController: quickView)
-            self.navigationController?.showDetailViewController(quickView, sender: self)
+            
+            self.performSegueWithIdentifier("QuickAddToDo", sender: self)
         }
     }
 }
@@ -161,6 +169,7 @@ extension TodayToDoViewController : SlideMenuControllerDelegate {
     
     func leftDidOpen() {
         print("SlideMenuControllerDelegate: leftDidOpen")
+        self.slideMenuController()?.addLeftGestures()
     }
     
     func leftWillClose() {
@@ -169,6 +178,7 @@ extension TodayToDoViewController : SlideMenuControllerDelegate {
     
     func leftDidClose() {
         print("SlideMenuControllerDelegate: leftDidClose")
+        self.slideMenuController()?.removeLeftGestures()
     }
     
     func rightWillOpen() {
@@ -219,12 +229,12 @@ extension TodayToDoViewController {
         }
         
         
-        newToDoData = data
+        //newToDoData = data
         
-        let row = NSIndexPath(forRow: 0, inSection: 0)
+        let row = NSIndexPath(forRow: todoData.count, inSection: 0)
         
         self.tableView.beginUpdates()
-        cellCount += 1
+        todoData.append(data)
         self.tableView.reloadData()
         self.tableView.insertRowsAtIndexPaths([row], withRowAnimation: .Automatic)
         self.tableView.endUpdates()
@@ -238,12 +248,10 @@ extension TodayToDoViewController {
         data.mainText = values["mainText"] as! String;
         data.subText = values["subText"] as! String;
         
-        newToDoData = data
-        
-        let row = NSIndexPath(forRow: 0, inSection: 0)
+        let row = NSIndexPath(forRow: todoData.count, inSection: 0)
         
         self.tableView.beginUpdates()
-        cellCount += 1
+        todoData.append(data)
         self.tableView.reloadData()
         self.tableView.insertRowsAtIndexPaths([row], withRowAnimation: .Automatic)
         self.tableView.endUpdates()
@@ -262,7 +270,7 @@ extension TodayToDoViewController: SwipeCompleteDelegate {
         }
         //완료
         if position == .Right1 {
-            deleteCell(cell: cell)
+            doneCell(cell: cell)
         }
         //전달
         if position == .Right2 {

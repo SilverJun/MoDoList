@@ -38,25 +38,6 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BK" translatesAutoresizingMaskIntoConstraints="NO" id="oWp-AR-6c1">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="MZC-uS-D5t"/>
-                                    <constraint firstAttribute="width" constant="130" id="rye-zE-y7a"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="MZC-uS-D5t"/>
-                                        <exclude reference="rye-zE-y7a"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="MZC-uS-D5t"/>
-                                        <include reference="rye-zE-y7a"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zMA-hN-anj">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,6 +69,27 @@
                                     <outlet property="delegate" destination="5Lx-si-sSC" id="Jlk-vi-pYF"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BK" translatesAutoresizingMaskIntoConstraints="NO" id="oWp-AR-6c1">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="MZC-uS-D5t">
+                                        <variation key="widthClass=compact" constant="120"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="130" id="rye-zE-y7a"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MZC-uS-D5t"/>
+                                        <exclude reference="rye-zE-y7a"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="MZC-uS-D5t"/>
+                                        <include reference="rye-zE-y7a"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.94509803920000002" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -106,8 +108,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="gXf-oF-EYq"/>
-                                <exclude reference="oWp-AR-6c1"/>
                                 <exclude reference="zMA-hN-anj"/>
+                                <exclude reference="oWp-AR-6c1"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="D02-Iv-Q49"/>
@@ -126,8 +128,8 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="gXf-oF-EYq"/>
-                                <include reference="oWp-AR-6c1"/>
                                 <include reference="zMA-hN-anj"/>
+                                <include reference="oWp-AR-6c1"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="D02-Iv-Q49"/>
@@ -416,12 +418,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="할일 부제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLw-ku-ecK">
-                                                    <rect key="frame" x="20" y="42" width="200" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="할일 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umo-oN-KLY">
                                                     <rect key="frame" x="20" y="8" width="200" height="34"/>
                                                     <constraints>
@@ -436,6 +432,12 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="할일 부제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLw-ku-ecK">
+                                                    <rect key="frame" x="20" y="42" width="200" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="YLw-ku-ecK" secondAttribute="trailing" constant="20" id="Bjr-M2-mpL"/>
@@ -448,8 +450,8 @@
                                             </constraints>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
-                                                    <include reference="YLw-ku-ecK"/>
                                                     <include reference="Umo-oN-KLY"/>
+                                                    <include reference="YLw-ku-ecK"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="EqU-EK-PT0"/>
@@ -644,6 +646,7 @@
                         <outlet property="shareButton" destination="4gd-zL-nri" id="3Er-Er-VHX"/>
                         <outlet property="suggestLabel" destination="gME-v2-YwT" id="naz-f7-hSa"/>
                         <outlet property="tableView" destination="RBV-FQ-Bds" id="3n0-0a-bdg"/>
+                        <segue destination="jNp-nA-A2U" kind="custom" identifier="QuickAddToDo" customClass="UIStoryboardSegueFromTop" customModule="MoDoList" customModuleProvider="target" id="CtI-HH-HVt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

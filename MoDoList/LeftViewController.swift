@@ -41,6 +41,14 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            return
+        }
+        else {
+            getFbProfile()
+        }
+        
     }
    
     override func viewDidLoad() {
@@ -50,8 +58,8 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let todayToDoViewController = storyboard.instantiateViewControllerWithIdentifier("TodayToDoViewController") as! TodayToDoViewController
-        self.todayToDoViewController = UINavigationController(rootViewController: todayToDoViewController)
+//        let todayToDoViewController = storyboard.instantiateViewControllerWithIdentifier("TodayToDoViewController") as! TodayToDoViewController
+//        self.todayToDoViewController = UINavigationController(rootViewController: todayToDoViewController)
         
         let friendsViewController = storyboard.instantiateViewControllerWithIdentifier("FriendsViewController") as! FriendsViewController
         self.friendsViewController = UINavigationController(rootViewController: friendsViewController)
@@ -71,38 +79,8 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         profileImage.clipsToBounds = true;
         tableView.tableFooterView = UIView.init()
         
-        FBSDKGraphRequest.init(graphPath: "me", parameters: nil).startWithCompletionHandler(
-            {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
-                if ((error == nil)) {
-                    let dic = result as! NSDictionary
-                    self.nameLabel.text = dic["name"] as! String?
-                    
-                    let userDefault = NSUserDefaults.standardUserDefaults()
-                    userDefault.setValue(dic["id"] as! String, forKey: "FaceBookID")
-                    
-                }
-            }
-        )
         
-        let accessToken = FBSDKAccessToken.currentAccessToken()
-        let req = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["redirect":false, "type":"large"], tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET")
-        req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
-            if(error == nil)
-            {
-                print("result \(result)")
-                var dic:NSDictionary = result as! NSDictionary
-                dic = dic["data"] as! NSDictionary
-                let url:String = dic["url"] as! String!
-                
-                
-                let request = NSURLRequest(URL: NSURL.init(string: url)!)
-                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                    self.profileImage.image = UIImage.init(data: data!)
-                }
-                _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
-            }
-        })
-        
+        self.getFbProfile()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -126,6 +104,48 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         default:
             break
         }
+    }
+    
+    
+    func getFbProfile() -> Bool {
+        
+        FBSDKGraphRequest.init(graphPath: "me", parameters: nil).startWithCompletionHandler(
+            {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
+                if ((error == nil)) {
+                    let dic = result as! NSDictionary
+                    self.nameLabel.text = dic["name"] as! String?
+                    
+                    let userDefault = NSUserDefaults.standardUserDefaults()
+                    userDefault.setValue(dic["id"] as! String, forKey: "FaceBookID")
+                    
+                }
+            }
+        )
+        
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            if let req = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["redirect":false, "type":"large"], tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET") {
+                req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
+                    if(error == nil)
+                    {
+                        print("result \(result)")
+                        var dic:NSDictionary = result as! NSDictionary
+                        dic = dic["data"] as! NSDictionary
+                        let url:String = dic["url"] as! String!
+                        
+                        
+                        let request = NSURLRequest(URL: NSURL.init(string: url)!)
+                        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+                            self.profileImage.image = UIImage.init(data: data!)
+                        }
+                        _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
+                    }
+                })
+            }
+        }
+        else {
+            return false
+        }
+        return true
     }
 }
 

@@ -19,8 +19,6 @@ class ToDoCell: UITableViewCell {
     private var swipe: SwipeCell!
     weak var swipeDelegate: SwipeCompleteDelegate?
     
-    internal var data: TaskDataUnit?
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupDefaults()
@@ -47,7 +45,7 @@ class ToDoCell: UITableViewCell {
         
         // set the starting positions for the swipe buttons (up to 4 on each side)
         swipe.firstTrigger = 0.20
-        swipe.secondTrigger = 0.50
+        swipe.secondTrigger = 0.60
         
         // create the swipe buttons
         // TODO: make [unowned self] default implimentation to prevent closure strong reference cycle
