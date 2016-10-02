@@ -8,6 +8,7 @@
 import UIKit
 import QuartzCore
 import FBSDKCoreKit
+import Alamofire
 
 enum LeftMenu: Int {
     case TodaysSummary = 0
@@ -27,7 +28,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    var menus = [ "오늘의 요약", "달력", "친구목록", "오늘의 할일리스트", "공유된 할일리스트"]
+    var menus = [ "오늘의 요약", "달력", "친구목록", "오늘의 할일리스트", "공유받은 할일리스트"]
     var todaysSummaryViewController: UIViewController!
     var calendarViewController: UIViewController!
     var friendsViewController: UIViewController!
@@ -41,14 +42,6 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if FBSDKAccessToken.currentAccessToken() != nil {
-            return
-        }
-        else {
-            getFbProfile()
-        }
-        
     }
    
     override func viewDidLoad() {
@@ -70,9 +63,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         let calendarViewController = storyboard.instantiateViewControllerWithIdentifier("CalendarViewController") as! CalendarViewController
         self.calendarViewController = UINavigationController(rootViewController: calendarViewController)
         
-//        let sharedViewController = storyboard.instantiateViewControllerWithIdentifier("SharedViewController") as! CalendarViewController
-//        self.sharedViewController = UINavigationController(rootViewController: sharedViewController)
-//        
+        let sharedViewController = storyboard.instantiateViewControllerWithIdentifier("SharedViewController") as! SharedViewController
+        self.sharedViewController = UINavigationController(rootViewController: sharedViewController)
+        
         
         
         profileImage.layer.cornerRadius = 5.0;
@@ -80,7 +73,15 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         tableView.tableFooterView = UIView.init()
         
         
-        self.getFbProfile()
+        GetFBProfile(FBSDKAccessToken.currentAccessToken(), getImage: true, handler: { (name: String, picture:UIImage) in
+            self.nameLabel.text = name
+            self.profileImage.image = picture
+            
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setObject(name, forKey: "UserName")
+        })
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -104,48 +105,6 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         default:
             break
         }
-    }
-    
-    
-    func getFbProfile() -> Bool {
-        
-        FBSDKGraphRequest.init(graphPath: "me", parameters: nil).startWithCompletionHandler(
-            {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
-                if ((error == nil)) {
-                    let dic = result as! NSDictionary
-                    self.nameLabel.text = dic["name"] as! String?
-                    
-                    let userDefault = NSUserDefaults.standardUserDefaults()
-                    userDefault.setValue(dic["id"] as! String, forKey: "FaceBookID")
-                    
-                }
-            }
-        )
-        
-        if let accessToken = FBSDKAccessToken.currentAccessToken() {
-            if let req = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["redirect":false, "type":"large"], tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET") {
-                req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
-                    if(error == nil)
-                    {
-                        print("result \(result)")
-                        var dic:NSDictionary = result as! NSDictionary
-                        dic = dic["data"] as! NSDictionary
-                        let url:String = dic["url"] as! String!
-                        
-                        
-                        let request = NSURLRequest(URL: NSURL.init(string: url)!)
-                        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                            self.profileImage.image = UIImage.init(data: data!)
-                        }
-                        _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
-                    }
-                })
-            }
-        }
-        else {
-            return false
-        }
-        return true
     }
 }
 

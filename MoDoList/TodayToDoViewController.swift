@@ -21,6 +21,8 @@ class TodayToDoViewController: UIViewController {
     
     //오늘!
     var today:NSDate = NSDate.init()
+    var privateToDoCount = 0
+    
     
     var modifyCellIndex:NSIndexPath?
     
@@ -39,6 +41,35 @@ class TodayToDoViewController: UIViewController {
         print(s)
         
         tableView.tableFooterView = UIView.init()
+        
+        
+        
+        if !Reachability.isConnectedToNetwork() {
+            // Create the alert controller
+            let alertController = UIAlertController(title: "오류", message: "MoDoList는 인터넷 환경이 필요합니다.\n인터넷을 연결해주세요.", preferredStyle: .Alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                //home button press programmatically
+                let app = UIApplication.sharedApplication()
+                app.performSelector(#selector(NSURLSessionTask.suspend))
+                
+                NSThread.sleepForTimeInterval(1.0)
+                
+                //exit app when app is in background
+                exit(0)
+            }
+            
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let toDoCount:NSMutableArray = [todoData.count, privateToDoCount]
+        userDefaults.setObject(toDoCount, forKey: "TodaysToDoCount")
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -151,11 +182,11 @@ extension TodayToDoViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if todoData.count > 0 {
-            suggestLabel.hidden = true
+        if todoData.count == 0 {
+            suggestLabel.hidden = false
         }
         else {
-            suggestLabel.hidden = false
+            suggestLabel.hidden = true
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ToDoCell", forIndexPath: indexPath) as! ToDoCell
@@ -173,16 +204,21 @@ extension TodayToDoViewController : UITableViewDataSource {
     
     func deleteCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
+        if todoData[indexPath.row].isPrivate {
+            privateToDoCount -= 1
+        }
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
     func doneCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
+        if todoData[indexPath.row].isPrivate {
+            privateToDoCount -= 1
+        }
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
-    
 }
 
 extension TodayToDoViewController: UIScrollViewDelegate {
@@ -195,8 +231,6 @@ extension TodayToDoViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let currentOffset = scrollView.contentOffset.y;
         //let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-        
-        
         
         if (currentOffset * (-1) >= 60.0 && currentOffset < 0) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -265,33 +299,35 @@ extension TodayToDoViewController {
         data.mainText = values["mainText"] as! String
         data.subText = values["subText"] as! String
         
-        data.today = values["todaySwitch"] as? Bool
+        data.today = values["todaySwitch"] as? Bool ?? data.today
         
         if data.today ?? false {
-            data.startDate = values["startDate"] as? NSDate
-            data.endDate = values["endDate"] as? NSDate
+            data.startDate = values["startDate"] as? NSDate ?? data.startDate
+            data.endDate = values["endDate"] as? NSDate ?? data.endDate
         }
         else {
             data.startDate = NSDate()
             data.endDate = NSDate()
         }
         
-        data.alarmOn = values["alarmOn"] as? Bool
+        data.alarmOn = values["alarmOn"] as? Bool ?? data.alarmOn
         
         if data.alarmOn ?? true {
-            data.after6 = values["after6"] as? Bool
-            data.userTimeAlarm = values["userTimeAlarm"] as? Bool
+            data.after6 = values["after6"] as? Bool ?? data.after6
+            data.userTimeAlarm = values["userTimeAlarm"] as? Bool ?? data.userTimeAlarm
             
             if data.userTimeAlarm ?? true {
-                data.userTime = values["userTime"] as? NSDate
+                data.userTime = values["userTime"] as? NSDate ?? data.userTime
             }
             
-            data.notDoneAlarm = values["notDoneAlarm"] as? Bool
+            data.notDoneAlarm = values["notDoneAlarm"] as? Bool ?? data.notDoneAlarm
         }
         
-        data.isPrivate = values["private"] as? Bool
+        data.isPrivate = values["private"] as? Bool ?? data.isPrivate
         
-        
+        if data.isPrivate {
+            privateToDoCount += 1
+        }
         
         let row = NSIndexPath(forRow: todoData.count, inSection: 0)
         
@@ -329,31 +365,39 @@ extension TodayToDoViewController {
         todoData[i].mainText = values["mainText"] as! String
         todoData[i].subText = values["subText"] as! String
         
-        todoData[i].today = values["todaySwitch"] as? Bool
+        todoData[i].today = values["todaySwitch"] as? Bool ?? todoData[i].today
         
         if todoData[i].today ?? false {
-            todoData[i].startDate = values["startDate"] as? NSDate
-            todoData[i].endDate = values["endDate"] as? NSDate
+            todoData[i].startDate = values["startDate"] as? NSDate ?? todoData[i].startDate
+            todoData[i].endDate = values["endDate"] as? NSDate ?? todoData[i].endDate
         }
         else {
             todoData[i].startDate = NSDate()
             todoData[i].endDate = NSDate()
         }
         
-        todoData[i].alarmOn = values["alarmOn"] as? Bool
+        todoData[i].alarmOn = values["alarmOn"] as? Bool ?? todoData[i].alarmOn
         
         if todoData[i].alarmOn ?? true {
-            todoData[i].after6 = values["after6"] as? Bool
-            todoData[i].userTimeAlarm = values["userTimeAlarm"] as? Bool
+            todoData[i].after6 = values["after6"] as? Bool ?? todoData[i].after6
+            todoData[i].userTimeAlarm = values["userTimeAlarm"] as? Bool ?? todoData[i].userTimeAlarm
             
             if todoData[i].userTimeAlarm ?? true {
-                todoData[i].userTime = values["userTime"] as? NSDate
+                todoData[i].userTime = values["userTime"] as? NSDate ?? todoData[i].userTime
             }
             
-            todoData[i].notDoneAlarm = values["notDoneAlarm"] as? Bool
+            todoData[i].notDoneAlarm = values["notDoneAlarm"] as? Bool ?? todoData[i].notDoneAlarm
         }
+        let before = todoData[i].isPrivate
+        todoData[i].isPrivate = values["private"] as? Bool ?? todoData[i].isPrivate
         
-        todoData[i].isPrivate = values["private"] as? Bool
+        
+        if before == true && todoData[i].isPrivate == false {
+            privateToDoCount -= 1
+        }
+        else if before == false && todoData[i].isPrivate == true {
+            privateToDoCount += 1
+        }
         
         self.tableView.reloadData()
     }

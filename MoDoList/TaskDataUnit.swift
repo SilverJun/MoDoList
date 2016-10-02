@@ -7,27 +7,37 @@
 //
 
 import UIKit
+import Freddy
 
 struct TaskDataUnit {
     var mainText:String = ""
     var subText:String = ""
     
-    var location:String?
-    var objectPeople:String?
+    var location:String = ""
+    var objectPeople:String = ""
     
-    var today:Bool? = true
-    var startDate:NSDate? = NSDate.init()
-    var endDate:NSDate? = NSDate.init()
+    var today:Bool = true
+    var startDate:NSDate = NSDate()
+    var endDate:NSDate = NSDate()
     
-    var alarmOn:Bool?
-    var after6:Bool?
-    var userTimeAlarm:Bool?
-    var userTime:NSDate?
-    var notDoneAlarm:Bool?
+    var alarmOn:Bool = false
+    var after6:Bool = false
+    var userTimeAlarm:Bool = false
+    var userTime:NSDate = NSDate()
+    var notDoneAlarm:Bool = false
     
-    var isPrivate:Bool? = false
-    
-    //share option
-    var doneAlarm:Bool?
-    
+    var isPrivate:Bool = false
+}
+
+extension TaskDataUnit: JSONEncodable {
+    internal func toJSON() -> JSON {
+        
+        let json = JSON.Dictionary([
+            "mainText": .String(mainText),
+            "subText": .String(subText)
+            ])
+        
+        
+        return json
+    }
 }

@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2014C1A1D9BC45D00CA127B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C191D9BC45D00CA127B /* Alamofire.framework */; };
+		E2014C351D9BC4C400CA127B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C281D9BC4AD00CA127B /* Alamofire.framework */; };
+		E2014C361D9BC4C400CA127B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C281D9BC4AD00CA127B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E2014C3A1D9BC71200CA127B /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C391D9BC71200CA127B /* Freddy.framework */; };
+		E2014C551D9BC76100CA127B /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C4A1D9BC72100CA127B /* Freddy.framework */; };
+		E2014C561D9BC76100CA127B /* Freddy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C4A1D9BC72100CA127B /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E2014C5D1D9BE13F00CA127B /* ShareDataUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */; };
+		E2014C5F1D9BE14E00CA127B /* SendDataUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2014C5E1D9BE14E00CA127B /* SendDataUnit.swift */; };
 		E2031E871D8ED1370076477B /* NewToDoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2031E861D8ED1370076477B /* NewToDoFormViewController.swift */; };
 		E2031E911D8ED2210076477B /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2031E8E1D8ED2150076477B /* Eureka.framework */; };
 		E2031E921D8ED2210076477B /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2031E8E1D8ED2150076477B /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2031E971D8ED4250076477B /* ModifyToDoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2031E961D8ED4250076477B /* ModifyToDoFormViewController.swift */; };
+		E2033DC61D9EA66200E8D3A9 /* WebDispatchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */; };
 		E20467C61D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20467C51D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift */; };
 		E205BE0A1D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205BE001D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift */; };
 		E205BE0B1D896A1A00A55C17 /* JTAppleCalendarDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205BE021D896A1A00A55C17 /* JTAppleCalendarDelegates.swift */; };
@@ -60,6 +69,118 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E2014C271D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		E2014C291D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		E2014C2B1D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		E2014C2D1D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		E2014C2F1D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS";
+		};
+		E2014C311D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS Tests";
+		};
+		E2014C331D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		E2014C371D9BC4C400CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		E2014C451D9BC72100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF3E1C23612000D77BF1;
+			remoteInfo = Freddy;
+		};
+		E2014C471D9BC72100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF471C23612000D77BF1;
+			remoteInfo = FreddyTests;
+		};
+		E2014C491D9BC72100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF1F1C23610B00D77BF1;
+			remoteInfo = MobileFreddy;
+		};
+		E2014C4B1D9BC72100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF291C23610B00D77BF1;
+			remoteInfo = MobileFreddyTests;
+		};
+		E2014C4D1D9BC72100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF5A1C23612900D77BF1;
+			remoteInfo = TVFreddy;
+		};
+		E2014C4F1D9BC72100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF631C23612A00D77BF1;
+			remoteInfo = TVFreddyTests;
+		};
+		E2014C511D9BC72100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DB6ADF761C23613200D77BF1;
+			remoteInfo = NanoFreddy;
+		};
+		E2014C571D9BC76100CA127B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DB6ADF1E1C23610B00D77BF1;
+			remoteInfo = MobileFreddy;
+		};
 		E2031E8D1D8ED2150076477B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E2031E881D8ED2150076477B /* Eureka.xcodeproj */;
@@ -105,6 +226,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E2031E921D8ED2210076477B /* Eureka.framework in Embed Frameworks */,
+				E2014C561D9BC76100CA127B /* Freddy.framework in Embed Frameworks */,
+				E2014C361D9BC4C400CA127B /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,9 +235,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E2014C191D9BC45D00CA127B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../Alamofire-3.5.0/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		E2014C391D9BC71200CA127B /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Freddy.framework; sourceTree = "<group>"; };
+		E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Freddy.xcodeproj; path = "../../Freddy-2.1.0/Freddy.xcodeproj"; sourceTree = "<group>"; };
+		E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataUnit.swift; sourceTree = "<group>"; };
+		E2014C5E1D9BE14E00CA127B /* SendDataUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataUnit.swift; sourceTree = "<group>"; };
 		E2031E861D8ED1370076477B /* NewToDoFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewToDoFormViewController.swift; sourceTree = "<group>"; };
 		E2031E881D8ED2150076477B /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = "../../Eureka-master/Eureka.xcodeproj"; sourceTree = "<group>"; };
 		E2031E961D8ED4250076477B /* ModifyToDoFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyToDoFormViewController.swift; sourceTree = "<group>"; };
+		E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebDispatchFunctions.swift; sourceTree = "<group>"; };
 		E20467C51D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardSegueFromTop.swift; sourceTree = "<group>"; };
 		E205BE001D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
 		E205BE021D896A1A00A55C17 /* JTAppleCalendarDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleCalendarDelegates.swift; sourceTree = "<group>"; };
@@ -177,11 +307,15 @@
 			files = (
 				E2D2B3491D8B77F0000BFCB3 /* CoreGraphics.framework in Frameworks */,
 				E21F17851D7E94DC0049BE32 /* QuartzCore.framework in Frameworks */,
+				E2014C3A1D9BC71200CA127B /* Freddy.framework in Frameworks */,
+				E2014C351D9BC4C400CA127B /* Alamofire.framework in Frameworks */,
 				E2BBBFFC1D7C468C003B58A3 /* FBSDKShareKit.framework in Frameworks */,
 				E2BBBFF91D7C468C003B58A3 /* FBSDKCoreKit.framework in Frameworks */,
 				E2BBBFF71D7C468C003B58A3 /* FBAudienceNetwork.framework in Frameworks */,
 				E2BBBFFA1D7C468C003B58A3 /* FBSDKLoginKit.framework in Frameworks */,
 				E2BBBFEF1D7C468C003B58A3 /* AccountKit.framework in Frameworks */,
+				E2014C1A1D9BC45D00CA127B /* Alamofire.framework in Frameworks */,
+				E2014C551D9BC76100CA127B /* Freddy.framework in Frameworks */,
 				E2BBBFF11D7C468C003B58A3 /* Bolts.framework in Frameworks */,
 				E2031E911D8ED2210076477B /* Eureka.framework in Frameworks */,
 				E2BBBFF81D7C468C003B58A3 /* FBNotifications.framework in Frameworks */,
@@ -206,6 +340,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2014C1D1D9BC4AC00CA127B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2014C281D9BC4AD00CA127B /* Alamofire.framework */,
+				E2014C2A1D9BC4AD00CA127B /* Alamofire iOS Tests.xctest */,
+				E2014C2C1D9BC4AD00CA127B /* Alamofire.framework */,
+				E2014C2E1D9BC4AD00CA127B /* Alamofire OSX Tests.xctest */,
+				E2014C301D9BC4AD00CA127B /* Alamofire.framework */,
+				E2014C321D9BC4AD00CA127B /* Alamofire tvOS Tests.xctest */,
+				E2014C341D9BC4AD00CA127B /* Alamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E2014C3C1D9BC72100CA127B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2014C461D9BC72100CA127B /* Freddy.framework */,
+				E2014C481D9BC72100CA127B /* FreddyTests.xctest */,
+				E2014C4A1D9BC72100CA127B /* Freddy.framework */,
+				E2014C4C1D9BC72100CA127B /* MobileFreddyTests.xctest */,
+				E2014C4E1D9BC72100CA127B /* Freddy.framework */,
+				E2014C501D9BC72100CA127B /* TVFreddyTests.xctest */,
+				E2014C521D9BC72100CA127B /* Freddy.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E2014C591D9BDFC700CA127B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E2FF74D51D8AA3A700EF15E8 /* TaskDataUnit.swift */,
+				E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */,
+				E2014C5E1D9BE14E00CA127B /* SendDataUnit.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		E2031E891D8ED2150076477B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,9 +440,10 @@
 			children = (
 				E2BBBEED1D7B11DA003B58A3 /* Module */,
 				E2BBBEEC1D7B11CD003B58A3 /* Views */,
+				E2014C591D9BDFC700CA127B /* Data */,
+				E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */,
 				E2BBBEC21D7B118D003B58A3 /* Main.storyboard */,
 				E2BBBEC71D7B118D003B58A3 /* LaunchScreen.storyboard */,
-				E2FF74D51D8AA3A700EF15E8 /* TaskDataUnit.swift */,
 				E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */,
 				E2BBBEC51D7B118D003B58A3 /* Assets.xcassets */,
 				E2BBBECA1D7B118D003B58A3 /* Info.plist */,
@@ -308,6 +481,10 @@
 		E2BBBEED1D7B11DA003B58A3 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */,
+				E2014C391D9BC71200CA127B /* Freddy.framework */,
+				E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */,
+				E2014C191D9BC45D00CA127B /* Alamofire.framework */,
 				E2031E881D8ED2150076477B /* Eureka.xcodeproj */,
 				E2D2B34A1D8B7846000BFCB3 /* Eureka.framework */,
 				E2D2B3481D8B77F0000BFCB3 /* CoreGraphics.framework */,
@@ -373,6 +550,8 @@
 			);
 			dependencies = (
 				E2031E941D8ED2210076477B /* PBXTargetDependency */,
+				E2014C381D9BC4C400CA127B /* PBXTargetDependency */,
+				E2014C581D9BC76100CA127B /* PBXTargetDependency */,
 			);
 			name = MoDoList;
 			productName = MoDoList;
@@ -423,11 +602,16 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = SilverJu;
+				ORGANIZATIONNAME = SilverJun;
 				TargetAttributes = {
 					E2BBBEBA1D7B118D003B58A3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = W57LA57867;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					E2BBBECE1D7B118D003B58A3 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -452,8 +636,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = E2014C1D1D9BC4AC00CA127B /* Products */;
+					ProjectRef = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
+				},
+				{
 					ProductGroup = E2031E891D8ED2150076477B /* Products */;
 					ProjectRef = E2031E881D8ED2150076477B /* Eureka.xcodeproj */;
+				},
+				{
+					ProductGroup = E2014C3C1D9BC72100CA127B /* Products */;
+					ProjectRef = E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -466,6 +658,104 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E2014C281D9BC4AD00CA127B /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E2014C271D9BC4AD00CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C2A1D9BC4AD00CA127B /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = E2014C291D9BC4AD00CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C2C1D9BC4AD00CA127B /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E2014C2B1D9BC4AD00CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C2E1D9BC4AD00CA127B /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = E2014C2D1D9BC4AD00CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C301D9BC4AD00CA127B /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E2014C2F1D9BC4AD00CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C321D9BC4AD00CA127B /* Alamofire tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire tvOS Tests.xctest";
+			remoteRef = E2014C311D9BC4AD00CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C341D9BC4AD00CA127B /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = E2014C331D9BC4AD00CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C461D9BC72100CA127B /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = E2014C451D9BC72100CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C481D9BC72100CA127B /* FreddyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FreddyTests.xctest;
+			remoteRef = E2014C471D9BC72100CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C4A1D9BC72100CA127B /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = E2014C491D9BC72100CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C4C1D9BC72100CA127B /* MobileFreddyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MobileFreddyTests.xctest;
+			remoteRef = E2014C4B1D9BC72100CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C4E1D9BC72100CA127B /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = E2014C4D1D9BC72100CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C501D9BC72100CA127B /* TVFreddyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TVFreddyTests.xctest;
+			remoteRef = E2014C4F1D9BC72100CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2014C521D9BC72100CA127B /* Freddy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Freddy.framework;
+			remoteRef = E2014C511D9BC72100CA127B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E2031E8E1D8ED2150076477B /* Eureka.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -523,16 +813,19 @@
 				E2FF74D61D8AA3A700EF15E8 /* TaskDataUnit.swift in Sources */,
 				E205BE0B1D896A1A00A55C17 /* JTAppleCalendarDelegates.swift in Sources */,
 				E242A8371D93897C00DF5C64 /* QuickToDoFormViewController.swift in Sources */,
+				E2033DC61D9EA66200E8D3A9 /* WebDispatchFunctions.swift in Sources */,
 				E229B8D91D81A2CF006DF4E4 /* FriendsTableViewCell.swift in Sources */,
 				E205BE0A1D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift in Sources */,
 				E2BBC0A01D7C478D003B58A3 /* LeftViewController.swift in Sources */,
 				E205BE111D896A1A00A55C17 /* JTCalendarProtocols.swift in Sources */,
+				E2014C5D1D9BE13F00CA127B /* ShareDataUnit.swift in Sources */,
 				E2BBC0A31D7C479D003B58A3 /* SlideMenuController.swift in Sources */,
 				E205BE101D896A1A00A55C17 /* JTAppleViews.swift in Sources */,
 				E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */,
 				E229B8D71D81A27D006DF4E4 /* FriendSummaryViewController.swift in Sources */,
 				E20467C61D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift in Sources */,
 				E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */,
+				E2014C5F1D9BE14E00CA127B /* SendDataUnit.swift in Sources */,
 				E205BE0E1D896A1A00A55C17 /* JTAppleCollectionReusableView.swift in Sources */,
 				E2031E871D8ED1370076477B /* NewToDoFormViewController.swift in Sources */,
 				E2BBC0A11D7C478D003B58A3 /* FriendsViewController.swift in Sources */,
@@ -569,6 +862,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E2014C381D9BC4C400CA127B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = E2014C371D9BC4C400CA127B /* PBXContainerItemProxy */;
+		};
+		E2014C581D9BC76100CA127B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MobileFreddy;
+			targetProxy = E2014C571D9BC76100CA127B /* PBXContainerItemProxy */;
+		};
 		E2031E941D8ED2210076477B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Eureka;

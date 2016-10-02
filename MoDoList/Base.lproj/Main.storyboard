@@ -239,6 +239,25 @@
             </objects>
             <point key="canvasLocation" x="798" y="-1979"/>
         </scene>
+        <!--공유받은 할일리스트-->
+        <scene sceneID="pB9-W7-x7K">
+            <objects>
+                <viewController storyboardIdentifier="SharedViewController" id="gcr-PW-fmb" customClass="SharedViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MI4-hW-HUX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gks-Fw-hLs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1di-Cw-SOM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="공유받은 할일리스트" id="8Ed-Sq-gGr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F2B-ld-JXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="-1250"/>
+        </scene>
         <!--친구의 요약-->
         <scene sceneID="Vyh-St-q1U">
             <objects>
@@ -482,7 +501,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위로 당겨서 할일 추가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS3-o6-XsJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아래로 당겨서 할일 추가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS3-o6-XsJ">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3bt-JF-vKD"/>
@@ -532,14 +551,14 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aLI-8E-1Aj">
-                                        <variation key="widthClass=compact" constant="40"/>
+                                        <variation key="widthClass=compact" constant="38"/>
                                     </constraint>
                                     <constraint firstAttribute="width" constant="50" id="ndd-Cf-Ch3">
-                                        <variation key="widthClass=compact" constant="40"/>
+                                        <variation key="widthClass=compact" constant="38"/>
                                     </constraint>
                                 </constraints>
                                 <color key="tintColor" red="0.18823529410000001" green="0.88235294119999996" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="settings [#1491]"/>
+                                <state key="normal" image="arrow_repeat [#235]"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="aLI-8E-1Aj"/>
@@ -552,9 +571,6 @@
                                         <include reference="ndd-Cf-Ch3"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <segue destination="ARk-H0-7Ye" kind="show" identifier="SettingSegue" id="YJq-eI-xsB"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1105,32 +1121,6 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPx-Tt-paX">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="199" id="H0F-Un-rSP"/>
-                                    <constraint firstAttribute="width" constant="240" id="nbb-Z4-A2s"/>
-                                </constraints>
-                                <string key="text">테스트1
-테스트2
-테스트3
-테스트4</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="H0F-Un-rSP"/>
-                                        <exclude reference="nbb-Z4-A2s"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="H0F-Un-rSP"/>
-                                        <include reference="nbb-Z4-A2s"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 요약" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjL-Kg-DgM">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -1153,13 +1143,41 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPx-Tt-paX">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="199" id="H0F-Un-rSP"/>
+                                    <constraint firstAttribute="width" constant="240" id="nbb-Z4-A2s"/>
+                                </constraints>
+                                <string key="text">테스트1
+테스트2
+테스트3
+테스트4</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="H0F-Un-rSP"/>
+                                        <exclude reference="nbb-Z4-A2s"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="H0F-Un-rSP"/>
+                                        <include reference="nbb-Z4-A2s"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XjL-Kg-DgM" firstAttribute="trailing" secondItem="IC7-lv-Rye" secondAttribute="trailingMargin" id="VdS-oF-2mQ"/>
                             <constraint firstItem="zPx-Tt-paX" firstAttribute="leading" secondItem="BtV-Cq-ydC" secondAttribute="leading" id="da9-Ns-DNn"/>
                             <constraint firstItem="XjL-Kg-DgM" firstAttribute="top" secondItem="BtV-Cq-ydC" secondAttribute="bottom" constant="8" id="ldK-wi-Kuq"/>
-                            <constraint firstItem="zPx-Tt-paX" firstAttribute="top" secondItem="XjL-Kg-DgM" secondAttribute="bottom" constant="5" id="pbd-Nu-zoH"/>
+                            <constraint firstItem="zPx-Tt-paX" firstAttribute="top" secondItem="XjL-Kg-DgM" secondAttribute="bottom" constant="5" id="pbd-Nu-zoH">
+                                <variation key="widthClass=compact" constant="25"/>
+                            </constraint>
                             <constraint firstItem="BtV-Cq-ydC" firstAttribute="centerX" secondItem="IC7-lv-Rye" secondAttribute="centerX" id="w7x-RR-jfr"/>
                             <constraint firstItem="BtV-Cq-ydC" firstAttribute="top" secondItem="PzN-su-aXV" secondAttribute="bottom" constant="35" id="yTc-zO-9CE"/>
                             <constraint firstItem="XjL-Kg-DgM" firstAttribute="leading" secondItem="BtV-Cq-ydC" secondAttribute="leading" id="yuY-RI-c5l"/>
@@ -1167,33 +1185,33 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="BtV-Cq-ydC"/>
-                                <exclude reference="zPx-Tt-paX"/>
                                 <exclude reference="XjL-Kg-DgM"/>
+                                <exclude reference="zPx-Tt-paX"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="w7x-RR-jfr"/>
+                                <exclude reference="yTc-zO-9CE"/>
                                 <exclude reference="VdS-oF-2mQ"/>
                                 <exclude reference="ldK-wi-Kuq"/>
                                 <exclude reference="yuY-RI-c5l"/>
                                 <exclude reference="da9-Ns-DNn"/>
                                 <exclude reference="pbd-Nu-zoH"/>
-                                <exclude reference="w7x-RR-jfr"/>
-                                <exclude reference="yTc-zO-9CE"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="BtV-Cq-ydC"/>
-                                <include reference="zPx-Tt-paX"/>
                                 <include reference="XjL-Kg-DgM"/>
+                                <include reference="zPx-Tt-paX"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="VdS-oF-2mQ"/>
+                                <include reference="w7x-RR-jfr"/>
+                                <include reference="yTc-zO-9CE"/>
+                                <exclude reference="VdS-oF-2mQ"/>
                                 <include reference="ldK-wi-Kuq"/>
                                 <include reference="yuY-RI-c5l"/>
                                 <include reference="da9-Ns-DNn"/>
                                 <include reference="pbd-Nu-zoH"/>
-                                <include reference="w7x-RR-jfr"/>
-                                <include reference="yTc-zO-9CE"/>
                             </mask>
                         </variation>
                     </view>
@@ -1338,37 +1356,6 @@
             </objects>
             <point key="canvasLocation" x="3103.5" y="144"/>
         </scene>
-        <!--할일 리스트 설정-->
-        <scene sceneID="6ZZ-ra-VBM">
-            <objects>
-                <viewController id="gdR-4m-CNx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gnV-KH-5Nr"/>
-                        <viewControllerLayoutGuide type="bottom" id="HvO-yf-g47"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qpb-B2-U9B">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="할일 리스트 설정" id="na4-M2-06E">
-                        <barButtonItem key="leftBarButtonItem" title="취소" style="done" id="EUv-Ft-Ic7">
-                            <connections>
-                                <segue destination="8H4-3s-PZ4" kind="unwind" unwindAction="unwindToRootViewController:" id="OCX-LI-eSo"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="적용" style="done" id="ZaM-uG-M0w">
-                            <connections>
-                                <segue destination="8H4-3s-PZ4" kind="unwind" unwindAction="unwindToRootViewController:" id="djE-Ub-eL9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vMF-SY-ABu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="8H4-3s-PZ4" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1578" y="1660"/>
-        </scene>
         <!--공유-->
         <scene sceneID="gOV-x4-eoX">
             <objects>
@@ -1400,24 +1387,24 @@
             </objects>
             <point key="canvasLocation" x="807" y="1660"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Fcn-P1-7F0">
+        <!--View Controller-->
+        <scene sceneID="EQ6-k0-cun">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ARk-H0-7Ye" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Vba-hp-925"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gze-dy-agF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gdR-4m-CNx" kind="relationship" relationship="rootViewController" id="Aos-f0-pWC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYT-bY-uxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="HNh-Wt-rqS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wUD-ku-rFX"/>
+                        <viewControllerLayoutGuide type="bottom" id="wJ3-CB-OYH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZFl-Ru-LmB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qCn-ab-civ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHA-Pw-tiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1578" y="920"/>
+            <point key="canvasLocation" x="1578" y="1660"/>
         </scene>
         <!--빠른 할일 추가-->
         <scene sceneID="iDE-iQ-tKS">
@@ -1486,12 +1473,88 @@
             </objects>
             <point key="canvasLocation" x="2349" y="920"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xmJ-gL-g6q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yz5-kE-QWX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tUb-ME-jD3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HNh-Wt-rqS" kind="relationship" relationship="rootViewController" id="y0M-Ml-U7V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9uu-D7-PEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1578" y="920"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CeH-pQ-2AY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CLn-3Q-QoF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pgr-I0-1Mt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VNr-k7-KQa" kind="relationship" relationship="rootViewController" id="BRX-3e-Esr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWg-dr-7vA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1185" y="2362"/>
+        </scene>
+        <!--대상-->
+        <scene sceneID="aq8-f8-UpV">
+            <objects>
+                <viewController id="VNr-k7-KQa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LfF-Lp-4pW"/>
+                        <viewControllerLayoutGuide type="bottom" id="wka-5e-J9y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q20-qB-BTi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="대상" id="xbs-KV-g5o">
+                        <barButtonItem key="leftBarButtonItem" title="취소" style="plain" id="lv1-k9-jYH"/>
+                        <barButtonItem key="rightBarButtonItem" title="완료" style="plain" id="Wsh-ek-IMI"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b8i-WY-vc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1185" y="3093"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LRX-IO-r5f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QVD-qE-LJ8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i33-TQ-MC6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gcr-PW-fmb" kind="relationship" relationship="rootViewController" id="J9y-90-ppG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TPy-bs-UkF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-42" y="-1250"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BK" width="450" height="450"/>
         <image name="arrow_left [#334]" width="15" height="28"/>
+        <image name="arrow_repeat [#235]" width="22" height="25"/>
         <image name="arrow_right [#333]" width="15" height="28"/>
-        <image name="settings [#1491]" width="25" height="25"/>
         <image name="share [#1100]" width="25" height="25"/>
     </resources>
 </document>

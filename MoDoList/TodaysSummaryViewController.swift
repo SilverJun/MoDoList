@@ -12,6 +12,8 @@ class TodaysSummaryViewController: UIViewController {
 
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var contextLabel: UILabel!
+    var userName:String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,10 @@ class TodaysSummaryViewController: UIViewController {
         loginButton.readPermissions = ["public_profile", "email", "user_friends", "read_custom_friendlists"]
         
         self.view.addSubview(loginButton)
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        userName = userDefaults.objectForKey("UserName") as! String
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +43,15 @@ class TodaysSummaryViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let todoCount = userDefaults.objectForKey("TodaysToDoCount") as! NSArray
+        
+        
+        
+        contextLabel.text = "\(userName)님의 할일이 \(todoCount[0])개 있습니다.\n\n공개하지 않는 할일은 \(todoCount[1])개 있습니다."
+        
     }
     
     

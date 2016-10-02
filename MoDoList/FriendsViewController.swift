@@ -34,6 +34,10 @@ class FriendsViewController : UIViewController {
 //                    self.profileImage.image = UIImage.init(data: data!)
 //                }
 //                _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
+                
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setObject(dic, forKey: "FacebookFriends")
             }
             else
             {

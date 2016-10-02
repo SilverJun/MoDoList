@@ -93,8 +93,8 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
         
-        let firstDate = formatter.dateFromString("2005 01 01")
-        let secondDate = formatter.dateFromString("2031 12 31")
+        let firstDate = formatter.dateFromString("2016 01 01")
+        let secondDate = formatter.dateFromString("2020 12 31")
         let aCalendar = NSCalendar.currentCalendar() // Properly configure your calendar to your time zone here
         return (startDate: firstDate!, endDate: secondDate!, numberOfRows: numberOfRows, calendar: aCalendar)
     }
