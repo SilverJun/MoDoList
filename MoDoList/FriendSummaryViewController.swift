@@ -13,12 +13,13 @@ class FriendSummaryViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var contextLabel: UILabel!
     
+    var friendToken:String! = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         profile.layer.cornerRadius = profile.frame.size.width/2
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,6 +36,4 @@ class FriendSummaryViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    
-    
 }

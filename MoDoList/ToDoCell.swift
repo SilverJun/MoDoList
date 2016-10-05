@@ -22,13 +22,13 @@ class ToDoCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupDefaults()
-        setupSwipe()
+        //setupSwipe()
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         setupDefaults()
-        setupSwipe()
+        //setupSwipe()
     }
     
     private func setupDefaults() {
@@ -64,7 +64,27 @@ class ToDoCell: UITableViewCell {
         
     }
     
-    
+    func setupDoneCell() {
+        swipe = SwipeCell(cell: self)
+        
+        // optional swipe delegate (see functions below)
+        swipe.delegate = self
+        
+        // set the starting positions for the swipe buttons (up to 4 on each side)
+        swipe.firstTrigger = 0.20
+        swipe.secondTrigger = 0.60
+        
+        // create the swipe buttons
+        // TODO: make [unowned self] default implimentation to prevent closure strong reference cycle
+        swipe.create(position: SwipeCell.Position.Left1, animation: .Slide, icon: UIImageView(image:UIImage(named: "delete [#1487]")), color: UIColor(red:255.0/255.0, green:86.0/255.0, blue:94.0/255.0, alpha:1.0)) { [unowned self] (cell) in
+            // send the completed choice from the cell to the view controller
+            self.swipeDelegate?.swipeComplete(cell: cell, position: .Left1)
+        }
+        swipe.create(position: SwipeCell.Position.Right1, animation: .Slide, icon: UIImageView(image:UIImage(named: "arrow_repeat [#235]")), color: UIColor(red: 48.0/255.0, green: 225.0/255.0, blue: 178.0/255.0, alpha: 1.0)) { [unowned self] (cell) in
+            // send the completed choice from the cell to the view controller
+            self.swipeDelegate?.swipeComplete(cell: cell, position: .Right1)
+        }
+    }
 }
 
 extension ToDoCell: SwipeCellDelegate {

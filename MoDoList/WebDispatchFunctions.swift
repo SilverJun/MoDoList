@@ -38,7 +38,7 @@ func GetFBProfile(accessToken: FBSDKAccessToken!, getImage: Bool, handler:(name:
     var picture:UIImage = UIImage()
     
     if let accessToken = FBSDKAccessToken.currentAccessToken() {
-        
+        debugPrint(accessToken.tokenString)
         if let req = FBSDKGraphRequest(graphPath: "me", parameters: nil, tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET") {
             req.startWithCompletionHandler(
                 {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
@@ -71,7 +71,8 @@ func GetFBProfile(accessToken: FBSDKAccessToken!, getImage: Bool, handler:(name:
                                     //                        _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
                                     //
                                     Alamofire.request(.GET, url).response(completionHandler: { response in
-                                        //self.profileImage.image = UIImage(data: response.2!)
+                                        userDefault.setObject(response.2!, forKey: "FacebookProfileImage")
+                                        
                                         picture = UIImage(data: response.2!)!
                                         
                                         handler(name: name, picture: picture)

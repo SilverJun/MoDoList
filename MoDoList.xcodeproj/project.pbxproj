@@ -14,12 +14,12 @@
 		E2014C551D9BC76100CA127B /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C4A1D9BC72100CA127B /* Freddy.framework */; };
 		E2014C561D9BC76100CA127B /* Freddy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C4A1D9BC72100CA127B /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2014C5D1D9BE13F00CA127B /* ShareDataUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */; };
-		E2014C5F1D9BE14E00CA127B /* SendDataUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2014C5E1D9BE14E00CA127B /* SendDataUnit.swift */; };
 		E2031E871D8ED1370076477B /* NewToDoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2031E861D8ED1370076477B /* NewToDoFormViewController.swift */; };
 		E2031E911D8ED2210076477B /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2031E8E1D8ED2150076477B /* Eureka.framework */; };
 		E2031E921D8ED2210076477B /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2031E8E1D8ED2150076477B /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2031E971D8ED4250076477B /* ModifyToDoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2031E961D8ED4250076477B /* ModifyToDoFormViewController.swift */; };
 		E2033DC61D9EA66200E8D3A9 /* WebDispatchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */; };
+		E2033DDD1DA14EF600E8D3A9 /* TutorialOnboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2033DDC1DA14EF600E8D3A9 /* TutorialOnboard.storyboard */; };
 		E20467C61D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20467C51D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift */; };
 		E205BE0A1D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205BE001D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift */; };
 		E205BE0B1D896A1A00A55C17 /* JTAppleCalendarDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205BE021D896A1A00A55C17 /* JTAppleCalendarDelegates.swift */; };
@@ -37,6 +37,11 @@
 		E242A8371D93897C00DF5C64 /* QuickToDoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E242A8361D93897C00DF5C64 /* QuickToDoFormViewController.swift */; };
 		E25032AE1D803D250010C9F4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25032AD1D803D250010C9F4 /* UIViewController.swift */; };
 		E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E262677C1D82F47F0001F156 /* ToDoCell.swift */; };
+		E26D1E4A1DA544CC00F3E95C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26D1E491DA544CC00F3E95C /* NotificationCenter.framework */; };
+		E26D1E4D1DA544CC00F3E95C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D1E4C1DA544CC00F3E95C /* TodayViewController.swift */; };
+		E26D1E501DA544CC00F3E95C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E26D1E4E1DA544CC00F3E95C /* MainInterface.storyboard */; };
+		E26D1E541DA544CC00F3E95C /* MoDoListWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E26D1E471DA544CC00F3E95C /* MoDoListWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E27302C31DA2A325003D7203 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27302C21DA2A325003D7203 /* DoneViewController.swift */; };
 		E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AC73221D88330D00A1597D /* CalendarViewController.swift */; };
 		E2B542611D90F3940078AE6B /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542601D90F3940078AE6B /* SwipeCell.swift */; };
 		E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542631D9108E80078AE6B /* SharedViewController.swift */; };
@@ -202,6 +207,13 @@
 			remoteGlobalIDString = 51729DEA1B9A4F5E004A00EB;
 			remoteInfo = Eureka;
 		};
+		E26D1E521DA544CC00F3E95C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2BBBEB31D7B118D003B58A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E26D1E461DA544CC00F3E95C;
+			remoteInfo = MoDoListWidget;
+		};
 		E2BBBED01D7B118D003B58A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E2BBBEB31D7B118D003B58A3 /* Project object */;
@@ -232,6 +244,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E26D1E661DA544CC00F3E95C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E26D1E541DA544CC00F3E95C /* MoDoListWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -240,11 +263,11 @@
 		E2014C391D9BC71200CA127B /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Freddy.framework; sourceTree = "<group>"; };
 		E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Freddy.xcodeproj; path = "../../Freddy-2.1.0/Freddy.xcodeproj"; sourceTree = "<group>"; };
 		E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataUnit.swift; sourceTree = "<group>"; };
-		E2014C5E1D9BE14E00CA127B /* SendDataUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataUnit.swift; sourceTree = "<group>"; };
 		E2031E861D8ED1370076477B /* NewToDoFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewToDoFormViewController.swift; sourceTree = "<group>"; };
 		E2031E881D8ED2150076477B /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = "../../Eureka-master/Eureka.xcodeproj"; sourceTree = "<group>"; };
 		E2031E961D8ED4250076477B /* ModifyToDoFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyToDoFormViewController.swift; sourceTree = "<group>"; };
 		E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebDispatchFunctions.swift; sourceTree = "<group>"; };
+		E2033DDC1DA14EF600E8D3A9 /* TutorialOnboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TutorialOnboard.storyboard; sourceTree = "<group>"; };
 		E20467C51D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardSegueFromTop.swift; sourceTree = "<group>"; };
 		E205BE001D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
 		E205BE021D896A1A00A55C17 /* JTAppleCalendarDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleCalendarDelegates.swift; sourceTree = "<group>"; };
@@ -262,6 +285,12 @@
 		E242A8361D93897C00DF5C64 /* QuickToDoFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickToDoFormViewController.swift; sourceTree = "<group>"; };
 		E25032AD1D803D250010C9F4 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E262677C1D82F47F0001F156 /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		E26D1E471DA544CC00F3E95C /* MoDoListWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MoDoListWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E26D1E491DA544CC00F3E95C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		E26D1E4C1DA544CC00F3E95C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		E26D1E4F1DA544CC00F3E95C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		E26D1E511DA544CC00F3E95C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E27302C21DA2A325003D7203 /* DoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		E2AC73221D88330D00A1597D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E2B542601D90F3940078AE6B /* SwipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
 		E2B542631D9108E80078AE6B /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +330,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E26D1E441DA544CC00F3E95C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E26D1E4A1DA544CC00F3E95C /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2BBBEB81D7B118D003B58A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,7 +410,6 @@
 			children = (
 				E2FF74D51D8AA3A700EF15E8 /* TaskDataUnit.swift */,
 				E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */,
-				E2014C5E1D9BE14E00CA127B /* SendDataUnit.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -406,13 +442,32 @@
 				E242A8361D93897C00DF5C64 /* QuickToDoFormViewController.swift */,
 				E2BBC09C1D7C478D003B58A3 /* TodayToDoViewController.swift */,
 				E2BBC09D1D7C478D003B58A3 /* LeftViewController.swift */,
-				E2B542631D9108E80078AE6B /* SharedViewController.swift */,
-				E2BBC09E1D7C478D003B58A3 /* FriendsViewController.swift */,
 				E21F17861D7EA4550049BE32 /* TodaysSummaryViewController.swift */,
-				E229B8D61D81A27D006DF4E4 /* FriendSummaryViewController.swift */,
 				E2AC73221D88330D00A1597D /* CalendarViewController.swift */,
+				E2BBC09E1D7C478D003B58A3 /* FriendsViewController.swift */,
+				E229B8D61D81A27D006DF4E4 /* FriendSummaryViewController.swift */,
+				E2B542631D9108E80078AE6B /* SharedViewController.swift */,
+				E27302C21DA2A325003D7203 /* DoneViewController.swift */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		E26D1E481DA544CC00F3E95C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E26D1E491DA544CC00F3E95C /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E26D1E4B1DA544CC00F3E95C /* MoDoListWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E26D1E4C1DA544CC00F3E95C /* TodayViewController.swift */,
+				E26D1E4E1DA544CC00F3E95C /* MainInterface.storyboard */,
+				E26D1E511DA544CC00F3E95C /* Info.plist */,
+			);
+			path = MoDoListWidget;
 			sourceTree = "<group>";
 		};
 		E2BBBEB21D7B118D003B58A3 = {
@@ -421,6 +476,8 @@
 				E2BBBEBD1D7B118D003B58A3 /* MoDoList */,
 				E2BBBED21D7B118D003B58A3 /* MoDoListTests */,
 				E2BBBEDD1D7B118D003B58A3 /* MoDoListUITests */,
+				E26D1E4B1DA544CC00F3E95C /* MoDoListWidget */,
+				E26D1E481DA544CC00F3E95C /* Frameworks */,
 				E2BBBEBC1D7B118D003B58A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -431,6 +488,7 @@
 				E2BBBEBB1D7B118D003B58A3 /* MoDoList.app */,
 				E2BBBECF1D7B118D003B58A3 /* MoDoListTests.xctest */,
 				E2BBBEDA1D7B118D003B58A3 /* MoDoListUITests.xctest */,
+				E26D1E471DA544CC00F3E95C /* MoDoListWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -442,6 +500,7 @@
 				E2BBBEEC1D7B11CD003B58A3 /* Views */,
 				E2014C591D9BDFC700CA127B /* Data */,
 				E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */,
+				E2033DDC1DA14EF600E8D3A9 /* TutorialOnboard.storyboard */,
 				E2BBBEC21D7B118D003B58A3 /* Main.storyboard */,
 				E2BBBEC71D7B118D003B58A3 /* LaunchScreen.storyboard */,
 				E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */,
@@ -537,6 +596,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E26D1E461DA544CC00F3E95C /* MoDoListWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E26D1E651DA544CC00F3E95C /* Build configuration list for PBXNativeTarget "MoDoListWidget" */;
+			buildPhases = (
+				E26D1E431DA544CC00F3E95C /* Sources */,
+				E26D1E441DA544CC00F3E95C /* Frameworks */,
+				E26D1E451DA544CC00F3E95C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoDoListWidget;
+			productName = MoDoListWidget;
+			productReference = E26D1E471DA544CC00F3E95C /* MoDoListWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E2BBBEBA1D7B118D003B58A3 /* MoDoList */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2BBBEE31D7B118D003B58A3 /* Build configuration list for PBXNativeTarget "MoDoList" */;
@@ -545,6 +621,7 @@
 				E2BBBEB81D7B118D003B58A3 /* Frameworks */,
 				E2BBBEB91D7B118D003B58A3 /* Resources */,
 				E2031E951D8ED2210076477B /* Embed Frameworks */,
+				E26D1E661DA544CC00F3E95C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -552,6 +629,7 @@
 				E2031E941D8ED2210076477B /* PBXTargetDependency */,
 				E2014C381D9BC4C400CA127B /* PBXTargetDependency */,
 				E2014C581D9BC76100CA127B /* PBXTargetDependency */,
+				E26D1E531DA544CC00F3E95C /* PBXTargetDependency */,
 			);
 			name = MoDoList;
 			productName = MoDoList;
@@ -604,6 +682,10 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = SilverJun;
 				TargetAttributes = {
+					E26D1E461DA544CC00F3E95C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = W57LA57867;
+					};
 					E2BBBEBA1D7B118D003B58A3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = W57LA57867;
@@ -653,6 +735,7 @@
 				E2BBBEBA1D7B118D003B58A3 /* MoDoList */,
 				E2BBBECE1D7B118D003B58A3 /* MoDoListTests */,
 				E2BBBED91D7B118D003B58A3 /* MoDoListUITests */,
+				E26D1E461DA544CC00F3E95C /* MoDoListWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -773,11 +856,20 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E26D1E451DA544CC00F3E95C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E26D1E501DA544CC00F3E95C /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2BBBEB91D7B118D003B58A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E2BBBEC91D7B118D003B58A3 /* LaunchScreen.storyboard in Resources */,
+				E2033DDD1DA14EF600E8D3A9 /* TutorialOnboard.storyboard in Resources */,
 				E2BBBEC61D7B118D003B58A3 /* Assets.xcassets in Resources */,
 				E2BBBEC41D7B118D003B58A3 /* Main.storyboard in Resources */,
 				E2BBBFF01D7C468C003B58A3 /* AccountKitStrings.bundle in Resources */,
@@ -803,6 +895,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E26D1E431DA544CC00F3E95C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E26D1E4D1DA544CC00F3E95C /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2BBBEB71D7B118D003B58A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -823,9 +923,9 @@
 				E205BE101D896A1A00A55C17 /* JTAppleViews.swift in Sources */,
 				E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */,
 				E229B8D71D81A27D006DF4E4 /* FriendSummaryViewController.swift in Sources */,
+				E27302C31DA2A325003D7203 /* DoneViewController.swift in Sources */,
 				E20467C61D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift in Sources */,
 				E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */,
-				E2014C5F1D9BE14E00CA127B /* SendDataUnit.swift in Sources */,
 				E205BE0E1D896A1A00A55C17 /* JTAppleCollectionReusableView.swift in Sources */,
 				E2031E871D8ED1370076477B /* NewToDoFormViewController.swift in Sources */,
 				E2BBC0A11D7C478D003B58A3 /* FriendsViewController.swift in Sources */,
@@ -877,6 +977,11 @@
 			name = Eureka;
 			targetProxy = E2031E931D8ED2210076477B /* PBXContainerItemProxy */;
 		};
+		E26D1E531DA544CC00F3E95C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E26D1E461DA544CC00F3E95C /* MoDoListWidget */;
+			targetProxy = E26D1E521DA544CC00F3E95C /* PBXContainerItemProxy */;
+		};
 		E2BBBED11D7B118D003B58A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E2BBBEBA1D7B118D003B58A3 /* MoDoList */;
@@ -890,6 +995,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E26D1E4E1DA544CC00F3E95C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E26D1E4F1DA544CC00F3E95C /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		E2BBBEC21D7B118D003B58A3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -909,6 +1022,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E26D1E551DA544CC00F3E95C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = MoDoListWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList.MoDoListWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E26D1E561DA544CC00F3E95C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = MoDoListWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList.MoDoListWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		E2BBBEE11D7B118D003B58A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1082,6 +1223,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E26D1E651DA544CC00F3E95C /* Build configuration list for PBXNativeTarget "MoDoListWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E26D1E551DA544CC00F3E95C /* Debug */,
+				E26D1E561DA544CC00F3E95C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E2BBBEB61D7B118D003B58A3 /* Build configuration list for PBXProject "MoDoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

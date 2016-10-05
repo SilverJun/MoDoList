@@ -20,7 +20,14 @@ class TodaysSummaryViewController: UIViewController {
         
         self.navigationItem.title = "오늘의 요약"
         
-        profile.layer.cornerRadius = profile.frame.size.width/2
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        self.userName = userDefaults.objectForKey("UserName") as! String
+        let data = userDefaults.objectForKey("FacebookProfileImage") as! NSData
+        
+        self.profile.image = UIImage(data: data)
+        
+        self.profile.layer.cornerRadius = self.profile.frame.size.width/2
+        self.profile.clipsToBounds = true;
         
         // Do any additional setup after loading the view.
         let loginButton:FBSDKLoginButton = FBSDKLoginButton.init()
@@ -30,9 +37,7 @@ class TodaysSummaryViewController: UIViewController {
         
         self.view.addSubview(loginButton)
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        userName = userDefaults.objectForKey("UserName") as! String
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,13 +50,9 @@ class TodaysSummaryViewController: UIViewController {
         self.setNavigationBarItem()
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        
         let todoCount = userDefaults.objectForKey("TodaysToDoCount") as! NSArray
         
-        
-        
         contextLabel.text = "\(userName)님의 할일이 \(todoCount[0])개 있습니다.\n\n공개하지 않는 할일은 \(todoCount[1])개 있습니다."
-        
     }
     
     

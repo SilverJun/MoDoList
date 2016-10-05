@@ -24,10 +24,19 @@ class ModifyToDoFormViewController: FormViewController {
             <<< TextRow("mainText"){ row in
                 row.title = "주 내용"
                 row.value = basedToDoData.mainText
+//                row.hidden = Condition.Function(["subText"], {
+//                    self.navigationItem.rightBarButtonItem?.enabled = ($0.rowByTag("subText") as? TextRow)?.value != nil && (row.value != nil)
+//                    return false
+//                })
             }
             <<< TextAreaRow("subText"){ row in
                 row.placeholder = "부 내용"
                 row.value = basedToDoData.subText
+                
+//                row.hidden = Condition.Function(["mainText"], {
+//                    self.navigationItem.rightBarButtonItem?.enabled = ($0.rowByTag("mainText") as? TextRow)?.value != nil && (row.value != nil)
+//                    return false
+//                })
             }
             
             //_____________________________________

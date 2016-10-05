@@ -9,25 +9,21 @@ import UIKit
 import FBSDKLoginKit
 
 
-class TodayToDoViewController: UIViewController {
-    
+var todoData = Array<TaskDataUnit>()
+
+class ToDoViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var suggestLabel: UILabel!
     
-    var todoData = Array<TaskDataUnit>()
-    
-    
     //오늘!
     var today:NSDate = NSDate.init()
     var privateToDoCount = 0
     
-    
     var modifyCellIndex:NSIndexPath?
     
-//    //셀의 갯수
-//    var cellCount:Int = 0
+    var deletingCell:TaskDataUnit? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +37,6 @@ class TodayToDoViewController: UIViewController {
         print(s)
         
         tableView.tableFooterView = UIView.init()
-        
-        
         
         if !Reachability.isConnectedToNetwork() {
             // Create the alert controller
@@ -66,7 +60,7 @@ class TodayToDoViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let toDoCount:NSMutableArray = [todoData.count, privateToDoCount]
         userDefaults.setObject(toDoCount, forKey: "TodaysToDoCount")
@@ -78,6 +72,7 @@ class TodayToDoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.reloadData()
         self.slideMenuController()?.delegate = self
         self.setNavigationBarItem()
         self.slideMenuController()?.removeLeftGestures()
@@ -146,11 +141,9 @@ class TodayToDoViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ModifyToDo") {
-            
             let viewController = segue.destinationViewController as! UINavigationController
 
             let modifyView = viewController.topViewController as! ModifyToDoFormViewController
-            
             
             modifyCellIndex = tableView.indexPathForSelectedRow!
             modifyView.basedToDoData = todoData[modifyCellIndex!.row]
@@ -161,7 +154,7 @@ class TodayToDoViewController: UIViewController {
 }
 
 
-extension TodayToDoViewController : UITableViewDelegate {
+extension ToDoViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -171,13 +164,13 @@ extension TodayToDoViewController : UITableViewDelegate {
     }
 }
 
-extension TodayToDoViewController : UITableViewDataSource {
+extension ToDoViewController : UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.todoData.count
+        return todoData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -216,12 +209,15 @@ extension TodayToDoViewController : UITableViewDataSource {
         if todoData[indexPath.row].isPrivate {
             privateToDoCount -= 1
         }
+        
+        doneToDoData.append(todoData[indexPath.row])
+        
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
 }
 
-extension TodayToDoViewController: UIScrollViewDelegate {
+extension ToDoViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.tableView == scrollView {
             
@@ -242,7 +238,7 @@ extension TodayToDoViewController: UIScrollViewDelegate {
     }
 }
 
-extension TodayToDoViewController : SlideMenuControllerDelegate {
+extension ToDoViewController : SlideMenuControllerDelegate {
     func leftWillOpen() {
         print("SlideMenuControllerDelegate: leftWillOpen")
     }
@@ -279,7 +275,7 @@ extension TodayToDoViewController : SlideMenuControllerDelegate {
 }
 
 //process add, modify
-extension TodayToDoViewController {
+extension ToDoViewController {
     /*
      mainText
      subText
@@ -294,6 +290,9 @@ extension TodayToDoViewController {
      */
     
     func addToDo(values: [String:Any?]) {
+        let app = UIApplication.sharedApplication()
+        let noti = UILocalNotification()
+        
         var data = TaskDataUnit()
         
         data.mainText = values["mainText"] as! String
@@ -301,7 +300,7 @@ extension TodayToDoViewController {
         
         data.today = values["todaySwitch"] as? Bool ?? data.today
         
-        if data.today ?? false {
+        if !data.today ?? false {
             data.startDate = values["startDate"] as? NSDate ?? data.startDate
             data.endDate = values["endDate"] as? NSDate ?? data.endDate
         }
@@ -314,13 +313,34 @@ extension TodayToDoViewController {
         
         if data.alarmOn ?? true {
             data.after6 = values["after6"] as? Bool ?? data.after6
+            
+            if data.after6 {
+                noti.fireDate = NSDate(timeIntervalSinceNow: 21600)
+                noti.timeZone = NSTimeZone.defaultTimeZone()
+                noti.repeatInterval = NSCalendarUnit(rawValue: 0)
+                noti.soundName = "ping.aiff"
+                noti.alertBody = "\"\(data.mainText)\"할일 등록 후 6시간이 지났습니다!"
+                app.scheduleLocalNotification(noti)
+            }
+            
             data.userTimeAlarm = values["userTimeAlarm"] as? Bool ?? data.userTimeAlarm
             
             if data.userTimeAlarm ?? true {
                 data.userTime = values["userTime"] as? NSDate ?? data.userTime
+                
+                noti.fireDate = data.userTime
+                noti.alertBody = "\"\(data.mainText)\"할일을 완료하셨나요? 알람입니다!"
+                app.scheduleLocalNotification(noti)
             }
             
             data.notDoneAlarm = values["notDoneAlarm"] as? Bool ?? data.notDoneAlarm
+            
+            if data.notDoneAlarm {
+                noti.fireDate = data.endDate.dateByAddingTimeInterval(86400)
+                noti.repeatInterval = NSCalendarUnit.Day
+                noti.alertBody = "\"\(data.mainText)\"할일을 아직 완료하지 않으셨네요! 까먹으셨나요?"
+                app.scheduleLocalNotification(noti)
+            }
         }
         
         data.isPrivate = values["private"] as? Bool ?? data.isPrivate
@@ -340,6 +360,8 @@ extension TodayToDoViewController {
         self.tableView.reloadData()
     }
     
+    
+    
     func quickAddToDo(values: [String:Any?]) {
         var data = TaskDataUnit()
         
@@ -357,6 +379,8 @@ extension TodayToDoViewController {
         self.tableView.reloadData()
     }
     
+    
+    
     func modifyToDo(values: [String:Any?]) {
         
         let i = modifyCellIndex!.row
@@ -367,7 +391,7 @@ extension TodayToDoViewController {
         
         todoData[i].today = values["todaySwitch"] as? Bool ?? todoData[i].today
         
-        if todoData[i].today ?? false {
+        if !todoData[i].today ?? true {
             todoData[i].startDate = values["startDate"] as? NSDate ?? todoData[i].startDate
             todoData[i].endDate = values["endDate"] as? NSDate ?? todoData[i].endDate
         }
@@ -405,7 +429,7 @@ extension TodayToDoViewController {
 }
 
 
-extension TodayToDoViewController: SwipeCompleteDelegate {
+extension ToDoViewController: SwipeCompleteDelegate {
     func swipeComplete(cell cell: UITableViewCell, position: SwipeCell.Position) {
         //삭제
         if position == .Left1 {

@@ -10,5 +10,20 @@ import UIKit
 import Freddy   
 
 struct ShareDataUnit {
-    var facebookToken:Array<String>
+    var sender:String   //보내는 사람의 페이스북 토큰
+    var facebookToken:Array<String>     //받는 사람의 페이스북 토큰들
+    var todoData:Array<TaskDataUnit>
+}
+
+extension ShareDataUnit: JSONEncodable {
+    internal func toJSON() -> JSON {
+        
+        let json = JSON.Dictionary([
+            "sender": .String(sender),
+            "facebookToken": facebookToken.toJSON(),
+            "todoData": todoData.toJSON()
+            ])
+        
+        return json
+    }
 }

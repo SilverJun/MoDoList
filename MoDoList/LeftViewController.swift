@@ -16,6 +16,7 @@ enum LeftMenu: Int {
     case Friends
     case ToDo
     case Shared
+    case Done
 }
 
 protocol LeftMenuProtocol : class {
@@ -28,12 +29,13 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    var menus = [ "오늘의 요약", "달력", "친구목록", "오늘의 할일리스트", "공유받은 할일리스트"]
+    var menus = [ "오늘의 요약", "달력", "친구목록", "할일 리스트", "공유받은 할일 리스트", "완료한 할일 리스트"]
     var todaysSummaryViewController: UIViewController!
     var calendarViewController: UIViewController!
     var friendsViewController: UIViewController!
-    var todayToDoViewController: UIViewController!
+    var toDoViewController: UIViewController!
     var sharedViewController: UIViewController!
+    var doneViewController: UIViewController!
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,6 +68,8 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         let sharedViewController = storyboard.instantiateViewControllerWithIdentifier("SharedViewController") as! SharedViewController
         self.sharedViewController = UINavigationController(rootViewController: sharedViewController)
         
+        let doneViewController = storyboard.instantiateViewControllerWithIdentifier("DoneViewController") as! DoneViewController
+        self.doneViewController = UINavigationController(rootViewController: doneViewController)
         
         
         profileImage.layer.cornerRadius = 5.0;
@@ -92,16 +96,22 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         switch menu {
         case LeftMenu.TodaysSummary.rawValue:
             self.slideMenuController()?.changeMainViewController(self.todaysSummaryViewController, close: true)
+            
         case LeftMenu.Calendar.rawValue:
             self.slideMenuController()?.changeMainViewController(self.calendarViewController, close: true)
+            
         case LeftMenu.Friends.rawValue:
             self.slideMenuController()?.changeMainViewController(self.friendsViewController, close: true)
+            
         case LeftMenu.ToDo.rawValue:
-            self.slideMenuController()?.changeMainViewController(self.todayToDoViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.toDoViewController, close: true)
+            
         case LeftMenu.Shared.rawValue:
             self.slideMenuController()?.changeMainViewController(self.sharedViewController, close: true)
-        case LeftMenu.Calendar.rawValue:
-            self.slideMenuController()?.changeMainViewController(self.calendarViewController, close: true)
+            
+        case LeftMenu.Done.rawValue:
+            self.slideMenuController()?.changeMainViewController(self.doneViewController, close: true)
+            
         default:
             break
         }

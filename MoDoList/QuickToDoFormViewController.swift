@@ -14,14 +14,24 @@ class QuickToDoFormViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.navigationItem.rightBarButtonItem?.enabled = false
+        
         form
             +++ Section("내용")
             
             <<< TextRow("mainText"){ row in
                 row.title = "주 내용"
+//                row.hidden = Condition.Function(["subText"], {
+//                    self.navigationItem.rightBarButtonItem?.enabled = ($0.rowByTag("subText") as? TextRow)?.value != nil && (row.value != nil)
+//                    return false
+//                })
             }
             <<< TextAreaRow("subText"){ row in
                 row.placeholder = "부 내용"
+//                row.hidden = Condition.Function(["mainText"], {
+//                    self.navigationItem.rightBarButtonItem?.enabled = ($0.rowByTag("mainText") as? TextRow)?.value != nil && (row.value != nil)
+//                    return false
+//                })
         }
     }
 

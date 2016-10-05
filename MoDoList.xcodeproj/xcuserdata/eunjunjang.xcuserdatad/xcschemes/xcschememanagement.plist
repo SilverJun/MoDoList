@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MoDoListWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>E26D1E461DA544CC00F3E95C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E2BBBEBA1D7B118D003B58A3</key>
 		<dict>
 			<key>primary</key>

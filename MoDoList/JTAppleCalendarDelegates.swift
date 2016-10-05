@@ -11,7 +11,6 @@ import UIKit
 // MARK: CollectionView delegates
 extension JTAppleCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
     /// Asks your data source object to provide a supplementary view to display in the collection view.
-    
     public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         guard let validDate = dateFromSection(indexPath.section) else {
             assert(false, "Date could not be generated fro section. This is a bug. Contact the developer")

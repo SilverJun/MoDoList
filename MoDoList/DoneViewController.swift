@@ -1,21 +1,30 @@
 //
-//  SharedViewController.swift
+//  DoneViewController.swift
 //  MoDoList
 //
-//  Created by Eun Jun Jang on 2016. 9. 20..
-//  Copyright © 2016년 SilverJu. All rights reserved.
+//  Created by Eun Jun Jang on 2016. 10. 3..
+//  Copyright © 2016년 SilverJun. All rights reserved.
 //
 
 import UIKit
 
-class SharedViewController: UIViewController {
+var doneToDoData = Array<TaskDataUnit>()
+
+class DoneViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBarItem()
+        
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,10 +32,7 @@ class SharedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.setNavigationBarItem()
-    }
-    
+
     /*
     // MARK: - Navigation
 
@@ -40,7 +46,7 @@ class SharedViewController: UIViewController {
 }
 
 
-extension SharedViewController : UITableViewDelegate {
+extension DoneViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -50,24 +56,24 @@ extension SharedViewController : UITableViewDelegate {
     }
 }
 
-extension SharedViewController : UITableViewDataSource {
+extension DoneViewController : UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoData.count
+        return doneToDoData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ToDoCell", forIndexPath: indexPath) as! ToDoCell
         
-        cell.setupSwipe()
+        cell.setupDoneCell()
         
         
-        cell.mainTitleLabel.text = todoData[indexPath.row].mainText
-        cell.subTitleLabel.text = todoData[indexPath.row].subText
+        cell.mainTitleLabel.text = doneToDoData[indexPath.row].mainText
+        cell.subTitleLabel.text = doneToDoData[indexPath.row].subText
         cell.setNeedsUpdateConstraints()
         cell.swipeDelegate = self
         
@@ -76,52 +82,33 @@ extension SharedViewController : UITableViewDataSource {
     
     func deleteCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
-        todoData.removeAtIndex(indexPath.row)
+        doneToDoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
-    
-    func doneCell(cell cell: UITableViewCell) {
+    func restoreCell(cell cell: UITableViewCell){
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
-        todoData.removeAtIndex(indexPath.row)
+        todoData.append(doneToDoData[indexPath.row])
+        doneToDoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
 }
 
-extension SharedViewController: UIScrollViewDelegate {
+extension DoneViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.tableView == scrollView {
             
         }
     }
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let currentOffset = scrollView.contentOffset.y;
-        //let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-        
-        if (currentOffset * (-1) >= 60.0 && currentOffset < 0) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var quickView = storyboard.instantiateViewControllerWithIdentifier("QuickToDoFormViewController")
-            quickView = UINavigationController(rootViewController: quickView)
-            
-            self.performSegueWithIdentifier("QuickAddToDo", sender: self)
-        }
-    }
 }
 
-extension SharedViewController: SwipeCompleteDelegate {
+extension DoneViewController: SwipeCompleteDelegate {
     func swipeComplete(cell cell: UITableViewCell, position: SwipeCell.Position) {
         //삭제
         if position == .Left1 {
             deleteCell(cell: cell)
         }
-        //완료
         if position == .Right1 {
-            doneCell(cell: cell)
-        }
-        //전달
-        if position == .Right2 {
-            // send
+            restoreCell(cell: cell)
         }
     }
 }
-
