@@ -13,11 +13,17 @@ var doneToDoData = Array<TaskDataUnit>()
 class DoneViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let fm = ToDoFileManager()
+    let notiManager = PushNotificationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView()
+        
+        doneToDoData += fm.loadToDoFile(.done)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -32,6 +38,12 @@ class DoneViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            let fileManager = ToDoFileManager()
+            fileManager.saveToDoFile()
+        })
+    }
 
     /*
     // MARK: - Navigation
@@ -88,6 +100,7 @@ extension DoneViewController : UITableViewDataSource {
     func restoreCell(cell cell: UITableViewCell){
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
         todoData.append(doneToDoData[indexPath.row])
+        notiManager.addLocalNotification(todoData[indexPath.row])
         doneToDoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }

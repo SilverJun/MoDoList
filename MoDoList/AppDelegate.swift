@@ -1,5 +1,4 @@
-//
-//  AppDelegate.swift
+////  AppDelegate.swift
 //  MoDoList
 //
 //  Created by Eun Jun Jang on 2016. 9. 3..
@@ -58,6 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        //백그라운드에 진입시 데이터 저장
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            let fileManager = ToDoFileManager()
+            fileManager.saveToDoFile()
+        })
+        
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -71,6 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            let fileManager = ToDoFileManager()
+            fileManager.saveToDoFile()
+        })
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {

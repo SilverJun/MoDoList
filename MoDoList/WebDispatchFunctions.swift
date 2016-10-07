@@ -12,8 +12,6 @@ import Alamofire
 
 import SystemConfiguration
 
-
-
 public class Reachability {
     class func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
@@ -28,7 +26,13 @@ public class Reachability {
         }
         let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
-        return (isReachable && !needsConnection)
+        
+        let url = NSURL(string: "http://www.google.com/m")
+        let Data = NSData(contentsOfURL: url!)
+        
+        let result = Data != nil
+        
+        return (isReachable && !needsConnection && result)
     }
 }
 

@@ -24,27 +24,54 @@ public struct TaskDataUnit {
     var today:Bool = true
     //
     
-    var startDate:NSDate = NSDate()
-    var endDate:NSDate = NSDate()
+    var startDate:NSDate = NSDate()     //double
+    var endDate:NSDate = NSDate()       //double
     
     var alarmOn:Bool = false
     
     // todo only
     var after6:Bool = false
     //
-    
+    var createdDate:NSDate = NSDate()
     // appointment only
     var before1:Bool = false
     //
     
     var userTimeAlarm:Bool = false
-    var userTime:NSDate = NSDate()
+    var userTime:NSDate = NSDate()      //double
     
     //todo only
     var notDoneAlarm:Bool = false
     //
     
     var isPrivate:Bool = false
+}
+
+extension TaskDataUnit: JSONDecodable {
+    public init(json value: JSON) throws {
+        mainText = try value.string("mainText")
+        subText = try value.string("subText")
+        isAppointment = try value.bool("isAppointment")
+        location = try value.string("location")
+        
+        let people = try value.array("objectPeople")
+        
+        for person in people {
+            try objectPeople.append(person.string())
+        }
+        
+        today = try value.bool("today")
+        startDate = try NSDate(timeIntervalSince1970: value.double("startDate"))
+        endDate = try NSDate(timeIntervalSince1970: value.double("endDate"))
+        alarmOn = try value.bool("alarmOn")
+        after6 = try value.bool("after6")
+        before1 = try value.bool("before1")
+        userTimeAlarm = try value.bool("userTimeAlarm")
+        userTime = try NSDate(timeIntervalSince1970: value.double("userTime"))
+        notDoneAlarm = try value.bool("notDoneAlarm")
+        isPrivate = try value.bool("isPrivate")
+        createdDate = try NSDate(timeIntervalSince1970: value.double("createdDate"))
+    }
 }
 
 extension TaskDataUnit: JSONEncodable {
@@ -64,7 +91,8 @@ extension TaskDataUnit: JSONEncodable {
             "userTimeAlarm": .Bool(userTimeAlarm),
             "userTime": userTime.timeIntervalSince1970.toJSON(),
             "notDoneAlarm": .Bool(notDoneAlarm),
-            "isPrivate": .Bool(isPrivate)
+            "isPrivate": .Bool(isPrivate),
+            "createdDate": createdDate.timeIntervalSince1970.toJSON()
             ])
         
         return json

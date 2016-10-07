@@ -25,6 +25,9 @@ class ToDoViewController: UIViewController {
     
     var deletingCell:TaskDataUnit? = nil
     
+    let fm = ToDoFileManager()
+    let notiManager = PushNotificationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,36 +37,49 @@ class ToDoViewController: UIViewController {
         
         let s = dateFormatter.stringFromDate(today)
         
-        print(s)
+        debugPrint(s)
         
         tableView.tableFooterView = UIView.init()
         
-        if !Reachability.isConnectedToNetwork() {
-            // Create the alert controller
-            let alertController = UIAlertController(title: "오류", message: "MoDoList는 인터넷 환경이 필요합니다.\n인터넷을 연결해주세요.", preferredStyle: .Alert)
-            
-            // Create the actions
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-                UIAlertAction in
-                //home button press programmatically
-                let app = UIApplication.sharedApplication()
-                app.performSelector(#selector(NSURLSessionTask.suspend))
-                
-                NSThread.sleepForTimeInterval(1.0)
-                
-                //exit app when app is in background
-                exit(0)
-            }
-            
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
-        }
+//        if !Reachability.isConnectedToNetwork() {
+//            // Create the alert controller
+//            let alertController = UIAlertController(title: "오류", message: "MoDoList는 인터넷 환경이 필요합니다.\n인터넷을 연결해주세요.", preferredStyle: .Alert)
+//            
+//            // Create the actions
+//            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+//                UIAlertAction in
+//                //home button press programmatically
+//                let app = UIApplication.sharedApplication()
+//                app.performSelector(#selector(NSURLSessionTask.suspend))
+//                
+//                NSThread.sleepForTimeInterval(1.0)
+//                
+//                //exit app when app is in background
+//                exit(0)
+//            }
+//            
+//            alertController.addAction(okAction)
+//            self.presentViewController(alertController, animated: true, completion: nil)
+//        }
+        
+        debugPrint(fm.GetDocumentPath())
+        
+        todoData += fm.loadToDoFile(.todo)
     }
     
     override func viewWillDisappear(animated: Bool) {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let toDoCount:NSMutableArray = [todoData.count, privateToDoCount]
         userDefaults.setObject(toDoCount, forKey: "TodaysToDoCount")
+        
+        
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            let fileManager = ToDoFileManager()
+            fileManager.saveToDoFile()
+        })
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -200,6 +216,7 @@ extension ToDoViewController : UITableViewDataSource {
         if todoData[indexPath.row].isPrivate {
             privateToDoCount -= 1
         }
+        notiManager.deleteLocalNotification(todoData[indexPath.row])
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
@@ -209,9 +226,8 @@ extension ToDoViewController : UITableViewDataSource {
         if todoData[indexPath.row].isPrivate {
             privateToDoCount -= 1
         }
-        
+        notiManager.deleteLocalNotification(todoData[indexPath.row])
         doneToDoData.append(todoData[indexPath.row])
-        
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
@@ -290,10 +306,10 @@ extension ToDoViewController {
      */
     
     func addToDo(values: [String:Any?]) {
-        let app = UIApplication.sharedApplication()
-        let noti = UILocalNotification()
         
         var data = TaskDataUnit()
+        
+        data.createdDate = NSDate()
         
         data.mainText = values["mainText"] as! String
         data.subText = values["subText"] as! String
@@ -313,34 +329,13 @@ extension ToDoViewController {
         
         if data.alarmOn ?? true {
             data.after6 = values["after6"] as? Bool ?? data.after6
-            
-            if data.after6 {
-                noti.fireDate = NSDate(timeIntervalSinceNow: 21600)
-                noti.timeZone = NSTimeZone.defaultTimeZone()
-                noti.repeatInterval = NSCalendarUnit(rawValue: 0)
-                noti.soundName = "ping.aiff"
-                noti.alertBody = "\"\(data.mainText)\"할일 등록 후 6시간이 지났습니다!"
-                app.scheduleLocalNotification(noti)
-            }
-            
             data.userTimeAlarm = values["userTimeAlarm"] as? Bool ?? data.userTimeAlarm
             
             if data.userTimeAlarm ?? true {
                 data.userTime = values["userTime"] as? NSDate ?? data.userTime
-                
-                noti.fireDate = data.userTime
-                noti.alertBody = "\"\(data.mainText)\"할일을 완료하셨나요? 알람입니다!"
-                app.scheduleLocalNotification(noti)
             }
             
             data.notDoneAlarm = values["notDoneAlarm"] as? Bool ?? data.notDoneAlarm
-            
-            if data.notDoneAlarm {
-                noti.fireDate = data.endDate.dateByAddingTimeInterval(86400)
-                noti.repeatInterval = NSCalendarUnit.Day
-                noti.alertBody = "\"\(data.mainText)\"할일을 아직 완료하지 않으셨네요! 까먹으셨나요?"
-                app.scheduleLocalNotification(noti)
-            }
         }
         
         data.isPrivate = values["private"] as? Bool ?? data.isPrivate
@@ -358,12 +353,17 @@ extension ToDoViewController {
         self.tableView.endUpdates()
         
         self.tableView.reloadData()
+        
+        
+        notiManager.addLocalNotification(data)
     }
     
     
     
     func quickAddToDo(values: [String:Any?]) {
         var data = TaskDataUnit()
+        
+        data.createdDate = NSDate()
         
         data.mainText = values["mainText"] as! String;
         data.subText = values["subText"] as! String;
@@ -385,6 +385,7 @@ extension ToDoViewController {
         
         let i = modifyCellIndex!.row
         
+        notiManager.deleteLocalNotification(todoData[i])
         
         todoData[i].mainText = values["mainText"] as! String
         todoData[i].subText = values["subText"] as! String
@@ -422,6 +423,8 @@ extension ToDoViewController {
         else if before == false && todoData[i].isPrivate == true {
             privateToDoCount += 1
         }
+        
+        notiManager.addLocalNotification(todoData[i])
         
         self.tableView.reloadData()
     }

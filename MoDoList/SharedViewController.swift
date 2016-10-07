@@ -8,14 +8,22 @@
 
 import UIKit
 
+var sharedToDoData = Array<TaskDataUnit>()
+
 class SharedViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let fm = ToDoFileManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView()
+        
+        
+        sharedToDoData += fm.loadToDoFile(.shared)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +33,13 @@ class SharedViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.setNavigationBarItem()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            let fileManager = ToDoFileManager()
+            fileManager.saveToDoFile()
+        })
     }
     
     /*
