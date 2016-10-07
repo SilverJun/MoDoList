@@ -21,4 +21,5 @@ The 2nd Junior Software Cup, MoDoList Project
 * Swipe Cell
 * FacebookSDK(iOS version)
 * SlideMenuController
+* JTAppleCalendar
 * etc..
