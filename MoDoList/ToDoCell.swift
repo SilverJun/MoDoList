@@ -59,7 +59,30 @@ class ToDoCell: UITableViewCell {
         }
         
         swipe.create(position: SwipeCell.Position.Right2, animation: .Bounce, icon: UIImageView(image:UIImage(named: "send_round [#1569]")), color: .grayColor()) { [unowned self] (cell) in
-            self.swipeDelegate?.swipeComplete(cell: cell, position: .Left2)
+            self.swipeDelegate?.swipeComplete(cell: cell, position: .Right2)
+        }
+        
+    }
+    
+    func setupShareCell() {
+        swipe = SwipeCell(cell: self)
+        
+        // optional swipe delegate (see functions below)
+        swipe.delegate = self
+        
+        // set the starting positions for the swipe buttons (up to 4 on each side)
+        swipe.firstTrigger = 0.20
+        swipe.secondTrigger = 0.60
+        
+        // create the swipe buttons
+        // TODO: make [unowned self] default implimentation to prevent closure strong reference cycle
+        swipe.create(position: SwipeCell.Position.Left1, animation: .Slide, icon: UIImageView(image:UIImage(named: "delete [#1487]")), color: UIColor(red:255.0/255.0, green:86.0/255.0, blue:94.0/255.0, alpha:1.0)) { [unowned self] (cell) in
+            // send the completed choice from the cell to the view controller
+            self.swipeDelegate?.swipeComplete(cell: cell, position: .Left1)
+        }
+        swipe.create(position: SwipeCell.Position.Right1, animation: .Slide, icon: UIImageView(image:UIImage(named: "done [#1476]")), color: UIColor(red: 48.0/255.0, green: 225.0/255.0, blue: 178.0/255.0, alpha: 1.0)) { [unowned self] (cell) in
+            // send the completed choice from the cell to the view controller
+            self.swipeDelegate?.swipeComplete(cell: cell, position: .Right1)
         }
         
     }

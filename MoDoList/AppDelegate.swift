@@ -6,6 +6,10 @@
 
 import UIKit
 import FBSDKCoreKit
+import Alamofire
+import Freddy
+
+let ServerURL:String = <#SERVER_URL#>
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -62,6 +66,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             let fileManager = ToDoFileManager()
             fileManager.saveToDoFile()
+            
+            let userDefault = NSUserDefaults.standardUserDefaults()
+            
+            let userId = userDefault.valueForKey("FaceBookID") as! String
+            let deviceToken = userDefault.valueForKey("DeviceToken") as! String
+            let userInfo = UserData(deviceToken:deviceToken, userId:userId, todoCount:todoData.count + sharedToDoData.count)
+            
+            do {
+                let req = NSMutableURLRequest(URL: NSURL(string: "\(ServerURL)/api/UserData/\(userId)")!)
+                req.HTTPMethod = "PUT"
+                req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                req.HTTPBody = try userInfo.toJSON().serialize()
+                
+                Alamofire.request(req).validate().responseJSON(completionHandler: {
+                    do {
+                        print($0.result.error)
+                        let json = try JSONParser.createJSONFromData($0.data!)
+                        print(json)
+                        
+                    }
+                    catch {
+                    }
+                })
+            }
+            catch {
+            }
         })
         
     }
@@ -73,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0;
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -80,6 +112,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             let fileManager = ToDoFileManager()
             fileManager.saveToDoFile()
+            
+            let userDefault = NSUserDefaults.standardUserDefaults()
+            
+            let userId = userDefault.valueForKey("FaceBookID") as! String
+            let deviceToken = userDefault.valueForKey("DeviceToken") as! String
+            let userInfo = UserData(deviceToken:deviceToken, userId:userId, todoCount:todoData.count + sharedToDoData.count)
+            
+            do {
+                let req = NSMutableURLRequest(URL: NSURL(string: "\(ServerURL)/api/UserData/\(userId)")!)
+                req.HTTPMethod = "PUT"
+                req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                req.HTTPBody = try userInfo.toJSON().serialize()
+                
+                Alamofire.request(req).validate().responseJSON(completionHandler: {
+                    do {
+                        print($0.result.error)
+                        let json = try JSONParser.createJSONFromData($0.data!)
+                        print(json)
+                        
+                    }
+                    catch {
+                    }
+                })
+            }
+            catch {
+            }
         })
     }
 
@@ -111,9 +170,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print( "노티피케이션 APNS 등록 중 에러 발생 :  \(error.localizedDescription)" )
     }
     
+    
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
     {
         print("노티피케이션을 받았습니다. : \(userInfo)")
+        
+        let id = userInfo["id"] as? String
+        
+        if id != nil {
+            self.parseNotification(id!)
+        }
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        print("노티피케이션을 받았습니다. : \(userInfo)")
+        
+        let id = userInfo["id"] as? String
+        
+        if id != nil {
+            self.parseNotification(id!)
+        }
+    }
+    
+    func parseNotification(id: String) {
+        var activityIndicatorView: ActivityIndicatorView!
+        
+        activityIndicatorView = ActivityIndicatorView(title: "처리중", center: window!.center)
+        self.window!.rootViewController?.view.addSubview(activityIndicatorView.getViewActivityIndicator())
+        
+        activityIndicatorView.startAnimating()
+        
+        var data = [TaskDataUnit]()
+        var count = 0
+        var name = ""
+        
+        Alamofire.request(.GET, "\(ServerURL)/api/SharedToDo?SharedToDoId=\(id)").response(completionHandler: {
+            do {
+                let json = try JSONParser.createJSONFromData($0.2!)
+                print(json)
+                name = try json["senderName"]!.string()
+                for todo in try json["todoData"]!.array() {
+                    data.append(try TaskDataUnit.init(json: todo))
+                    count += 1
+                }
+            }
+            catch {
+            }
+            
+            activityIndicatorView.stopAnimating()
+            
+            let alertController = UIAlertController(title: "할일이 도착했습니다", message: "\(name)님이 \(count)개의 할일을 보냈습니다.\n수락하시겠습니까?", preferredStyle: .Alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default, handler: {
+                UIAlertAction in
+                sharedToDoData += data
+                let push = PushNotificationManager()
+                push.addLocalNotifications(data)
+            })
+            let denyAction = UIAlertAction(title: "거절", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alertController.addAction(denyAction)
+            alertController.addAction(okAction)
+            self.window!.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
+        })
     }
 }
 

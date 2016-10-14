@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import Freddy
 
 var sharedToDoData = Array<TaskDataUnit>()
 
@@ -33,6 +35,10 @@ class SharedViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.setNavigationBarItem()
+        tableView.reloadData()
+//        self.tableView.beginUpdates()
+//        self.tableView.reloadData()
+//        self.tableView.endUpdates()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -71,18 +77,18 @@ extension SharedViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoData.count
+        return sharedToDoData.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ToDoCell", forIndexPath: indexPath) as! ToDoCell
         
-        cell.setupSwipe()
+        cell.setupShareCell()
         
         
-        cell.mainTitleLabel.text = todoData[indexPath.row].mainText
-        cell.subTitleLabel.text = todoData[indexPath.row].subText
+        cell.mainTitleLabel.text = sharedToDoData[indexPath.row].mainText
+        cell.subTitleLabel.text = sharedToDoData[indexPath.row].subText
         cell.setNeedsUpdateConstraints()
         cell.swipeDelegate = self
         
@@ -91,13 +97,27 @@ extension SharedViewController : UITableViewDataSource {
     
     func deleteCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
-        todoData.removeAtIndex(indexPath.row)
+        sharedToDoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
     func doneCell(cell cell: UITableViewCell) {
         guard let indexPath = tableView?.indexPathForCell(cell) else { return }
-        todoData.removeAtIndex(indexPath.row)
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        let name = userDefault.valueForKey("UserName") as! String
+        
+        let str = "\(ServerURL)/api/PushDoneAlarm?ownerId=\(sharedToDoData[indexPath.row].owner)&senderName=\(name)&todoData=\(sharedToDoData[indexPath.row].mainText)"
+        let url = str.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        Alamofire.request(.GET, url).responseData(completionHandler: {
+            do {
+                let result = try JSONParser.createJSONFromData($0.data!)
+                print(result)
+            }
+            catch {}
+        })
+        
+        sharedToDoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
 }
@@ -106,19 +126,6 @@ extension SharedViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.tableView == scrollView {
             
-        }
-    }
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let currentOffset = scrollView.contentOffset.y;
-        //let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-        
-        if (currentOffset * (-1) >= 60.0 && currentOffset < 0) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var quickView = storyboard.instantiateViewControllerWithIdentifier("QuickToDoFormViewController")
-            quickView = UINavigationController(rootViewController: quickView)
-            
-            self.performSegueWithIdentifier("QuickAddToDo", sender: self)
         }
     }
 }
@@ -132,10 +139,6 @@ extension SharedViewController: SwipeCompleteDelegate {
         //완료
         if position == .Right1 {
             doneCell(cell: cell)
-        }
-        //전달
-        if position == .Right2 {
-            // send
         }
     }
 }

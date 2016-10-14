@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import Alamofire
+import Freddy
+import QuartzCore
 
 class FriendSummaryViewController: UIViewController {
     @IBOutlet weak var profile: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var contextLabel: UILabel!
     
-    var friendToken:String! = ""
+    var id = ""
+    
+    internal func setupInfo(id: String,  name: String) {
+        self.id = id
+        Alamofire.request(.GET, "\(ServerURL)/api/UserData?userId=\(id)").responseJSON(completionHandler: {
+            do {
+                let json = try JSONParser.createJSONFromData($0.data!)
+                self.infoLabel.text = "\(name)님의 정보"
+                let count = try json["todoCount"]!.int()
+                self.contextLabel.text = "\(name)님의 할일이 \(count)개 있습니다."
+            }
+            catch {
+            }
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,18 +39,20 @@ class FriendSummaryViewController: UIViewController {
         profile.layer.cornerRadius = profile.frame.size.width/2
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.profile.layer.cornerRadius = self.profile.frame.size.width/2
+        
+        GetFBFriendPicture(id, handler: { picture in
+            
+            self.profile.image = picture
+            self.profile.layer.cornerRadius = self.profile.frame.size.width/2
+        })
     }
     
     
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

@@ -45,6 +45,8 @@ public struct TaskDataUnit {
     //
     
     var isPrivate:Bool = false
+    
+    var owner:String = ""               //ownerID
 }
 
 extension TaskDataUnit: JSONDecodable {
@@ -71,6 +73,7 @@ extension TaskDataUnit: JSONDecodable {
         notDoneAlarm = try value.bool("notDoneAlarm")
         isPrivate = try value.bool("isPrivate")
         createdDate = try NSDate(timeIntervalSince1970: value.double("createdDate"))
+        owner = try value.string("owner")
     }
 }
 
@@ -92,7 +95,8 @@ extension TaskDataUnit: JSONEncodable {
             "userTime": userTime.timeIntervalSince1970.toJSON(),
             "notDoneAlarm": .Bool(notDoneAlarm),
             "isPrivate": .Bool(isPrivate),
-            "createdDate": createdDate.timeIntervalSince1970.toJSON()
+            "createdDate": createdDate.timeIntervalSince1970.toJSON(),
+            "owner": .String(owner)
             ])
         
         return json

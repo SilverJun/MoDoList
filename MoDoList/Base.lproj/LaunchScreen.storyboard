@@ -62,6 +62,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Word" width="525" height="480"/>
+        <image name="Word" width="522" height="438"/>
     </resources>
 </document>

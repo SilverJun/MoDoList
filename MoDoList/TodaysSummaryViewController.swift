@@ -33,7 +33,7 @@ class TodaysSummaryViewController: UIViewController {
         let loginButton:FBSDKLoginButton = FBSDKLoginButton.init()
         
         loginButton.center = self.view.center
-        loginButton.readPermissions = ["public_profile", "email", "user_friends", "read_custom_friendlists"]
+        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         
         self.view.addSubview(loginButton)
         

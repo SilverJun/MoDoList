@@ -27,7 +27,7 @@ public class Reachability {
         let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         
-        let url = NSURL(string: "http://www.google.com/m")
+        let url = NSURL(string: "https://www.google.com/m")
         let Data = NSData(contentsOfURL: url!)
         
         let result = Data != nil
@@ -36,23 +36,78 @@ public class Reachability {
     }
 }
 
+public class ActivityIndicatorView
+{
+    var view: UIView!
+    
+    var activityIndicator: UIActivityIndicatorView!
+    
+    var title: String!
+    
+    init(title: String, center: CGPoint, width: CGFloat = 200.0, height: CGFloat = 50.0)
+    {
+        self.title = title
+        
+        let x = center.x - width/2.0
+        let y = center.y - height/2.0
+        
+        self.view = UIView(frame: CGRect(x: x, y: y, width: width, height: height))
+        self.view.backgroundColor = UIColor(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 0.5)
+        self.view.layer.cornerRadius = 10
+        
+        self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        self.activityIndicator.color = UIColor.blackColor()
+        self.activityIndicator.hidesWhenStopped = false
+        
+        let titleLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        titleLabel.text = title
+        titleLabel.textColor = UIColor.blackColor()
+        
+        self.view.addSubview(self.activityIndicator)
+        self.view.addSubview(titleLabel)
+    }
+    
+    func getViewActivityIndicator() -> UIView
+    {
+        return self.view
+    }
+    
+    func startAnimating()
+    {
+        self.activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    }
+    
+    func stopAnimating()
+    {
+        self.activityIndicator.stopAnimating()
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        
+        self.view.removeFromSuperview()
+    }
+}
 
-func GetFBProfile(accessToken: FBSDKAccessToken!, getImage: Bool, handler:(name:String, picture:UIImage)->(Void)) {
+
+func GetFBUserProfile(getImage: Bool, handler:(name:String, picture:UIImage)->(Void)) {
     var name:String = ""
+    var id:String = "";
     var picture:UIImage = UIImage()
+    let userDefault = NSUserDefaults.standardUserDefaults()
     
     if let accessToken = FBSDKAccessToken.currentAccessToken() {
-        debugPrint(accessToken.tokenString)
-        if let req = FBSDKGraphRequest(graphPath: "me", parameters: nil, tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET") {
+        if let req = FBSDKGraphRequest(graphPath: "/me?fields=email,name", parameters: nil, tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET") {
             req.startWithCompletionHandler(
                 {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
                     if ((error == nil)) {
                         let dic = result as! NSDictionary
                         //self.nameLabel.text = dic["name"] as! String?
+                        debugPrint(dic)
+                        id = dic["id"] as! String
                         name = dic["name"] as! String
                         
-                        let userDefault = NSUserDefaults.standardUserDefaults()
-                        userDefault.setValue(dic["id"] as! String, forKey: "FaceBookID")
+                        debugPrint(id)
+                        userDefault.setValue(id, forKey: "FaceBookID")
+                        userDefault.setValue(name, forKey: "UserName")
                         
                         if !getImage {
                             handler(name: name, picture:picture)
@@ -67,13 +122,6 @@ func GetFBProfile(accessToken: FBSDKAccessToken!, getImage: Bool, handler:(name:
                                     var dic:NSDictionary = result as! NSDictionary
                                     dic = dic["data"] as! NSDictionary
                                     let url:String = dic["url"] as! String!
-                                    
-                                    //                        let request = NSURLRequest(URL: NSURL.init(string: url)!)
-                                    //                        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-                                    //                            self.profileImage.image = UIImage.init(data: data!)
-                                    //                        }
-                                    //                        _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
-                                    //
                                     Alamofire.request(.GET, url).response(completionHandler: { response in
                                         userDefault.setObject(response.2!, forKey: "FacebookProfileImage")
                                         
@@ -84,16 +132,54 @@ func GetFBProfile(accessToken: FBSDKAccessToken!, getImage: Bool, handler:(name:
                                 }
                             })
                         }
-                        
                     }
             })
         }
     }
 }
 
+//[0] = id, [1] = name
+func GetFBFriends(handler:(friends: [[String]] )->(Void)) {
+    var friends = Array<Array<String>>()
+    
+    if let accessToken = FBSDKAccessToken.currentAccessToken() {
+        if let req = FBSDKGraphRequest(graphPath: "/me/friends?fields=name&limit=500", parameters: nil, tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET") {
+            
+            req.startWithCompletionHandler(
+                {(connection:FBSDKGraphRequestConnection?, result:AnyObject?, error:NSError?) in
+                    if ((error == nil)) {
+                        let dic = result!["data"] as! NSArray
+                        debugPrint(dic)
+                        
+                        for i in 0..<dic.count {
+                            var friend = Array<String>()
+                            friend.append(dic[i]["id"] as! String)
+                            friend.append(dic[i]["name"] as! String)
+                            friend.append("aselfansldif")
+                            friends.append(friend)
+                        }
+                    }
+                    handler(friends: friends)
+            })
+        }
+    }
+}
 
-
-
-
+func GetFBFriendPicture(id:String, handler:(picture:UIImage)->(Void)) {
+    if let req = FBSDKGraphRequest(graphPath: "\(id)/picture", parameters: ["redirect":false, "type":"large"], tokenString: FBSDKAccessToken.currentAccessToken()!.tokenString, version: nil, HTTPMethod: "GET") {
+        req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
+            if(error == nil)
+            {
+                var dic:NSDictionary = result as! NSDictionary
+                dic = dic["data"] as! NSDictionary
+                let url:String = dic["url"] as! String!
+                Alamofire.request(.GET, url).response(completionHandler: { response in
+                    let picture = UIImage(data: response.2!)!
+                    handler(picture: picture)
+                })
+            }
+        })
+    }
+}
 
 

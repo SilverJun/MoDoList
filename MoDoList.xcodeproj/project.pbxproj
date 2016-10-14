@@ -43,11 +43,13 @@
 		E245C9921DA6822A00F29B51 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C4A1D9BC72100CA127B /* Freddy.framework */; };
 		E25032AE1D803D250010C9F4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25032AD1D803D250010C9F4 /* UIViewController.swift */; };
 		E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E262677C1D82F47F0001F156 /* ToDoCell.swift */; };
+		E26CA1B41DB0EA1B004069D8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26CA1B31DB0EA1B004069D8 /* UserData.swift */; };
 		E26D1E4A1DA544CC00F3E95C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26D1E491DA544CC00F3E95C /* NotificationCenter.framework */; };
 		E26D1E4D1DA544CC00F3E95C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D1E4C1DA544CC00F3E95C /* TodayViewController.swift */; };
 		E26D1E501DA544CC00F3E95C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E26D1E4E1DA544CC00F3E95C /* MainInterface.storyboard */; };
 		E26D1E541DA544CC00F3E95C /* MoDoListWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E26D1E471DA544CC00F3E95C /* MoDoListWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E27302C31DA2A325003D7203 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27302C21DA2A325003D7203 /* DoneViewController.swift */; };
+		E27FD3781DAF6FCA00F0644B /* ShareFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */; };
 		E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AC73221D88330D00A1597D /* CalendarViewController.swift */; };
 		E2B542611D90F3940078AE6B /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542601D90F3940078AE6B /* SwipeCell.swift */; };
 		E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542631D9108E80078AE6B /* SharedViewController.swift */; };
@@ -298,12 +300,14 @@
 		E245C9941DA68C2E00F29B51 /* MoDoListWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MoDoListWidget.entitlements; sourceTree = "<group>"; };
 		E25032AD1D803D250010C9F4 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E262677C1D82F47F0001F156 /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		E26CA1B31DB0EA1B004069D8 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E26D1E471DA544CC00F3E95C /* MoDoListWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MoDoListWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E26D1E491DA544CC00F3E95C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E26D1E4C1DA544CC00F3E95C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E26D1E4F1DA544CC00F3E95C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E26D1E511DA544CC00F3E95C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E27302C21DA2A325003D7203 /* DoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
+		E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFormViewController.swift; sourceTree = "<group>"; };
 		E2AC73221D88330D00A1597D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E2B542601D90F3940078AE6B /* SwipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
 		E2B542631D9108E80078AE6B /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
@@ -424,6 +428,7 @@
 			children = (
 				E2FF74D51D8AA3A700EF15E8 /* TaskDataUnit.swift */,
 				E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */,
+				E26CA1B31DB0EA1B004069D8 /* UserData.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				E2031E861D8ED1370076477B /* NewToDoFormViewController.swift */,
 				E2031E961D8ED4250076477B /* ModifyToDoFormViewController.swift */,
 				E242A8361D93897C00DF5C64 /* QuickToDoFormViewController.swift */,
+				E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */,
 				E2BBC09C1D7C478D003B58A3 /* TodayToDoViewController.swift */,
 				E2BBC09D1D7C478D003B58A3 /* LeftViewController.swift */,
 				E21F17861D7EA4550049BE32 /* TodaysSummaryViewController.swift */,
@@ -521,10 +527,10 @@
 				E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */,
 				E245C98E1DA6658000F29B51 /* PushNotificationManager.swift */,
 				E245C98C1DA6262D00F29B51 /* ToDoFileManager.swift */,
+				E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */,
 				E2033DDC1DA14EF600E8D3A9 /* TutorialOnboard.storyboard */,
 				E2BBBEC21D7B118D003B58A3 /* Main.storyboard */,
 				E2BBBEC71D7B118D003B58A3 /* LaunchScreen.storyboard */,
-				E2BBBEBE1D7B118D003B58A3 /* AppDelegate.swift */,
 				E2BBBEC51D7B118D003B58A3 /* Assets.xcassets */,
 				E2BBBECA1D7B118D003B58A3 /* Info.plist */,
 			);
@@ -946,6 +952,7 @@
 				E205BE0B1D896A1A00A55C17 /* JTAppleCalendarDelegates.swift in Sources */,
 				E242A8371D93897C00DF5C64 /* QuickToDoFormViewController.swift in Sources */,
 				E2033DC61D9EA66200E8D3A9 /* WebDispatchFunctions.swift in Sources */,
+				E26CA1B41DB0EA1B004069D8 /* UserData.swift in Sources */,
 				E245C98F1DA6658000F29B51 /* PushNotificationManager.swift in Sources */,
 				E229B8D91D81A2CF006DF4E4 /* FriendsTableViewCell.swift in Sources */,
 				E205BE0A1D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift in Sources */,
@@ -961,6 +968,7 @@
 				E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */,
 				E205BE0E1D896A1A00A55C17 /* JTAppleCollectionReusableView.swift in Sources */,
 				E2031E871D8ED1370076477B /* NewToDoFormViewController.swift in Sources */,
+				E27FD3781DAF6FCA00F0644B /* ShareFormViewController.swift in Sources */,
 				E2BBC0A11D7C478D003B58A3 /* FriendsViewController.swift in Sources */,
 				E205BE0D1D896A1A00A55C17 /* JTAppleCalendarView.swift in Sources */,
 				E2BBBEBF1D7B118D003B58A3 /* AppDelegate.swift in Sources */,
@@ -1123,7 +1131,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1162,7 +1170,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

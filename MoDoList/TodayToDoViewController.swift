@@ -7,7 +7,9 @@
 
 import UIKit
 import FBSDKLoginKit
-
+import Alamofire
+import Freddy
+import Eureka
 
 var todoData = Array<TaskDataUnit>()
 
@@ -24,6 +26,7 @@ class ToDoViewController: UIViewController {
     var modifyCellIndex:NSIndexPath?
     
     var deletingCell:TaskDataUnit? = nil
+    var sendCell:Int = 0
     
     let fm = ToDoFileManager()
     let notiManager = PushNotificationManager()
@@ -41,26 +44,26 @@ class ToDoViewController: UIViewController {
         
         tableView.tableFooterView = UIView.init()
         
-//        if !Reachability.isConnectedToNetwork() {
-//            // Create the alert controller
-//            let alertController = UIAlertController(title: "오류", message: "MoDoList는 인터넷 환경이 필요합니다.\n인터넷을 연결해주세요.", preferredStyle: .Alert)
-//            
-//            // Create the actions
-//            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-//                UIAlertAction in
-//                //home button press programmatically
-//                let app = UIApplication.sharedApplication()
-//                app.performSelector(#selector(NSURLSessionTask.suspend))
-//                
-//                NSThread.sleepForTimeInterval(1.0)
-//                
-//                //exit app when app is in background
-//                exit(0)
-//            }
-//            
-//            alertController.addAction(okAction)
-//            self.presentViewController(alertController, animated: true, completion: nil)
-//        }
+        if !Reachability.isConnectedToNetwork() {
+            // Create the alert controller
+            let alertController = UIAlertController(title: "오류", message: "MoDoList는 인터넷 환경이 필요합니다.\n인터넷을 연결해주세요.", preferredStyle: .Alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                UIAlertAction in
+                //home button press programmatically
+                let app = UIApplication.sharedApplication()
+                app.performSelector(#selector(NSURLSessionTask.suspend))
+                
+                NSThread.sleepForTimeInterval(1.0)
+                
+                //exit app when app is in background
+                exit(0)
+            }
+            
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
         
         debugPrint(fm.GetDocumentPath())
         
@@ -154,6 +157,54 @@ class ToDoViewController: UIViewController {
             }
         }
     }
+    @IBAction func shareCells() {
+        self.performSegueWithIdentifier("ShareSegue", sender: self)
+    }
+    @IBAction func unwindAndShareToDo(segue: UIStoryboardSegue) {
+        if segue.sourceViewController.isKindOfClass(ShareFormViewController) {
+            let shareView = segue.sourceViewController as! ShareFormViewController
+            let sendData = shareView.shareDatas
+            
+            var ids = [String]()
+            
+            let row:MultipleSelectorRow<String>? = shareView.form.rowByTag("objectPeople")
+            let selected = row!.value!
+            
+            for friend in selected {
+                for index in 0..<userFriends.count {
+                    if friend == userFriends[index][1] {
+                        ids.append(userFriends[index][0])
+                        break
+                    }
+                }
+            }
+            let userDefault = NSUserDefaults.standardUserDefaults()
+            
+            let shareDataInfo = ShareDataUnit(sender: userDefault.valueForKey("FaceBookID") as! String, senderName: userDefault.valueForKey("UserName") as! String, userId: ids, todoData: sendData)
+            
+            do {
+                
+                let req = NSMutableURLRequest(URL: NSURL(string: "\(ServerURL)/api/ShareToDo")!)
+                req.HTTPMethod = "POST"
+                req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                req.HTTPBody = try shareDataInfo.toJSON().serialize()
+                
+                Alamofire.request(req).validate().responseJSON(completionHandler: {
+                    do {
+                        print($0.result.error)
+                        let json = try JSONParser.createJSONFromData($0.data!)
+                        print(json)
+                    }
+                    catch {
+                    }
+                })
+            }
+            catch {
+            }
+            
+        }
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ModifyToDo") {
@@ -164,6 +215,19 @@ class ToDoViewController: UIViewController {
             modifyCellIndex = tableView.indexPathForSelectedRow!
             modifyView.basedToDoData = todoData[modifyCellIndex!.row]
             
+        }
+        else if segue.identifier == "SendSegue" {
+            let viewController = segue.destinationViewController as! UINavigationController
+            
+            let sendView = viewController.topViewController as! ShareFormViewController
+            
+            sendView.shareDatas = [todoData[sendCell]]
+        }
+        else if segue.identifier == "ShareSegue" {
+            let viewController = segue.destinationViewController as! UINavigationController
+            
+            let shareView = viewController.topViewController as! ShareFormViewController
+            shareView.shareDatas += todoData
         }
     }
     
@@ -231,6 +295,13 @@ extension ToDoViewController : UITableViewDataSource {
         todoData.removeAtIndex(indexPath.row)
         tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
+    
+    
+    
+    func sendCell(cell cell: UITableViewCell) {
+        sendCell = tableView!.indexPathForCell(cell)!.row
+        self.performSegueWithIdentifier("SendSegue", sender: self)
+    }
 }
 
 extension ToDoViewController: UIScrollViewDelegate {
@@ -245,9 +316,6 @@ extension ToDoViewController: UIScrollViewDelegate {
         //let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
         
         if (currentOffset * (-1) >= 60.0 && currentOffset < 0) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var quickView = storyboard.instantiateViewControllerWithIdentifier("QuickToDoFormViewController")
-            quickView = UINavigationController(rootViewController: quickView)
             
             self.performSegueWithIdentifier("QuickAddToDo", sender: self)
         }
@@ -344,6 +412,10 @@ extension ToDoViewController {
             privateToDoCount += 1
         }
         
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        
+        data.owner = userDefault.valueForKey("FaceBookID") as! String
+        
         let row = NSIndexPath(forRow: todoData.count, inSection: 0)
         
         self.tableView.beginUpdates()
@@ -367,6 +439,10 @@ extension ToDoViewController {
         
         data.mainText = values["mainText"] as! String;
         data.subText = values["subText"] as! String;
+        
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        
+        data.owner = userDefault.valueForKey("FaceBookID") as! String
         
         let row = NSIndexPath(forRow: todoData.count, inSection: 0)
         
@@ -444,7 +520,7 @@ extension ToDoViewController: SwipeCompleteDelegate {
         }
         //전달
         if position == .Right2 {
-            // send
+            sendCell(cell: cell)
         }
     }
 }

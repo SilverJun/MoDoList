@@ -41,15 +41,19 @@ class ToDoFileManager {
             
             fileName = "todo.json"
             jsonData = todoData.toJSON()
-            let sharingData = try jsonData.serialize()
+            var sharingData = try jsonData.serialize()
             fileManager.createFileAtPath(fileName, contents: sharingData, attributes: nil)
             
-            let dir = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.MoDoListSharing")!.path! + "/todo.json"
+            var dir = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.MoDoListSharing")!.path! + "/todo.json"
             sharingData.writeToFile(dir, atomically: true)
             
             fileName = "shared.json"
             jsonData = sharedToDoData.toJSON()
-            fileManager.createFileAtPath(fileName, contents: try jsonData.serialize(), attributes: nil)
+            sharingData = try jsonData.serialize()
+            fileManager.createFileAtPath(fileName, contents: sharingData, attributes: nil)
+            
+            dir = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.MoDoListSharing")!.path! + "/shared.json"
+            sharingData.writeToFile(dir, atomically: true)
             
             
             fileName = "done.json"
@@ -62,7 +66,7 @@ class ToDoFileManager {
         }
         
         
-        debugPrint("loadToFile Start")
+        debugPrint("saveToDoFile Complete")
         return true
     }
     

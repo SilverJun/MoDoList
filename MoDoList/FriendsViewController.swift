@@ -8,6 +8,8 @@
 import UIKit
 import FBSDKCoreKit
 
+var userFriends = Array<Array<String>>()
+
 class FriendsViewController : UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -15,35 +17,6 @@ class FriendsViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView.init();
-        
-        
-        let accessToken = FBSDKAccessToken.currentAccessToken()
-        let req = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil, tokenString: accessToken.tokenString, version: nil, HTTPMethod: "GET")
-        req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
-            if(error == nil) 
-            {
-                print("result \(result)")
-                let dic:NSDictionary = result as! NSDictionary
-                dic["data"]
-//                dic = dic["data"] as! NSDictionary
-//                let url:String = dic["url"] as! String!
-//                
-//                
-//                let request = NSURLRequest(URL: NSURL.init(string: url)!)
-//                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
-//                    self.profileImage.image = UIImage.init(data: data!)
-//                }
-//                _ = NSURLConnection(request: request, delegate:nil, startImmediately: true)
-                
-                
-                let userDefaults = NSUserDefaults.standardUserDefaults()
-                userDefaults.setObject(dic, forKey: "FacebookFriends")
-            }
-            else
-            {
-                print(error)
-            }
-        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,6 +29,19 @@ class FriendsViewController : UIViewController {
     }
     
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowFriendsInfo") {
+            let viewController = segue.destinationViewController as! UINavigationController
+            
+            let summaryView = viewController.topViewController as! FriendSummaryViewController
+            
+            let indexPath = tableView.indexPathForSelectedRow;
+            
+            summaryView.setupInfo(userFriends[indexPath!.row][0], name: userFriends[indexPath!.row][1])
+            
+        }
     }
 }
 
@@ -71,18 +57,8 @@ extension FriendsViewController : UITableViewDelegate {
 
 extension FriendsViewController : UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return userFriends.count
     }
-    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 {
-//            return "기본"
-//        }
-//        else if section == 1 {
-//            return "사용자"
-//        }
-//        return ""
-//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -91,7 +67,7 @@ extension FriendsViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendsTableViewCell", forIndexPath: indexPath) as! FriendsTableViewCell
         
-        cell.friendName.text = "장은준"
+        cell.friendName.text = userFriends[indexPath.row][1]
         
         return cell
     }

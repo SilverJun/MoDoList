@@ -309,7 +309,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="friendName" destination="pz3-Ub-nmh" id="H48-La-RGr"/>
-                                            <segue destination="h1f-Fw-Hxf" kind="showDetail" id="Lot-oN-ffo"/>
+                                            <segue destination="h1f-Fw-Hxf" kind="showDetail" identifier="ShowFriendsInfo" id="Lot-oN-ffo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -766,9 +766,6 @@
                                         <include reference="dbU-59-97h"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <segue destination="TOe-LX-6K0" kind="showDetail" identifier="ShareList" id="A6o-3a-kPs"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -861,6 +858,8 @@
                         <outlet property="suggestLabel" destination="gME-v2-YwT" id="naz-f7-hSa"/>
                         <outlet property="tableView" destination="RBV-FQ-Bds" id="3n0-0a-bdg"/>
                         <segue destination="jNp-nA-A2U" kind="custom" identifier="QuickAddToDo" customClass="UIStoryboardSegueFromTop" customModule="MoDoList" customModuleProvider="target" id="CtI-HH-HVt"/>
+                        <segue destination="yz5-kE-QWX" kind="showDetail" identifier="SendSegue" id="Zts-Df-3F0"/>
+                        <segue destination="TOe-LX-6K0" kind="showDetail" identifier="ShareSegue" id="pOF-rc-fSw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1609,7 +1608,7 @@
         <!--공유-->
         <scene sceneID="gOV-x4-eoX">
             <objects>
-                <viewController id="yDF-05-11f" sceneMemberID="viewController">
+                <viewController id="yDF-05-11f" customClass="ShareFormViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cI2-hr-BnO"/>
                         <viewControllerLayoutGuide type="bottom" id="zkm-aQ-d1j"/>
@@ -1622,12 +1621,12 @@
                     <navigationItem key="navigationItem" title="공유" id="jr4-1Q-cs6">
                         <barButtonItem key="leftBarButtonItem" title=" 취소" style="done" id="v3e-aF-wFw">
                             <connections>
-                                <segue destination="GI2-xR-FTD" kind="unwind" unwindAction="unwindToRootViewController:" id="Bxg-IS-W8m"/>
+                                <segue destination="GI2-xR-FTD" kind="unwind" unwindAction="unwindToRootViewController:" id="wNY-fw-40Q"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="공유" style="done" id="zuZ-ol-abB">
                             <connections>
-                                <segue destination="GI2-xR-FTD" kind="unwind" unwindAction="unwindToRootViewController:" id="iPD-aA-4NF"/>
+                                <segue destination="GI2-xR-FTD" kind="unwind" unwindAction="unwindAndShareToDo:" id="9ZY-HF-bNe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1640,7 +1639,7 @@
         <!--전달-->
         <scene sceneID="EQ6-k0-cun">
             <objects>
-                <viewController id="HNh-Wt-rqS" sceneMemberID="viewController">
+                <viewController id="HNh-Wt-rqS" customClass="ShareFormViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wUD-ku-rFX"/>
                         <viewControllerLayoutGuide type="bottom" id="wJ3-CB-OYH"/>
@@ -1651,11 +1650,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="전달" id="qCn-ab-civ">
-                        <barButtonItem key="leftBarButtonItem" title="취소" style="done" id="sRY-TC-c87"/>
-                        <barButtonItem key="rightBarButtonItem" title="전달" style="done" id="8YD-if-Ltc"/>
+                        <barButtonItem key="leftBarButtonItem" title="취소" style="done" id="sRY-TC-c87">
+                            <connections>
+                                <segue destination="BCj-GE-BAR" kind="unwind" unwindAction="unwindToRootViewController:" id="IB3-49-k7u"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="전달" style="done" id="8YD-if-Ltc">
+                            <connections>
+                                <segue destination="BCj-GE-BAR" kind="unwind" unwindAction="unwindAndShareToDo:" id="hsO-ab-7Ya"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHA-Pw-tiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BCj-GE-BAR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1578" y="1660"/>
         </scene>
@@ -1743,46 +1751,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uu-D7-PEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1578" y="920"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CeH-pQ-2AY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CLn-3Q-QoF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pgr-I0-1Mt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="VNr-k7-KQa" kind="relationship" relationship="rootViewController" id="BRX-3e-Esr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FWg-dr-7vA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1185" y="2362"/>
-        </scene>
-        <!--대상-->
-        <scene sceneID="aq8-f8-UpV">
-            <objects>
-                <viewController id="VNr-k7-KQa" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LfF-Lp-4pW"/>
-                        <viewControllerLayoutGuide type="bottom" id="wka-5e-J9y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="q20-qB-BTi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="대상" id="xbs-KV-g5o">
-                        <barButtonItem key="leftBarButtonItem" title="취소" style="plain" id="lv1-k9-jYH"/>
-                        <barButtonItem key="rightBarButtonItem" title="완료" style="plain" id="Wsh-ek-IMI"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b8i-WY-vc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1185" y="3093"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LRX-IO-r5f">
