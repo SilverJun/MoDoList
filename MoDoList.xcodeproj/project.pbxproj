@@ -50,6 +50,18 @@
 		E26D1E541DA544CC00F3E95C /* MoDoListWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E26D1E471DA544CC00F3E95C /* MoDoListWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E27302C31DA2A325003D7203 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27302C21DA2A325003D7203 /* DoneViewController.swift */; };
 		E27FD3781DAF6FCA00F0644B /* ShareFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */; };
+		E2A08C341DB1102600641749 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C331DB1102600641749 /* OnboardViewController.swift */; };
+		E2A08C4A1DB11BE600641749 /* Onboard_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C451DB11BE600641749 /* Onboard_2.png */; };
+		E2A08C4B1DB11BE600641749 /* Onboard_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C461DB11BE600641749 /* Onboard_3.png */; };
+		E2A08C4C1DB11BE600641749 /* Onboard_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C471DB11BE600641749 /* Onboard_4.png */; };
+		E2A08C4D1DB11BE600641749 /* Onboard_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C481DB11BE600641749 /* Onboard_5.png */; };
+		E2A08C4E1DB11BE600641749 /* Onboard_6.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C491DB11BE600641749 /* Onboard_6.png */; };
+		E2A08C501DB11C4500641749 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C4F1DB11C4500641749 /* LoadingViewController.swift */; };
+		E2A08C521DB11FD900641749 /* OnboardOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C511DB11FD900641749 /* OnboardOneViewController.swift */; };
+		E2A08C541DB11FE500641749 /* OnboardTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C531DB11FE500641749 /* OnboardTwoViewController.swift */; };
+		E2A08C561DB11FF900641749 /* OnboardThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C551DB11FF900641749 /* OnboardThreeViewController.swift */; };
+		E2A08C581DB1200700641749 /* OnboardFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C571DB1200700641749 /* OnboardFourViewController.swift */; };
+		E2A08C5A1DB1201700641749 /* OnboardFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C591DB1201700641749 /* OnboardFiveViewController.swift */; };
 		E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AC73221D88330D00A1597D /* CalendarViewController.swift */; };
 		E2B542611D90F3940078AE6B /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542601D90F3940078AE6B /* SwipeCell.swift */; };
 		E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542631D9108E80078AE6B /* SharedViewController.swift */; };
@@ -308,6 +320,18 @@
 		E26D1E511DA544CC00F3E95C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E27302C21DA2A325003D7203 /* DoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFormViewController.swift; sourceTree = "<group>"; };
+		E2A08C331DB1102600641749 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		E2A08C451DB11BE600641749 /* Onboard_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_2.png; sourceTree = "<group>"; };
+		E2A08C461DB11BE600641749 /* Onboard_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_3.png; sourceTree = "<group>"; };
+		E2A08C471DB11BE600641749 /* Onboard_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_4.png; sourceTree = "<group>"; };
+		E2A08C481DB11BE600641749 /* Onboard_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_5.png; sourceTree = "<group>"; };
+		E2A08C491DB11BE600641749 /* Onboard_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_6.png; sourceTree = "<group>"; };
+		E2A08C4F1DB11C4500641749 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		E2A08C511DB11FD900641749 /* OnboardOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardOneViewController.swift; sourceTree = "<group>"; };
+		E2A08C531DB11FE500641749 /* OnboardTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardTwoViewController.swift; sourceTree = "<group>"; };
+		E2A08C551DB11FF900641749 /* OnboardThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardThreeViewController.swift; sourceTree = "<group>"; };
+		E2A08C571DB1200700641749 /* OnboardFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFourViewController.swift; sourceTree = "<group>"; };
+		E2A08C591DB1201700641749 /* OnboardFiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFiveViewController.swift; sourceTree = "<group>"; };
 		E2AC73221D88330D00A1597D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E2B542601D90F3940078AE6B /* SwipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
 		E2B542631D9108E80078AE6B /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
@@ -472,6 +496,25 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		E26CA1D51DB1017C004069D8 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				E2A08C451DB11BE600641749 /* Onboard_2.png */,
+				E2A08C461DB11BE600641749 /* Onboard_3.png */,
+				E2A08C471DB11BE600641749 /* Onboard_4.png */,
+				E2A08C481DB11BE600641749 /* Onboard_5.png */,
+				E2A08C491DB11BE600641749 /* Onboard_6.png */,
+				E2A08C331DB1102600641749 /* OnboardViewController.swift */,
+				E2A08C4F1DB11C4500641749 /* LoadingViewController.swift */,
+				E2A08C511DB11FD900641749 /* OnboardOneViewController.swift */,
+				E2A08C531DB11FE500641749 /* OnboardTwoViewController.swift */,
+				E2A08C551DB11FF900641749 /* OnboardThreeViewController.swift */,
+				E2A08C571DB1200700641749 /* OnboardFourViewController.swift */,
+				E2A08C591DB1201700641749 /* OnboardFiveViewController.swift */,
+			);
+			name = Onboard;
+			sourceTree = "<group>";
+		};
 		E26D1E481DA544CC00F3E95C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +601,7 @@
 		E2BBBEEC1D7B11CD003B58A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E26CA1D51DB1017C004069D8 /* Onboard */,
 				E262677F1D82F4AE0001F156 /* ViewController */,
 				E262677E1D82F4950001F156 /* Cells */,
 			);
@@ -903,13 +947,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2A08C4C1DB11BE600641749 /* Onboard_4.png in Resources */,
+				E2A08C4B1DB11BE600641749 /* Onboard_3.png in Resources */,
 				E2BBBEC91D7B118D003B58A3 /* LaunchScreen.storyboard in Resources */,
 				E2033DDD1DA14EF600E8D3A9 /* TutorialOnboard.storyboard in Resources */,
 				E2BBBEC61D7B118D003B58A3 /* Assets.xcassets in Resources */,
 				E2BBBEC41D7B118D003B58A3 /* Main.storyboard in Resources */,
+				E2A08C4E1DB11BE600641749 /* Onboard_6.png in Resources */,
 				E2BBBFF01D7C468C003B58A3 /* AccountKitStrings.bundle in Resources */,
 				E2FF74D21D8A62FA00EF15E8 /* CellView.xib in Resources */,
+				E2A08C4A1DB11BE600641749 /* Onboard_2.png in Resources */,
 				E2BBBFF61D7C468C003B58A3 /* FacebookSDKStrings.bundle in Resources */,
+				E2A08C4D1DB11BE600641749 /* Onboard_5.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,6 +996,7 @@
 			files = (
 				E2FF74D11D8A62FA00EF15E8 /* CellView.swift in Sources */,
 				E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */,
+				E2A08C561DB11FF900641749 /* OnboardThreeViewController.swift in Sources */,
 				E2B542611D90F3940078AE6B /* SwipeCell.swift in Sources */,
 				E2FF74D61D8AA3A700EF15E8 /* TaskDataUnit.swift in Sources */,
 				E205BE0B1D896A1A00A55C17 /* JTAppleCalendarDelegates.swift in Sources */,
@@ -956,17 +1006,22 @@
 				E245C98F1DA6658000F29B51 /* PushNotificationManager.swift in Sources */,
 				E229B8D91D81A2CF006DF4E4 /* FriendsTableViewCell.swift in Sources */,
 				E205BE0A1D896A1A00A55C17 /* GlobalFunctionsAndExtensions.swift in Sources */,
+				E2A08C5A1DB1201700641749 /* OnboardFiveViewController.swift in Sources */,
+				E2A08C501DB11C4500641749 /* LoadingViewController.swift in Sources */,
 				E2BBC0A01D7C478D003B58A3 /* LeftViewController.swift in Sources */,
 				E205BE111D896A1A00A55C17 /* JTCalendarProtocols.swift in Sources */,
 				E2014C5D1D9BE13F00CA127B /* ShareDataUnit.swift in Sources */,
 				E2BBC0A31D7C479D003B58A3 /* SlideMenuController.swift in Sources */,
+				E2A08C541DB11FE500641749 /* OnboardTwoViewController.swift in Sources */,
 				E205BE101D896A1A00A55C17 /* JTAppleViews.swift in Sources */,
 				E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */,
 				E229B8D71D81A27D006DF4E4 /* FriendSummaryViewController.swift in Sources */,
 				E27302C31DA2A325003D7203 /* DoneViewController.swift in Sources */,
 				E20467C61D9928C900F5B5A8 /* UIStoryboardSegueFromTop.swift in Sources */,
+				E2A08C581DB1200700641749 /* OnboardFourViewController.swift in Sources */,
 				E262677D1D82F47F0001F156 /* ToDoCell.swift in Sources */,
 				E205BE0E1D896A1A00A55C17 /* JTAppleCollectionReusableView.swift in Sources */,
+				E2A08C521DB11FD900641749 /* OnboardOneViewController.swift in Sources */,
 				E2031E871D8ED1370076477B /* NewToDoFormViewController.swift in Sources */,
 				E27FD3781DAF6FCA00F0644B /* ShareFormViewController.swift in Sources */,
 				E2BBC0A11D7C478D003B58A3 /* FriendsViewController.swift in Sources */,
@@ -975,6 +1030,7 @@
 				E205BE121D896A1A00A55C17 /* UserInteractionFunctions.swift in Sources */,
 				E205BE0C1D896A1A00A55C17 /* JTAppleCalendarLayout.swift in Sources */,
 				E21F17871D7EA4550049BE32 /* TodaysSummaryViewController.swift in Sources */,
+				E2A08C341DB1102600641749 /* OnboardViewController.swift in Sources */,
 				E2BBC0A51D7C4A2B003B58A3 /* LeftTableViewCell.swift in Sources */,
 				E2FF74D41D8A63DE00EF15E8 /* AnimationClass.swift in Sources */,
 				E245C98D1DA6262D00F29B51 /* ToDoFileManager.swift in Sources */,

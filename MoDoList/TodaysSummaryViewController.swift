@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 
 class TodaysSummaryViewController: UIViewController {
 
@@ -30,12 +29,7 @@ class TodaysSummaryViewController: UIViewController {
         self.profile.clipsToBounds = true;
         
         // Do any additional setup after loading the view.
-        let loginButton:FBSDKLoginButton = FBSDKLoginButton.init()
         
-        loginButton.center = self.view.center
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        
-        self.view.addSubview(loginButton)
         
         
     }

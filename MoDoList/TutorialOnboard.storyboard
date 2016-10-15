@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Loading View Controller-->
         <scene sceneID="XUK-4k-Cjs">
             <objects>
-                <viewController id="UYg-z9-Obv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadingViewController" id="UYg-z9-Obv" customClass="LoadingViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dKN-p9-XNm"/>
                         <viewControllerLayoutGuide type="bottom" id="t7n-QF-YaW"/>
@@ -16,20 +16,255 @@
                     <view key="view" contentMode="scaleToFill" id="zhx-7i-pur">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BK" translatesAutoresizingMaskIntoConstraints="NO" id="z12-bY-o9e">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Word" translatesAutoresizingMaskIntoConstraints="NO" id="w2t-xf-EVj">
+                                <rect key="frame" x="200" y="215" width="200" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="D54-la-rLa"/>
+                                    <constraint firstAttribute="width" constant="200" id="d1v-5I-CBX"/>
+                                    <constraint firstAttribute="height" constant="170" id="gcm-e8-QJO"/>
+                                    <constraint firstAttribute="height" constant="170" id="iW0-oE-oDy"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="D54-la-rLa"/>
+                                        <exclude reference="iW0-oE-oDy"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="D54-la-rLa"/>
+                                        <include reference="iW0-oE-oDy"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w2t-xf-EVj" firstAttribute="centerX" secondItem="zhx-7i-pur" secondAttribute="centerX" id="5EX-ky-EV0"/>
+                            <constraint firstItem="w2t-xf-EVj" firstAttribute="centerX" secondItem="zhx-7i-pur" secondAttribute="centerX" id="5mg-jH-igd"/>
+                            <constraint firstItem="z12-bY-o9e" firstAttribute="leading" secondItem="zhx-7i-pur" secondAttribute="leading" id="9sq-rF-fSd"/>
+                            <constraint firstItem="t7n-QF-YaW" firstAttribute="top" secondItem="z12-bY-o9e" secondAttribute="bottom" id="MRX-pO-tld"/>
+                            <constraint firstItem="w2t-xf-EVj" firstAttribute="centerY" secondItem="zhx-7i-pur" secondAttribute="centerY" id="Nwm-CD-ptZ"/>
+                            <constraint firstAttribute="trailing" secondItem="z12-bY-o9e" secondAttribute="trailing" id="hJG-WF-FPj"/>
+                            <constraint firstItem="t7n-QF-YaW" firstAttribute="top" secondItem="z12-bY-o9e" secondAttribute="bottom" id="hlG-KK-cp8"/>
+                            <constraint firstItem="z12-bY-o9e" firstAttribute="leading" secondItem="zhx-7i-pur" secondAttribute="leading" id="jeM-Wh-Zfk"/>
+                            <constraint firstItem="w2t-xf-EVj" firstAttribute="centerY" secondItem="zhx-7i-pur" secondAttribute="centerY" id="pbH-Wv-vPw"/>
+                            <constraint firstAttribute="trailing" secondItem="z12-bY-o9e" secondAttribute="trailing" id="qcu-NI-CqV"/>
+                            <constraint firstItem="z12-bY-o9e" firstAttribute="top" secondItem="zhx-7i-pur" secondAttribute="top" id="red-Y0-D7q"/>
+                            <constraint firstItem="z12-bY-o9e" firstAttribute="top" secondItem="zhx-7i-pur" secondAttribute="top" id="tkH-LK-Slq"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5mg-jH-igd"/>
+                                <exclude reference="Nwm-CD-ptZ"/>
+                                <exclude reference="9sq-rF-fSd"/>
+                                <exclude reference="hJG-WF-FPj"/>
+                                <exclude reference="red-Y0-D7q"/>
+                                <exclude reference="hlG-KK-cp8"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="z12-bY-o9e"/>
+                                <include reference="w2t-xf-EVj"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5mg-jH-igd"/>
+                                <include reference="Nwm-CD-ptZ"/>
+                                <include reference="9sq-rF-fSd"/>
+                                <include reference="hJG-WF-FPj"/>
+                                <include reference="red-Y0-D7q"/>
+                                <include reference="hlG-KK-cp8"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <segue destination="xed-0Y-QKk" kind="showDetail" identifier="Onboard" id="QDW-RD-H1I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8b2-cr-KZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="316"/>
+            <point key="canvasLocation" x="-2170" y="139"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="6rT-Wd-qNR">
+        <!--Onboarding Pager-->
+        <scene sceneID="GbV-DQ-8FG">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="2" navigationOrientation="vertical" spineLocation="none" id="mm8-AE-4ya" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lvo-x9-98u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController storyboardIdentifier="OnboardViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xed-0Y-QKk" customClass="OnboardingPager" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M86-Hr-iR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="316"/>
+            <point key="canvasLocation" x="-1460" y="139"/>
+        </scene>
+        <!--Onboard One View Controller-->
+        <scene sceneID="nKa-ls-tli">
+            <objects>
+                <viewController storyboardIdentifier="OnboardOneViewController" id="v6I-rf-OdZ" customClass="OnboardOneViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r8Y-HB-aZT"/>
+                        <viewControllerLayoutGuide type="bottom" id="dAK-P6-wYx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mhe-70-lT1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Scd-3u-wUt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Scd-3u-wUt" firstAttribute="top" secondItem="Mhe-70-lT1" secondAttribute="top" id="Jw8-wZ-pth"/>
+                            <constraint firstAttribute="trailing" secondItem="Scd-3u-wUt" secondAttribute="trailing" id="VlZ-cE-aYH"/>
+                            <constraint firstItem="dAK-P6-wYx" firstAttribute="top" secondItem="Scd-3u-wUt" secondAttribute="bottom" id="WdM-Md-RnG"/>
+                            <constraint firstItem="Scd-3u-wUt" firstAttribute="leading" secondItem="Mhe-70-lT1" secondAttribute="leading" id="e2w-HW-8xi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgl-nC-Be5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2170" y="803"/>
+        </scene>
+        <!--Onboard Two View Controller-->
+        <scene sceneID="Cfa-wE-hjq">
+            <objects>
+                <viewController storyboardIdentifier="OnboardTwoViewController" id="Gpn-8y-MWm" customClass="OnboardTwoViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qHx-42-Q1x"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fcd-i2-ra8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YMg-ER-QC3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard_3.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Er-SA-pdh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Er-SA-pdh" firstAttribute="leading" secondItem="YMg-ER-QC3" secondAttribute="leading" id="2gW-Dc-QeQ"/>
+                            <constraint firstItem="6Er-SA-pdh" firstAttribute="top" secondItem="YMg-ER-QC3" secondAttribute="top" id="aSZ-WT-hg7"/>
+                            <constraint firstItem="Fcd-i2-ra8" firstAttribute="top" secondItem="6Er-SA-pdh" secondAttribute="bottom" id="zpW-oW-w7n"/>
+                            <constraint firstAttribute="trailing" secondItem="6Er-SA-pdh" secondAttribute="trailing" id="zrT-yI-4AL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r18-eX-zlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1538" y="803"/>
+        </scene>
+        <!--Onboard Three View Controller-->
+        <scene sceneID="l0W-2s-42j">
+            <objects>
+                <viewController storyboardIdentifier="OnboardThreeViewController" id="lJx-DG-HDI" customClass="OnboardThreeViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5wJ-Dh-3va"/>
+                        <viewControllerLayoutGuide type="bottom" id="33b-3I-FPl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2DR-AS-UyF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard_4.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vtr-al-koL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="33b-3I-FPl" firstAttribute="top" secondItem="Vtr-al-koL" secondAttribute="bottom" id="6ir-Fy-7e5"/>
+                            <constraint firstItem="Vtr-al-koL" firstAttribute="leading" secondItem="2DR-AS-UyF" secondAttribute="leading" id="G8p-uH-YR1"/>
+                            <constraint firstItem="Vtr-al-koL" firstAttribute="top" secondItem="2DR-AS-UyF" secondAttribute="top" id="meT-sh-E3Y"/>
+                            <constraint firstAttribute="trailing" secondItem="Vtr-al-koL" secondAttribute="trailing" id="nrg-rb-bX5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pke-8V-xYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-912" y="803"/>
+        </scene>
+        <!--Onboard Four View Controller-->
+        <scene sceneID="eu5-Mt-75J">
+            <objects>
+                <viewController storyboardIdentifier="OnboardFourViewController" id="O1T-ba-a6u" customClass="OnboardFourViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2JW-jA-wYx"/>
+                        <viewControllerLayoutGuide type="bottom" id="oMA-OX-KNS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M50-R0-fnA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="cet-WW-8M6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cet-WW-8M6" firstAttribute="leading" secondItem="M50-R0-fnA" secondAttribute="leading" id="2YE-et-VAR"/>
+                            <constraint firstItem="cet-WW-8M6" firstAttribute="top" secondItem="M50-R0-fnA" secondAttribute="top" id="IjN-61-bGA"/>
+                            <constraint firstItem="oMA-OX-KNS" firstAttribute="top" secondItem="cet-WW-8M6" secondAttribute="bottom" id="gss-w8-hhU"/>
+                            <constraint firstAttribute="trailing" secondItem="cet-WW-8M6" secondAttribute="trailing" id="kM6-bx-vvQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i8s-gh-kHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-280" y="803"/>
+        </scene>
+        <!--Onboard Five View Controller-->
+        <scene sceneID="8Fa-Wx-UeQ">
+            <objects>
+                <viewController storyboardIdentifier="OnboardFiveViewController" id="JYy-qo-ymj" customClass="OnboardFiveViewController" customModule="MoDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rwu-12-Sa6"/>
+                        <viewControllerLayoutGuide type="bottom" id="uGH-ll-nVu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gPM-n1-7dT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard_6.png" translatesAutoresizingMaskIntoConstraints="NO" id="hH0-ei-1N8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXb-Ck-K6v">
+                                <rect key="frame" x="200" y="478" width="200" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="b44-DY-EU9"/>
+                                    <constraint firstAttribute="width" constant="200" id="bwZ-IQ-Rkx"/>
+                                </constraints>
+                                <state key="normal" image="start"/>
+                                <connections>
+                                    <action selector="start" destination="JYy-qo-ymj" eventType="touchUpInside" id="VwD-uZ-1PO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uGH-ll-nVu" firstAttribute="top" secondItem="hH0-ei-1N8" secondAttribute="bottom" id="02K-fj-pAg"/>
+                            <constraint firstItem="hH0-ei-1N8" firstAttribute="top" secondItem="gPM-n1-7dT" secondAttribute="top" id="2TY-7t-HsP"/>
+                            <constraint firstAttribute="trailing" secondItem="hH0-ei-1N8" secondAttribute="trailing" id="9dF-ih-mdU"/>
+                            <constraint firstItem="uGH-ll-nVu" firstAttribute="top" secondItem="tXb-Ck-K6v" secondAttribute="bottom" constant="66" id="d9Z-mn-zrn"/>
+                            <constraint firstItem="tXb-Ck-K6v" firstAttribute="centerX" secondItem="gPM-n1-7dT" secondAttribute="centerX" id="l16-i0-hXs"/>
+                            <constraint firstItem="hH0-ei-1N8" firstAttribute="leading" secondItem="gPM-n1-7dT" secondAttribute="leading" id="mre-50-uKm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LxY-YO-hAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="803"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BK" width="450" height="450"/>
+        <image name="Onboard_2.png" width="375" height="667"/>
+        <image name="Onboard_3.png" width="375" height="667"/>
+        <image name="Onboard_4.png" width="375" height="667"/>
+        <image name="Onboard_5.png" width="375" height="667"/>
+        <image name="Onboard_6.png" width="375" height="667"/>
+        <image name="Word" width="522" height="438"/>
+        <image name="start" width="253" height="72"/>
+    </resources>
 </document>
