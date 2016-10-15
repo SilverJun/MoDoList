@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import Freddy
 
 class LoadingViewController: UIViewController {
 
@@ -26,7 +28,7 @@ class LoadingViewController: UIViewController {
         dispatch_after(500, dispatch_get_main_queue(), {
             let userDefault = NSUserDefaults.standardUserDefaults()
             
-            let firstStep:Bool? = userDefault.boolForKey("FirstStep")
+            var firstStep:Bool? = userDefault.boolForKey("FirstStep")
             
             print(firstStep)
             if firstStep! {
@@ -48,8 +50,16 @@ class LoadingViewController: UIViewController {
                 slideMenuController.automaticallyAdjustsScrollViewInsets = true
                 slideMenuController.delegate = mainViewController
                 
-                UIApplication.sharedApplication().keyWindow?.rootViewController = slideMenuController
-                UIApplication.sharedApplication().keyWindow?.makeKeyAndVisible()
+                
+                //custom Loding
+                
+                GetFBUserProfile(true, handler: { (name: String, picture:UIImage) in
+                    GetFBFriends({
+                        userFriends = $0
+                        UIApplication.sharedApplication().keyWindow?.rootViewController = slideMenuController
+                        UIApplication.sharedApplication().keyWindow?.makeKeyAndVisible()
+                    })
+                })
             }
             else {
                 userDefault.setBool(true, forKey: "FirstStep")

@@ -77,32 +77,12 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         profileImage.clipsToBounds = true;
         tableView.tableFooterView = UIView.init()
         
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        let imageData = userDefault.objectForKey("FacebookProfileImage") as! NSData
+        let name = userDefault.valueForKey("UserName") as! String
         
-        var activityIndicatorView: ActivityIndicatorView!
-        let rootView = UIApplication.sharedApplication().keyWindow!.rootViewController!
-        activityIndicatorView = ActivityIndicatorView(title: "Facebook...", center: UIApplication.sharedApplication().keyWindow!.center)
-        rootView.view.addSubview(activityIndicatorView.getViewActivityIndicator())
-        activityIndicatorView.startAnimating()
-        
-        
-        
-        GetFBUserProfile(true, handler: { (name: String, picture:UIImage) in
-            self.nameLabel.text = name
-            self.profileImage.image = picture
-            
-            GetFBFriends({
-                userFriends = $0
-                let navi = (self.friendsViewController as! UINavigationController)
-                let view = navi.topViewController as! FriendsViewController
-                view.tableView?.beginUpdates()
-                view.tableView?.reloadData()
-                view.tableView?.endUpdates()
-                
-                
-                activityIndicatorView.stopAnimating()
-            })
-            
-        })
+        profileImage.image = UIImage(data: imageData)
+        nameLabel.text = name
         
     }
     
