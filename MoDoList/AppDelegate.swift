@@ -162,7 +162,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let id = userInfo["id"] as? String
         
         if id != nil {
-            self.parseNotification(id!)
+            notificationId.append(id!)
+            receivedNotification = true
         }
     }
     
@@ -172,52 +173,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let id = userInfo["id"] as? String
         
         if id != nil {
-            self.parseNotification(id!)
+            notificationId.append(id!)
+            receivedNotification = true
         }
-    }
-    
-    func parseNotification(id: String) {
-        var activityIndicatorView: ActivityIndicatorView!
-        
-        activityIndicatorView = ActivityIndicatorView(title: "처리중", center: window!.center)
-        self.window!.rootViewController?.view.addSubview(activityIndicatorView.getViewActivityIndicator())
-        
-        activityIndicatorView.startAnimating()
-        
-        var data = [TaskDataUnit]()
-        var count = 0
-        var name = ""
-        
-        Alamofire.request(.GET, "\(ServerURL)/api/SharedToDo?SharedToDoId=\(id)").response(completionHandler: {
-            do {
-                let json = try JSONParser.createJSONFromData($0.2!)
-                print(json)
-                name = try json["senderName"]!.string()
-                for todo in try json["todoData"]!.array() {
-                    data.append(try TaskDataUnit.init(json: todo))
-                    count += 1
-                }
-            }
-            catch {
-            }
-            
-            activityIndicatorView.stopAnimating()
-            
-            let alertController = UIAlertController(title: "할일이 도착했습니다", message: "\(name)님이 \(count)개의 할일을 보냈습니다.\n수락하시겠습니까?", preferredStyle: .Alert)
-            
-            // Create the actions
-            let okAction = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default, handler: {
-                UIAlertAction in
-                sharedToDoData += data
-                let push = PushNotificationManager()
-                push.addLocalNotifications(data)
-            })
-            let denyAction = UIAlertAction(title: "거절", style: UIAlertActionStyle.Default, handler: nil)
-            
-            alertController.addAction(denyAction)
-            alertController.addAction(okAction)
-            self.window!.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
-        })
     }
 }
 

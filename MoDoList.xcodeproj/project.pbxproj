@@ -51,7 +51,6 @@
 		E27302C31DA2A325003D7203 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27302C21DA2A325003D7203 /* DoneViewController.swift */; };
 		E27FD3781DAF6FCA00F0644B /* ShareFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */; };
 		E2A08C341DB1102600641749 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C331DB1102600641749 /* OnboardViewController.swift */; };
-		E2A08C4A1DB11BE600641749 /* Onboard_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C451DB11BE600641749 /* Onboard_2.png */; };
 		E2A08C4B1DB11BE600641749 /* Onboard_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C461DB11BE600641749 /* Onboard_3.png */; };
 		E2A08C4C1DB11BE600641749 /* Onboard_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C471DB11BE600641749 /* Onboard_4.png */; };
 		E2A08C4D1DB11BE600641749 /* Onboard_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C481DB11BE600641749 /* Onboard_5.png */; };
@@ -62,6 +61,7 @@
 		E2A08C561DB11FF900641749 /* OnboardThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C551DB11FF900641749 /* OnboardThreeViewController.swift */; };
 		E2A08C581DB1200700641749 /* OnboardFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C571DB1200700641749 /* OnboardFourViewController.swift */; };
 		E2A08C5A1DB1201700641749 /* OnboardFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C591DB1201700641749 /* OnboardFiveViewController.swift */; };
+		E2A08C6D1DB2595900641749 /* Onboard_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C6C1DB2595900641749 /* Onboard_2.png */; };
 		E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AC73221D88330D00A1597D /* CalendarViewController.swift */; };
 		E2B542611D90F3940078AE6B /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542601D90F3940078AE6B /* SwipeCell.swift */; };
 		E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542631D9108E80078AE6B /* SharedViewController.swift */; };
@@ -321,7 +321,6 @@
 		E27302C21DA2A325003D7203 /* DoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFormViewController.swift; sourceTree = "<group>"; };
 		E2A08C331DB1102600641749 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
-		E2A08C451DB11BE600641749 /* Onboard_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_2.png; sourceTree = "<group>"; };
 		E2A08C461DB11BE600641749 /* Onboard_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_3.png; sourceTree = "<group>"; };
 		E2A08C471DB11BE600641749 /* Onboard_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_4.png; sourceTree = "<group>"; };
 		E2A08C481DB11BE600641749 /* Onboard_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_5.png; sourceTree = "<group>"; };
@@ -332,6 +331,7 @@
 		E2A08C551DB11FF900641749 /* OnboardThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardThreeViewController.swift; sourceTree = "<group>"; };
 		E2A08C571DB1200700641749 /* OnboardFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFourViewController.swift; sourceTree = "<group>"; };
 		E2A08C591DB1201700641749 /* OnboardFiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFiveViewController.swift; sourceTree = "<group>"; };
+		E2A08C6C1DB2595900641749 /* Onboard_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_2.png; sourceTree = "<group>"; };
 		E2AC73221D88330D00A1597D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E2B542601D90F3940078AE6B /* SwipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
 		E2B542631D9108E80078AE6B /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
@@ -499,7 +499,7 @@
 		E26CA1D51DB1017C004069D8 /* Onboard */ = {
 			isa = PBXGroup;
 			children = (
-				E2A08C451DB11BE600641749 /* Onboard_2.png */,
+				E2A08C6C1DB2595900641749 /* Onboard_2.png */,
 				E2A08C461DB11BE600641749 /* Onboard_3.png */,
 				E2A08C471DB11BE600641749 /* Onboard_4.png */,
 				E2A08C481DB11BE600641749 /* Onboard_5.png */,
@@ -953,10 +953,10 @@
 				E2033DDD1DA14EF600E8D3A9 /* TutorialOnboard.storyboard in Resources */,
 				E2BBBEC61D7B118D003B58A3 /* Assets.xcassets in Resources */,
 				E2BBBEC41D7B118D003B58A3 /* Main.storyboard in Resources */,
+				E2A08C6D1DB2595900641749 /* Onboard_2.png in Resources */,
 				E2A08C4E1DB11BE600641749 /* Onboard_6.png in Resources */,
 				E2BBBFF01D7C468C003B58A3 /* AccountKitStrings.bundle in Resources */,
 				E2FF74D21D8A62FA00EF15E8 /* CellView.xib in Resources */,
-				E2A08C4A1DB11BE600641749 /* Onboard_2.png in Resources */,
 				E2BBBFF61D7C468C003B58A3 /* FacebookSDKStrings.bundle in Resources */,
 				E2A08C4D1DB11BE600641749 /* Onboard_5.png in Resources */,
 			);
@@ -1239,7 +1239,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MoDoList/MoDoList.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ok sim choi (P22DJQ7U4S)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "iPhone Developer: ok sim choi (P22DJQ7U45)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1261,7 +1262,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MoDoList/MoDoList.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ok sim choi (P22DJQ7U4S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ok sim choi (P22DJQ7U4S)";
+				CODE_SIGN_RESOURCE_RULES_PATH = "iPhone Developer: ok sim choi (P22DJQ7U45)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
