@@ -176,9 +176,13 @@ class ToDoViewController: UIViewController {
             var ids = [String]()
             
             let row:MultipleSelectorRow<String>? = shareView.form.rowByTag("objectPeople")
-            let selected = row!.value!
+            let selected = row!.value
             
-            for friend in selected {
+            if selected == nil {
+                return
+            }
+            
+            for friend in selected! {
                 for index in 0..<userFriends.count {
                     if friend == userFriends[index][1] {
                         ids.append(userFriends[index][0])
