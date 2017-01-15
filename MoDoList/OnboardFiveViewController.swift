@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Freddy
+import FBSDKLoginKit
 
 class OnboardFiveViewController: UIViewController {
     
@@ -16,6 +17,18 @@ class OnboardFiveViewController: UIViewController {
     
     @IBAction func start() {
         if processing {
+            return
+        }
+        
+        //페북 로그인 체크
+        guard FBSDKAccessToken.currentAccessToken() != nil else {
+            let alertController = UIAlertController(title: "오류", message: "MoDoList는 페이스북 로그인이 필수입니다.\n로그인을 확인해주세요.", preferredStyle: .Alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default){ $0; return }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
             return
         }
         
@@ -35,6 +48,7 @@ class OnboardFiveViewController: UIViewController {
             
             Alamofire.request(req).validate().responseJSON(completionHandler: {
                 do {
+                    
                     print($0.result.error)
                     let json = try JSONParser.createJSONFromData($0.data!)
                     print(json)
@@ -56,6 +70,9 @@ class OnboardFiveViewController: UIViewController {
                     let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController)
                     slideMenuController.automaticallyAdjustsScrollViewInsets = true
                     slideMenuController.delegate = mainViewController
+                    
+                    
+                    userDefault.setBool(true, forKey: "FirstStep")
                     
                     UIApplication.sharedApplication().keyWindow?.rootViewController = slideMenuController
                     UIApplication.sharedApplication().keyWindow?.makeKeyAndVisible()

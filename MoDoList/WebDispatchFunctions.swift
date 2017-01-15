@@ -14,12 +14,7 @@ import SystemConfiguration
 
 public class Reachability {
     class func isConnectedToNetwork() -> Bool {
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-        }
+        let defaultRouteReachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "https://www.google.com/")
         var flags = SCNetworkReachabilityFlags()
         if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
             return false
@@ -27,7 +22,7 @@ public class Reachability {
         let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         
-        let url = NSURL(string: "https://www.google.com/m")
+        let url = NSURL(string: "https://www.google.com/")
         let Data = NSData(contentsOfURL: url!)
         
         let result = Data != nil
@@ -89,6 +84,10 @@ public class ActivityIndicatorView
 
 
 func GetFBUserProfile(getImage: Bool, handler:(name:String, picture:UIImage)->(Void)) {
+    if !Reachability.isConnectedToNetwork(){
+        return
+    }
+    
     var name:String = ""
     var id:String = "";
     var picture:UIImage = UIImage()
@@ -140,6 +139,10 @@ func GetFBUserProfile(getImage: Bool, handler:(name:String, picture:UIImage)->(V
 
 //[0] = id, [1] = name
 func GetFBFriends(handler:(friends: [[String]] )->(Void)) {
+    if !Reachability.isConnectedToNetwork(){
+        return
+    }
+    
     var friends = Array<Array<String>>()
     
     if let accessToken = FBSDKAccessToken.currentAccessToken() {
@@ -166,6 +169,10 @@ func GetFBFriends(handler:(friends: [[String]] )->(Void)) {
 }
 
 func GetFBFriendPicture(id:String, handler:(picture:UIImage)->(Void)) {
+    if !Reachability.isConnectedToNetwork(){
+        return
+    }
+    
     if let req = FBSDKGraphRequest(graphPath: "\(id)/picture", parameters: ["redirect":false, "type":"large"], tokenString: FBSDKAccessToken.currentAccessToken()!.tokenString, version: nil, HTTPMethod: "GET") {
         req.startWithCompletionHandler({ (connection, result, error : NSError!) -> Void in
             if(error == nil)

@@ -18,10 +18,31 @@ class OnboardingPager : UIPageViewController {
         delegate = self
         // this sets the background color of the built-in paging dots
         view.backgroundColor = UIColor.init(red: 48.0/255.0, green: 225.0/255.0, blue: 178.0/255.0, alpha: 1.0)
-
         
         // This is the starting point.  Start with step zero.
         setViewControllers([getOne()], direction: .Forward, animated: false, completion: nil)
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            if !Reachability.isConnectedToNetwork() {
+                // Create the alert controller
+                let alertController = UIAlertController(title: "오류", message: "MoDoList는 인터넷 환경이 필요합니다.\n인터넷을 연결해주세요.", preferredStyle: .Alert)
+                
+                // Create the actions
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                    UIAlertAction in
+                    //home button press programmatically
+                    let app = UIApplication.sharedApplication()
+                    app.performSelector(#selector(NSURLSessionTask.suspend))
+                    
+                    NSThread.sleepForTimeInterval(1.0)
+                    
+                    //exit app when app is in background
+                    exit(0)
+                }
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        })
     }
     
     func getOne() -> OnboardOneViewController {

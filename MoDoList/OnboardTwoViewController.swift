@@ -15,6 +15,12 @@ class OnboardTwoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        GetFBUserProfile(true, handler: {
+            $0
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

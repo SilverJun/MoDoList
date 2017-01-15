@@ -22,6 +22,30 @@ class OnboardOneViewController: UIViewController {
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         
         self.view.addSubview(loginButton)
+        
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            if !Reachability.isConnectedToNetwork() {
+                // Create the alert controller
+                let alertController = UIAlertController(title: "오류", message: "MoDoList는 인터넷 환경이 필요합니다.\n인터넷을 연결해주세요.", preferredStyle: .Alert)
+                
+                // Create the actions
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                    UIAlertAction in
+                    //home button press programmatically
+                    let app = UIApplication.sharedApplication()
+                    app.performSelector(#selector(NSURLSessionTask.suspend))
+                    
+                    NSThread.sleepForTimeInterval(1.0)
+                    
+                    //exit app when app is in background
+                    exit(0)
+                }
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {

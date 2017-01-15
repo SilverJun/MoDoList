@@ -10,7 +10,6 @@ import Alamofire
 import Freddy
 
 let ServerURL:String = <#Server_URL#>
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -47,38 +46,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         //백그라운드에 진입시 데이터 저장
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            let fileManager = ToDoFileManager()
-            fileManager.saveToDoFile()
-            
-            let userDefault = NSUserDefaults.standardUserDefaults()
-            
-            let userId = userDefault.valueForKey("FaceBookID") as! String
-            let deviceToken = userDefault.valueForKey("DeviceToken") as! String
-            let userInfo = UserData(deviceToken:deviceToken, userId:userId, todoCount:todoData.count + sharedToDoData.count)
-            
-            do {
-                let req = NSMutableURLRequest(URL: NSURL(string: "\(ServerURL)/api/UserData/\(userId)")!)
-                req.HTTPMethod = "PUT"
-                req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
-                req.HTTPBody = try userInfo.toJSON().serialize()
-                
-                Alamofire.request(req).validate().responseJSON(completionHandler: {
-                    do {
-                        print($0.result.error)
-                        let json = try JSONParser.createJSONFromData($0.data!)
-                        print(json)
-                        
-                    }
-                    catch {
-                    }
-                })
-            }
-            catch {
-            }
-        })
         
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let first = userDefaults.boolForKey("FirstStep")
+        
+        if first {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                let fileManager = ToDoFileManager()
+                fileManager.saveToDoFile()
+                
+                let userDefault = NSUserDefaults.standardUserDefaults()
+                
+                let userId = userDefault.valueForKey("FaceBookID") as! String
+                let deviceToken = userDefault.valueForKey("DeviceToken") as! String
+                let userInfo = UserData(deviceToken:deviceToken, userId:userId, todoCount:todoData.count + sharedToDoData.count)
+                
+                do {
+                    if Reachability.isConnectedToNetwork(){
+                        let req = NSMutableURLRequest(URL: NSURL(string: "\(ServerURL)/api/UserData/\(userId)")!)
+                        req.HTTPMethod = "PUT"
+                        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                        
+                        req.HTTPBody = try userInfo.toJSON().serialize()
+                        
+                        Alamofire.request(req).validate().responseJSON(completionHandler: {
+                            do {
+                                print($0.result.error)
+                                let json = try JSONParser.createJSONFromData($0.data!)
+                                print(json)
+                                
+                            }
+                            catch {
+                            }
+                        })
+                    }
+                }
+                catch {
+                }
+            })
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -93,6 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let first = userDefaults.boolForKey("FirstStep")
+        
+        if first {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             let fileManager = ToDoFileManager()
             fileManager.saveToDoFile()
@@ -110,6 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 req.HTTPBody = try userInfo.toJSON().serialize()
                 
+                if Reachability.isConnectedToNetwork()
+                {
                 Alamofire.request(req).validate().responseJSON(completionHandler: {
                     do {
                         print($0.result.error)
@@ -120,10 +133,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     catch {
                     }
                 })
+                }
             }
             catch {
             }
         })
+        }
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
@@ -162,7 +177,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let id = userInfo["id"] as? String
         
         if id != nil {
-            self.parseNotification(id!)
+            notificationId.append(id!)
+            receivedNotification = true
         }
     }
     
@@ -172,52 +188,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let id = userInfo["id"] as? String
         
         if id != nil {
-            self.parseNotification(id!)
+            notificationId.append(id!)
+            receivedNotification = true
         }
-    }
-    
-    func parseNotification(id: String) {
-        var activityIndicatorView: ActivityIndicatorView!
-        
-        activityIndicatorView = ActivityIndicatorView(title: "처리중", center: window!.center)
-        self.window!.rootViewController?.view.addSubview(activityIndicatorView.getViewActivityIndicator())
-        
-        activityIndicatorView.startAnimating()
-        
-        var data = [TaskDataUnit]()
-        var count = 0
-        var name = ""
-        
-        Alamofire.request(.GET, "\(ServerURL)/api/SharedToDo?SharedToDoId=\(id)").response(completionHandler: {
-            do {
-                let json = try JSONParser.createJSONFromData($0.2!)
-                print(json)
-                name = try json["senderName"]!.string()
-                for todo in try json["todoData"]!.array() {
-                    data.append(try TaskDataUnit.init(json: todo))
-                    count += 1
-                }
-            }
-            catch {
-            }
-            
-            activityIndicatorView.stopAnimating()
-            
-            let alertController = UIAlertController(title: "할일이 도착했습니다", message: "\(name)님이 \(count)개의 할일을 보냈습니다.\n수락하시겠습니까?", preferredStyle: .Alert)
-            
-            // Create the actions
-            let okAction = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default, handler: {
-                UIAlertAction in
-                sharedToDoData += data
-                let push = PushNotificationManager()
-                push.addLocalNotifications(data)
-            })
-            let denyAction = UIAlertAction(title: "거절", style: UIAlertActionStyle.Default, handler: nil)
-            
-            alertController.addAction(denyAction)
-            alertController.addAction(okAction)
-            self.window!.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
-        })
     }
 }
 

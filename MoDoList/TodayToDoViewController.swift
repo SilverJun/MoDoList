@@ -13,6 +13,9 @@ import Eureka
 
 var todoData = Array<TaskDataUnit>()
 
+var receivedNotification = false
+var notificationId = [String]()
+
 class ToDoViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var settingButton: UIButton!
@@ -27,6 +30,7 @@ class ToDoViewController: UIViewController {
     
     var deletingCell:TaskDataUnit? = nil
     var sendCell:Int = 0
+    var parseIndex = 0
     
     let fm = ToDoFileManager()
     let notiManager = PushNotificationManager()
@@ -95,6 +99,10 @@ class ToDoViewController: UIViewController {
         self.slideMenuController()?.delegate = self
         self.setNavigationBarItem()
         self.slideMenuController()?.removeLeftGestures()
+        
+        if receivedNotification {
+            parseNotification()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -230,7 +238,6 @@ class ToDoViewController: UIViewController {
             shareView.shareDatas += todoData
         }
     }
-    
 }
 
 
@@ -393,6 +400,17 @@ extension ToDoViewController {
             data.endDate = NSDate()
         }
         
+        data.location = values["location"] as? String ?? data.location
+        
+        for friend in values["objectPeople"] as? Set<String> ?? Set<String>() {
+            for index in 0..<userFriends.count {
+                if friend == userFriends[index][1] {
+                    data.objectPeople.append(userFriends[index][0])
+                    break
+                }
+            }
+        }
+        
         data.alarmOn = values["alarmOn"] as? Bool ?? data.alarmOn
         
         if data.alarmOn ?? true {
@@ -416,7 +434,7 @@ extension ToDoViewController {
         
         data.owner = userDefault.valueForKey("FaceBookID") as! String
         
-        let row = NSIndexPath(forRow: todoData.count, inSection: 0)
+        let row = NSIndexPath(forRow: todoData .count, inSection: 0)
         
         self.tableView.beginUpdates()
         todoData.append(data)
@@ -477,6 +495,17 @@ extension ToDoViewController {
             todoData[i].endDate = NSDate()
         }
         
+        todoData[i].location = values["location"] as? String ?? todoData[i].location
+        
+        for friend in values["objectPeople"] as? Set<String> ?? Set<String>() {
+            for index in 0..<userFriends.count {
+                if friend == userFriends[index][1] {
+                    todoData[i].objectPeople.append(userFriends[index][0])
+                    break
+                }
+            }
+        }
+        
         todoData[i].alarmOn = values["alarmOn"] as? Bool ?? todoData[i].alarmOn
         
         if todoData[i].alarmOn ?? true {
@@ -522,5 +551,64 @@ extension ToDoViewController: SwipeCompleteDelegate {
         if position == .Right2 {
             sendCell(cell: cell)
         }
+    }
+}
+
+extension ToDoViewController {
+    func parseNotification() {
+        
+        var activityIndicatorView: ActivityIndicatorView!
+        
+        activityIndicatorView = ActivityIndicatorView(title: "처리중", center: self.view.center)
+        self.view.addSubview(activityIndicatorView.getViewActivityIndicator())
+        
+        activityIndicatorView.startAnimating()
+        
+        var data = [TaskDataUnit]()
+        var count = 0
+        var name = ""
+        
+        if parseIndex == notificationId.endIndex {
+            notificationId.removeAll()
+            parseIndex = 0
+            receivedNotification = false
+            
+            activityIndicatorView.stopAnimating()
+            return
+        }
+        
+        Alamofire.request(.GET, "\(ServerURL)/api/SharedToDo?SharedToDoId=\(notificationId[parseIndex])").response(completionHandler: {
+            do {
+                let json = try JSONParser.createJSONFromData($0.2!)
+                print(json)
+                name = try json["senderName"]!.string()
+                for todo in try json["todoData"]!.array() {
+                    data.append(try TaskDataUnit.init(json: todo))
+                    count += 1
+                }
+            }
+            catch {
+            }
+            
+            activityIndicatorView.stopAnimating()
+            
+            let alertController = UIAlertController(title: "할일이 도착했습니다", message: "\(name)님이 \(count)개의 할일을 보냈습니다.\n수락하시겠습니까?", preferredStyle: .Alert)
+            
+            // Create the actions
+            let okAction = UIAlertAction(title: "추가", style: UIAlertActionStyle.Default, handler: {
+                UIAlertAction in
+                sharedToDoData += data
+                let push = PushNotificationManager()
+                push.addLocalNotifications(data)
+                self.parseIndex += 1
+                self.parseNotification()
+            })
+            let denyAction = UIAlertAction(title: "거절", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alertController.addAction(denyAction)
+            alertController.addAction(okAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
     }
 }

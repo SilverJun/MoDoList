@@ -39,6 +39,19 @@ class ModifyToDoFormViewController: FormViewController {
 //                })
             }
             
+            +++ Section("약속")
+            <<< TextRow("location"){
+                $0.title = "장소"
+                $0.value = ""
+            }
+            <<< MultipleSelectorRow<String>("objectPeople") {
+                $0.title = "대상"
+                $0.selectorTitle = "대상"
+                for person in userFriends {
+                    $0.options.append(person[1])
+                }
+            }
+            
             //_____________________________________
             +++ Section("기한")
             <<< SwitchRow("todaySwitch"){

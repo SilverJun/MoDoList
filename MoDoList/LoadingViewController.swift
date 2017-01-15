@@ -11,7 +11,7 @@ import Alamofire
 import Freddy
 
 class LoadingViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +28,7 @@ class LoadingViewController: UIViewController {
         dispatch_after(500, dispatch_get_main_queue(), {
             let userDefault = NSUserDefaults.standardUserDefaults()
             
-            var firstStep:Bool? = userDefault.boolForKey("FirstStep")
+            let firstStep:Bool? = userDefault.boolForKey("FirstStep")
             
             print(firstStep)
             if firstStep! {
@@ -56,13 +56,13 @@ class LoadingViewController: UIViewController {
                 GetFBUserProfile(true, handler: { (name: String, picture:UIImage) in
                     GetFBFriends({
                         userFriends = $0
+                        
                         UIApplication.sharedApplication().keyWindow?.rootViewController = slideMenuController
                         UIApplication.sharedApplication().keyWindow?.makeKeyAndVisible()
                     })
                 })
             }
             else {
-                userDefault.setBool(true, forKey: "FirstStep")
                 
                 let view = self.storyboard?.instantiateViewControllerWithIdentifier("OnboardViewController") as! OnboardingPager
                 
@@ -71,8 +71,6 @@ class LoadingViewController: UIViewController {
             }
         })
     }
-    
-
     
     // MARK: - Navigation
 

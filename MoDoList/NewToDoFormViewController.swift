@@ -38,10 +38,6 @@ class NewToDoFormViewController: FormViewController {
             }
             
             +++ Section("약속")
-            <<< SwitchRow("isAppointment"){
-                $0.title = "약속기능 활성화"
-                $0.value = false
-            }
             <<< TextRow("location"){
                 $0.title = "장소"
                 $0.value = ""
@@ -49,7 +45,9 @@ class NewToDoFormViewController: FormViewController {
             <<< MultipleSelectorRow<String>("objectPeople") {
                 $0.title = "대상"
                 $0.selectorTitle = "대상"
-                $0.options = ["One","Two","Three"]
+                for person in userFriends {
+                    $0.options.append(person[1])
+                }
             }
             
             //_____________________________________

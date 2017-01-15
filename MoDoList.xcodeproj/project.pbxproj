@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04623BCE1DC7838E0078F2C2 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04623BCB1DC783510078F2C2 /* Eureka.framework */; };
+		04623BCF1DC7838E0078F2C2 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04623BCB1DC783510078F2C2 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2014C1A1D9BC45D00CA127B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C191D9BC45D00CA127B /* Alamofire.framework */; };
 		E2014C351D9BC4C400CA127B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C281D9BC4AD00CA127B /* Alamofire.framework */; };
 		E2014C361D9BC4C400CA127B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C281D9BC4AD00CA127B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -15,8 +17,6 @@
 		E2014C561D9BC76100CA127B /* Freddy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2014C4A1D9BC72100CA127B /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2014C5D1D9BE13F00CA127B /* ShareDataUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */; };
 		E2031E871D8ED1370076477B /* NewToDoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2031E861D8ED1370076477B /* NewToDoFormViewController.swift */; };
-		E2031E911D8ED2210076477B /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2031E8E1D8ED2150076477B /* Eureka.framework */; };
-		E2031E921D8ED2210076477B /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2031E8E1D8ED2150076477B /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2031E971D8ED4250076477B /* ModifyToDoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2031E961D8ED4250076477B /* ModifyToDoFormViewController.swift */; };
 		E2033DC61D9EA66200E8D3A9 /* WebDispatchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */; };
 		E2033DDD1DA14EF600E8D3A9 /* TutorialOnboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2033DDC1DA14EF600E8D3A9 /* TutorialOnboard.storyboard */; };
@@ -51,7 +51,6 @@
 		E27302C31DA2A325003D7203 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27302C21DA2A325003D7203 /* DoneViewController.swift */; };
 		E27FD3781DAF6FCA00F0644B /* ShareFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */; };
 		E2A08C341DB1102600641749 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C331DB1102600641749 /* OnboardViewController.swift */; };
-		E2A08C4A1DB11BE600641749 /* Onboard_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C451DB11BE600641749 /* Onboard_2.png */; };
 		E2A08C4B1DB11BE600641749 /* Onboard_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C461DB11BE600641749 /* Onboard_3.png */; };
 		E2A08C4C1DB11BE600641749 /* Onboard_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C471DB11BE600641749 /* Onboard_4.png */; };
 		E2A08C4D1DB11BE600641749 /* Onboard_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C481DB11BE600641749 /* Onboard_5.png */; };
@@ -62,6 +61,7 @@
 		E2A08C561DB11FF900641749 /* OnboardThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C551DB11FF900641749 /* OnboardThreeViewController.swift */; };
 		E2A08C581DB1200700641749 /* OnboardFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C571DB1200700641749 /* OnboardFourViewController.swift */; };
 		E2A08C5A1DB1201700641749 /* OnboardFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A08C591DB1201700641749 /* OnboardFiveViewController.swift */; };
+		E2A08C6D1DB2595900641749 /* Onboard_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A08C6C1DB2595900641749 /* Onboard_2.png */; };
 		E2AC73231D88330D00A1597D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AC73221D88330D00A1597D /* CalendarViewController.swift */; };
 		E2B542611D90F3940078AE6B /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542601D90F3940078AE6B /* SwipeCell.swift */; };
 		E2B542641D9108E80078AE6B /* SharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B542631D9108E80078AE6B /* SharedViewController.swift */; };
@@ -94,6 +94,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		04623BCA1DC783510078F2C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04623BC51DC783510078F2C2 /* Eureka.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 51729DEB1B9A4F5E004A00EB;
+			remoteInfo = Eureka;
+		};
+		04623BCC1DC783510078F2C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04623BC51DC783510078F2C2 /* Eureka.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 51729DF51B9A4F5E004A00EB;
+			remoteInfo = EurekaTests;
+		};
+		04623BD01DC7838E0078F2C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04623BC51DC783510078F2C2 /* Eureka.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 51729DEA1B9A4F5E004A00EB;
+			remoteInfo = Eureka;
+		};
 		E2014C271D9BC4AD00CA127B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
@@ -206,27 +227,6 @@
 			remoteGlobalIDString = DB6ADF1E1C23610B00D77BF1;
 			remoteInfo = MobileFreddy;
 		};
-		E2031E8D1D8ED2150076477B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E2031E881D8ED2150076477B /* Eureka.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 51729DEB1B9A4F5E004A00EB;
-			remoteInfo = Eureka;
-		};
-		E2031E8F1D8ED2150076477B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E2031E881D8ED2150076477B /* Eureka.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 51729DF51B9A4F5E004A00EB;
-			remoteInfo = EurekaTests;
-		};
-		E2031E931D8ED2210076477B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E2031E881D8ED2150076477B /* Eureka.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 51729DEA1B9A4F5E004A00EB;
-			remoteInfo = Eureka;
-		};
 		E26D1E521DA544CC00F3E95C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E2BBBEB31D7B118D003B58A3 /* Project object */;
@@ -257,7 +257,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E2031E921D8ED2210076477B /* Eureka.framework in Embed Frameworks */,
+				04623BCF1DC7838E0078F2C2 /* Eureka.framework in Embed Frameworks */,
 				E2014C561D9BC76100CA127B /* Freddy.framework in Embed Frameworks */,
 				E2014C361D9BC4C400CA127B /* Alamofire.framework in Embed Frameworks */,
 			);
@@ -278,13 +278,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04623BC51DC783510078F2C2 /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = "../../Eureka-swift2.3/Eureka.xcodeproj"; sourceTree = "<group>"; };
 		E2014C191D9BC45D00CA127B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../Alamofire-3.5.0/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		E2014C391D9BC71200CA127B /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Freddy.framework; sourceTree = "<group>"; };
 		E2014C3B1D9BC72100CA127B /* Freddy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Freddy.xcodeproj; path = "../../Freddy-2.1.0/Freddy.xcodeproj"; sourceTree = "<group>"; };
 		E2014C5C1D9BE13F00CA127B /* ShareDataUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataUnit.swift; sourceTree = "<group>"; };
 		E2031E861D8ED1370076477B /* NewToDoFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewToDoFormViewController.swift; sourceTree = "<group>"; };
-		E2031E881D8ED2150076477B /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = "../../Eureka-master/Eureka.xcodeproj"; sourceTree = "<group>"; };
 		E2031E961D8ED4250076477B /* ModifyToDoFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyToDoFormViewController.swift; sourceTree = "<group>"; };
 		E2033DC51D9EA66200E8D3A9 /* WebDispatchFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebDispatchFunctions.swift; sourceTree = "<group>"; };
 		E2033DDC1DA14EF600E8D3A9 /* TutorialOnboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TutorialOnboard.storyboard; sourceTree = "<group>"; };
@@ -321,7 +321,6 @@
 		E27302C21DA2A325003D7203 /* DoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		E27FD3771DAF6FCA00F0644B /* ShareFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareFormViewController.swift; sourceTree = "<group>"; };
 		E2A08C331DB1102600641749 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
-		E2A08C451DB11BE600641749 /* Onboard_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_2.png; sourceTree = "<group>"; };
 		E2A08C461DB11BE600641749 /* Onboard_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_3.png; sourceTree = "<group>"; };
 		E2A08C471DB11BE600641749 /* Onboard_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_4.png; sourceTree = "<group>"; };
 		E2A08C481DB11BE600641749 /* Onboard_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_5.png; sourceTree = "<group>"; };
@@ -332,6 +331,7 @@
 		E2A08C551DB11FF900641749 /* OnboardThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardThreeViewController.swift; sourceTree = "<group>"; };
 		E2A08C571DB1200700641749 /* OnboardFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFourViewController.swift; sourceTree = "<group>"; };
 		E2A08C591DB1201700641749 /* OnboardFiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFiveViewController.swift; sourceTree = "<group>"; };
+		E2A08C6C1DB2595900641749 /* Onboard_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Onboard_2.png; sourceTree = "<group>"; };
 		E2AC73221D88330D00A1597D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E2B542601D90F3940078AE6B /* SwipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
 		E2B542631D9108E80078AE6B /* SharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedViewController.swift; sourceTree = "<group>"; };
@@ -363,7 +363,6 @@
 		E2BBC0A21D7C479D003B58A3 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		E2BBC0A41D7C4A2B003B58A3 /* LeftTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTableViewCell.swift; sourceTree = "<group>"; };
 		E2D2B3481D8B77F0000BFCB3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E2D2B34A1D8B7846000BFCB3 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Eureka.framework; sourceTree = "<group>"; };
 		E2FF74CF1D8A62FA00EF15E8 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		E2FF74D01D8A62FA00EF15E8 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		E2FF74D31D8A63DE00EF15E8 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
@@ -393,10 +392,10 @@
 				E2BBBFF71D7C468C003B58A3 /* FBAudienceNetwork.framework in Frameworks */,
 				E2BBBFFA1D7C468C003B58A3 /* FBSDKLoginKit.framework in Frameworks */,
 				E2BBBFEF1D7C468C003B58A3 /* AccountKit.framework in Frameworks */,
+				04623BCE1DC7838E0078F2C2 /* Eureka.framework in Frameworks */,
 				E2014C1A1D9BC45D00CA127B /* Alamofire.framework in Frameworks */,
 				E2014C551D9BC76100CA127B /* Freddy.framework in Frameworks */,
 				E2BBBFF11D7C468C003B58A3 /* Bolts.framework in Frameworks */,
-				E2031E911D8ED2210076477B /* Eureka.framework in Frameworks */,
 				E2BBBFF81D7C468C003B58A3 /* FBNotifications.framework in Frameworks */,
 				E2BBBFFB1D7C468C003B58A3 /* FBSDKMessengerShareKit.framework in Frameworks */,
 			);
@@ -419,6 +418,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04623BC61DC783510078F2C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04623BCB1DC783510078F2C2 /* Eureka.framework */,
+				04623BCD1DC783510078F2C2 /* EurekaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E2014C1D1D9BC4AC00CA127B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,15 +465,6 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
-		E2031E891D8ED2150076477B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E2031E8E1D8ED2150076477B /* Eureka.framework */,
-				E2031E901D8ED2150076477B /* EurekaTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E262677E1D82F4950001F156 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,7 +498,7 @@
 		E26CA1D51DB1017C004069D8 /* Onboard */ = {
 			isa = PBXGroup;
 			children = (
-				E2A08C451DB11BE600641749 /* Onboard_2.png */,
+				E2A08C6C1DB2595900641749 /* Onboard_2.png */,
 				E2A08C461DB11BE600641749 /* Onboard_3.png */,
 				E2A08C471DB11BE600641749 /* Onboard_4.png */,
 				E2A08C481DB11BE600641749 /* Onboard_5.png */,
@@ -615,8 +614,7 @@
 				E2014C391D9BC71200CA127B /* Freddy.framework */,
 				E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */,
 				E2014C191D9BC45D00CA127B /* Alamofire.framework */,
-				E2031E881D8ED2150076477B /* Eureka.xcodeproj */,
-				E2D2B34A1D8B7846000BFCB3 /* Eureka.framework */,
+				04623BC51DC783510078F2C2 /* Eureka.xcodeproj */,
 				E2D2B3481D8B77F0000BFCB3 /* CoreGraphics.framework */,
 				E21F17841D7E94DC0049BE32 /* QuartzCore.framework */,
 				E2BBBEEF1D7C468B003B58A3 /* FacebookSDK */,
@@ -697,10 +695,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				E2031E941D8ED2210076477B /* PBXTargetDependency */,
 				E2014C381D9BC4C400CA127B /* PBXTargetDependency */,
 				E2014C581D9BC76100CA127B /* PBXTargetDependency */,
 				E26D1E531DA544CC00F3E95C /* PBXTargetDependency */,
+				04623BD11DC7838E0078F2C2 /* PBXTargetDependency */,
 			);
 			name = MoDoList;
 			productName = MoDoList;
@@ -756,8 +754,12 @@
 					E26D1E461DA544CC00F3E95C = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = W57LA57867;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -765,6 +767,7 @@
 					E2BBBEBA1D7B118D003B58A3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = W57LA57867;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -801,8 +804,8 @@
 					ProjectRef = E2014C1C1D9BC4AC00CA127B /* Alamofire.xcodeproj */;
 				},
 				{
-					ProductGroup = E2031E891D8ED2150076477B /* Products */;
-					ProjectRef = E2031E881D8ED2150076477B /* Eureka.xcodeproj */;
+					ProductGroup = 04623BC61DC783510078F2C2 /* Products */;
+					ProjectRef = 04623BC51DC783510078F2C2 /* Eureka.xcodeproj */;
 				},
 				{
 					ProductGroup = E2014C3C1D9BC72100CA127B /* Products */;
@@ -820,6 +823,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		04623BCB1DC783510078F2C2 /* Eureka.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Eureka.framework;
+			remoteRef = 04623BCA1DC783510078F2C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04623BCD1DC783510078F2C2 /* EurekaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EurekaTests.xctest;
+			remoteRef = 04623BCC1DC783510078F2C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E2014C281D9BC4AD00CA127B /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -918,20 +935,6 @@
 			remoteRef = E2014C511D9BC72100CA127B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E2031E8E1D8ED2150076477B /* Eureka.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Eureka.framework;
-			remoteRef = E2031E8D1D8ED2150076477B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E2031E901D8ED2150076477B /* EurekaTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = EurekaTests.xctest;
-			remoteRef = E2031E8F1D8ED2150076477B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -953,10 +956,10 @@
 				E2033DDD1DA14EF600E8D3A9 /* TutorialOnboard.storyboard in Resources */,
 				E2BBBEC61D7B118D003B58A3 /* Assets.xcassets in Resources */,
 				E2BBBEC41D7B118D003B58A3 /* Main.storyboard in Resources */,
+				E2A08C6D1DB2595900641749 /* Onboard_2.png in Resources */,
 				E2A08C4E1DB11BE600641749 /* Onboard_6.png in Resources */,
 				E2BBBFF01D7C468C003B58A3 /* AccountKitStrings.bundle in Resources */,
 				E2FF74D21D8A62FA00EF15E8 /* CellView.xib in Resources */,
-				E2A08C4A1DB11BE600641749 /* Onboard_2.png in Resources */,
 				E2BBBFF61D7C468C003B58A3 /* FacebookSDKStrings.bundle in Resources */,
 				E2A08C4D1DB11BE600641749 /* Onboard_5.png in Resources */,
 			);
@@ -1060,6 +1063,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		04623BD11DC7838E0078F2C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Eureka;
+			targetProxy = 04623BD01DC7838E0078F2C2 /* PBXContainerItemProxy */;
+		};
 		E2014C381D9BC4C400CA127B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";
@@ -1069,11 +1077,6 @@
 			isa = PBXTargetDependency;
 			name = MobileFreddy;
 			targetProxy = E2014C571D9BC76100CA127B /* PBXContainerItemProxy */;
-		};
-		E2031E941D8ED2210076477B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Eureka;
-			targetProxy = E2031E931D8ED2210076477B /* PBXContainerItemProxy */;
 		};
 		E26D1E531DA544CC00F3E95C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1125,12 +1128,15 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MoDoListWidget/MoDoListWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = W57LA57867;
 				INFOPLIST_FILE = MoDoListWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList.MoDoListWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1139,13 +1145,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MoDoListWidget/MoDoListWidget.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = W57LA57867;
 				INFOPLIST_FILE = MoDoListWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList.MoDoListWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1168,6 +1177,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ok sim choi (P22DJQ7U4S)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1190,7 +1200,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos10.0;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1213,6 +1223,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ok sim choi (W57LA57867)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1228,7 +1239,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos10.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1236,10 +1247,14 @@
 		E2BBBEE41D7B118D003B58A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MoDoList/MoDoList.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ok sim choi (P22DJQ7U4S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "iPhone Developer: ok sim choi (P22DJQ7U45)";
+				DEVELOPMENT_TEAM = W57LA57867;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1252,16 +1267,21 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		E2BBBEE51D7B118D003B58A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MoDoList/MoDoList.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ok sim choi (W57LA57867)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "iPhone Distribution: ok sim choi (W57LA57867)";
+				DEVELOPMENT_TEAM = W57LA57867;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1273,6 +1293,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SilverJun.MoDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

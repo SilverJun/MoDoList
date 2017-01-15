@@ -765,6 +765,9 @@ CgoKCg
                                         <include reference="dbU-59-97h"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="shareCells" destination="BYZ-38-t0r" eventType="touchUpInside" id="rIZ-6G-5ln"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

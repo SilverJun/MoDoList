@@ -220,7 +220,7 @@ class SwipeCell: UIViewController, UIGestureRecognizerDelegate {
     let scale: CGFloat = UIScreen.mainScreen().scale
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, scale)
     view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     
     return image
