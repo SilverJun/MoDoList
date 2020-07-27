@@ -6,6 +6,7 @@ The 2nd Junior Software Cup, MoDoList Project
 * Share your task or appointment with facebook friend
 * Easy to use, just swipe!
 * You Can see your friend`s task and appointment
+* [Promotion Video](https://youtu.be/fob0usYuf6g)
 
 # Features
 * Use AWS node.js Server and APN(Apple Push Notification)
